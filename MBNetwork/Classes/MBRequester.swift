@@ -43,9 +43,30 @@ public protocol MBReloadable {
 }
 
 
+private struct AssociatedKeys {
+    static var requestKey = "requestKey"
+}
+
 public extension MBRequestable  {
+    private var request:MBRequester?{
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.requestKey) as? MBRequester
+        }
+        set(request) {
+            objc_setAssociatedObject(
+                self,
+                &AssociatedKeys.requestKey,
+                request as MBRequester?,
+                objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+        }
+    }
+    
     func requester() -> MBRequester {
-        return MBRequester()
+        if nil == request {
+            request = MBRequester()
+        }
+        return request!
     }
 }
 
@@ -55,11 +76,13 @@ public protocol MBRequestable : class{
 
 public class MBRequester {
     
+    private var loadingCount = 0
+    
     public func send(target:AnyObject)  {
         
         showLoading(target)
         
-        Alamofire.request(.GET, "http://www.baidu.com").validate().responseJSON { response in
+        Alamofire.request(.GET, "https://www.baidu.com").validate().responseJSON { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
@@ -79,22 +102,30 @@ public class MBRequester {
     
     private func showLoading(target:AnyObject) {
         if let loading = target as? MBLoadable, vc = target as? UIViewController {
-            if loading.loadingType == .FULL {
-                if let nav = vc.navigationController {
-                    nav.view.addSubview(loading.loadingView)
-                } else if let tab = vc.tabBarController {
-                    tab.view.addSubview(loading.loadingView)
+            if 0 == loadingCount {
+                if loading.loadingType == .FULL {
+                    if let nav = vc.navigationController {
+                        nav.view.addSubview(loading.loadingView)
+                    } else if let tab = vc.tabBarController {
+                        tab.view.addSubview(loading.loadingView)
+                    } else {
+                        vc.view.addSubview(loading.loadingView)
+                    }
+                } else {
+                    vc.view.addSubview(loading.loadingView)
                 }
-            } else {
-                vc.view.addSubview(loading.loadingView)
+                loading.loadingView.fillSuperView()
             }
-            loading.loadingView.fillSuperView()
+            loadingCount += 1
         }
     }
     
     private func hideLoading(target:AnyObject) {
         if let loading = target as? MBLoadable {
-            loading.loadingView.removeFromSuperview()
+            loadingCount -= 1
+            if 0 == loadingCount {
+                loading.loadingView.removeFromSuperview()
+            }
         }
     }
 }

@@ -9,11 +9,16 @@
 import UIKit
 import MBNetwork
 
-class ViewController: UIViewController, MBRequestable{
+class ViewController: UIViewController, MBRequestable, MBLoadable{
+    
+    var loadingView: UIView = UIView()
+    var loadingType: MBLoadingType = .FULL
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        requester().send(self)
     }
 
     override func didReceiveMemoryWarning() {
