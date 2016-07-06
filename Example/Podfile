@@ -2,10 +2,4 @@ use_frameworks!
 
 target 'MBNetwork_Example' do
   pod 'MBNetwork', :path => '../'
-
-  target 'MBNetwork_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end

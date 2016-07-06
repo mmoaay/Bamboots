@@ -3,7 +3,7 @@
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+# To learn more about a Pod	spec see http://guides.cocoapods.org/syntax/podspec.html
 #
 
 Pod::Spec.new do |s|
@@ -17,16 +17,14 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = 'A long description of MBNetwork.'
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/MBNetwork'
+  s.homepage         = 'https://github.com/mmoaay/MBNetwork'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'mmoaay' => 'mmoaay@sina.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/MBNetwork.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/mmoaay/MBNetwork.git', :tag => s.version.to_s }
+  # s.social_media_url = 'http://weibo.com/smmoaay'
 
   s.ios.deployment_target = '8.0'
 
@@ -38,5 +36,6 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Alamofire', '~> 3.4'
+  s.dependency 'SwiftyJSON'
 end
