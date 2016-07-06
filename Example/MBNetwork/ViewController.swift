@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MBNetwork
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MBRequestable{
 
     override func viewDidLoad() {
         super.viewDidLoad()

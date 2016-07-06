@@ -8,25 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-
-// MARK: - URLRequestConvertible
-
-/**
- Types adopting the `URLRequestConvertible` protocol can be used to construct URL requests.
- */
-
-public enum MBLoadingType: String {
-    case DEFAULT, FULL
-}
-
-public protocol MBLoadable {
-    var loadingView:UIView { get }
-    var loadingType:MBLoadingType { get }
-}
-
-public protocol MBReloadable {
-    func reload()
-}
+import Alamofire
 
 extension UIView {
     func fillSuperView() {
@@ -43,7 +25,58 @@ extension UIView {
     }
 }
 
-extension MBRequester {
+public enum MBLoadingType: String {
+    case DEFAULT, FULL
+}
+
+extension MBLoadable {
+    
+}
+
+public protocol MBLoadable {
+    var loadingView:UIView { get }
+    var loadingType:MBLoadingType { get }
+}
+
+public protocol MBReloadable {
+    func reload()
+}
+
+
+public extension MBRequestable  {
+    func requester() -> MBRequester {
+        return MBRequester()
+    }
+}
+
+public protocol MBRequestable : class{
+    
+}
+
+public class MBRequester {
+    
+    public func send(target:AnyObject)  {
+        
+        showLoading(target)
+        
+        Alamofire.request(.GET, "http://www.baidu.com").validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    print("JSON: \(json)")
+                    
+                    self.hideLoading(target)
+                }
+            case .Failure(let error):
+                print(error)
+                
+                self.hideLoading(target)
+            }
+        }
+    }
+    
+    
     private func showLoading(target:AnyObject) {
         if let loading = target as? MBLoadable, vc = target as? UIViewController {
             if loading.loadingType == .FULL {
@@ -66,22 +99,6 @@ extension MBRequester {
     }
 }
 
-extension MBRequester {
-    public func send(target:AnyObject)  {
-        Alamofire.request(.GET, "http://www.baidu.com").validate().responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    print("JSON: \(json)")
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
-    }
-}
 
-public protocol MBRequester {
-    
-}
+
+
