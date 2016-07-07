@@ -9,14 +9,21 @@
 import UIKit
 import MBNetwork
 
+extension ViewController {
+    static func loadingView() -> UIView {
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        activityIndicatorView.startAnimating()
+        return activityIndicatorView
+    }
+}
+
 class ViewController: UIViewController, MBRequestable, MBLoadable{
     
-    var loading:UIView = UIView()
+    var loading: UIView = ViewController.loadingView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        loading.backgroundColor = UIColor.blackColor()
     }
 
     override func didReceiveMemoryWarning() {
