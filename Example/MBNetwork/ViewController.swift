@@ -11,14 +11,12 @@ import MBNetwork
 
 class ViewController: UIViewController, MBRequestable, MBLoadable{
     
-    var loadingView: UIView = UIView()
-    var loadingType: MBLoadingType = .FULL
+    var loading:UIView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        requester().send(self)
+        loading.backgroundColor = UIColor.blackColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,5 +24,8 @@ class ViewController: UIViewController, MBRequestable, MBLoadable{
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func load(sender: AnyObject) {
+        send(.DEFAULT)
+    }
 }
 
