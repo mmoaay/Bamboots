@@ -9,17 +9,9 @@
 import UIKit
 import MBNetwork
 
-extension ViewController {
-    static func loadingView() -> UIView {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-        activityIndicatorView.startAnimating()
-        return activityIndicatorView
-    }
-}
-
 class ViewController: UIViewController, MBRequestable, MBLoadable{
     
-    var loading: UIView = ViewController.loadingView()
+//    var loading: UIView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +24,7 @@ class ViewController: UIViewController, MBRequestable, MBLoadable{
     }
 
     @IBAction func load(sender: AnyObject) {
-        send(.DEFAULT)
+        send(BaiduGeoCoderForm(), loadType: .DEFAULT)
     }
 }
 

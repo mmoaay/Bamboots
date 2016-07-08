@@ -15,13 +15,27 @@ public protocol MBReloadable {
 }
 
 public extension MBRequestable  {
-    public func send(loadType:MBLoadType)  {
+    // MARK: - send 方法
+    
+    /**
+     Creates a request using the shared manager instance for the specified method, URL string, parameters, and
+     parameter encoding.
+     
+     - parameter method:     The HTTP method.
+     - parameter URLString:  The URL string.
+     - parameter parameters: The parameters. `nil` by default.
+     - parameter encoding:   The parameter encoding. `.URL` by default.
+     - parameter headers:    The HTTP headers. `nil` by default.
+     
+     - returns: The created request.
+     */
+    public func send(form:MBFormable, loadType:MBLoadType)  {
         
         if let loadable = self as? MBLoadable {
             loadable.showLoad(loadType)
         }
         
-        Alamofire.request(.GET, "https://www.baidu.com").validate().responseJSON { response in
+        Alamofire.request(form.method, form.url, parameters: form.parameters).validate().responseJSON { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
@@ -43,6 +57,11 @@ public extension MBRequestable  {
     }
 }
 
+// MARK: - MBRequestable
+
+/**
+ 满足 MBRequestable 协议的类型可以进行网络请求
+ */
 public protocol MBRequestable : class{
     
 }
