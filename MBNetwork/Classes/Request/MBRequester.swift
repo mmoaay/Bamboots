@@ -10,10 +10,6 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-public protocol MBReloadable {
-    func reload()
-}
-
 public extension MBRequestable  {
     // MARK: - send 方法
     
