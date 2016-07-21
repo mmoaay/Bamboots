@@ -8,12 +8,38 @@
 
 import Foundation
 
+// MARK: - MBLoader
+
+/**
+ 加载配置对象
+ - 实现 url 指定请求地址
+ - 实现 parameters 设置请求参数
+ - 实现 method 设置请求方式
+ - 实现 id 设置请求编号，如：GET_USER_INFO (注：开发者需要保证请求ID的唯一性)
+ */
+
+public class MBLoadConfig {
+    
+    var mask:UIView?
+    var container:UIView?
+    var insets:UIEdgeInsets
+    
+    var id:String
+    
+    init(id:String, mask:UIView?, container:UIView?, insets:UIEdgeInsets) {
+        self.mask = mask
+        self.container = container
+        self.insets = insets
+        self.id = id
+    }
+}
+
 /**
  实现默认加载
  */
 extension MBLoadable {
-    public var loading:UIView {
-        return mbDefaultLoading!
+    func loadConfig() -> MBLoadConfig {
+        return MBLoadConfig(id:"MBLOADCONFIGDEFAULT", mask:MBLoading.loading(), container:nil, insets:UIEdgeInsetsZero)
     }
 }
 
@@ -22,57 +48,19 @@ extension MBLoadable {
  */
 
 private struct MBLoadableKeys {
-    static var loadCountKey = "loadCountKey"
     static var loadingKey = "loadingKey"
 }
 
 extension MBLoadable {
-    private var mbDefaultLoading:UIView? {
+    private var mbLoadConfig:MBLoadConfig? {
         get {
-            let view = objc_getAssociatedObject(self, &MBLoadableKeys.loadingKey) as? UIView
-            if nil == view {
-
-                let loading = MBLoading.loading()
-                
-                objc_setAssociatedObject(
-                    self,
-                    &MBLoadableKeys.loadingKey,
-                    loading as UIView?,
-                    objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
-                )
-                return loading
-            }
-            return view
+            return objc_getAssociatedObject(self, &MBLoadableKeys.loadingKey) as? MBLoadConfig
         }
-        set(view) {
+        set(loading) {
             objc_setAssociatedObject(
                 self,
                 &MBLoadableKeys.loadingKey,
-                view as UIView?,
-                objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
-            )
-        }
-    }
-    
-    private var mbLoadCount:Int? {
-        get {
-            let count = objc_getAssociatedObject(self, &MBLoadableKeys.loadCountKey) as? Int
-            if nil == count {
-                objc_setAssociatedObject(
-                    self,
-                    &MBLoadableKeys.loadCountKey,
-                    0 as Int?,
-                    objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
-                )
-                return 0
-            }
-            return count
-        }
-        set(count) {
-            objc_setAssociatedObject(
-                self,
-                &MBLoadableKeys.loadCountKey,
-                count as Int?,
+                loading as MBLoadConfig?,
                 objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
             )
         }
@@ -80,37 +68,17 @@ extension MBLoadable {
 }
 
 extension MBLoadable {
-    public func showLoad(type:MBLoadType) {
-        if let vc = self as? UIViewController {
-            if .NONE != type {
-                if 0 == mbLoadCount {
-                    if type == .FULL {
-                        if let nav = vc.navigationController {
-                            nav.view.addFullSubView(loading)
-                        } else if let tab = vc.tabBarController {
-                            tab.view.addFullSubView(loading)
-                        } else {
-                            vc.view.addFullSubView(loading)
-                        }
-                    } else {
-                        vc.view.addFullSubView(loading)
-                    }
-                }
-                mbLoadCount! += 1
+    public func showLoad() {
+        if let mbLoadConfig = self.mbLoadConfig {
+            if loadConfig.id == mbLoadConfig.id {
+                return
             }
-            
         }
+        mbLoadConfig = loadConfig
     }
     
-    public func hideLoad(type:MBLoadType) {
-        if let _ = self as? UIViewController {
-            if .NONE != type {
-                mbLoadCount! -= 1
-                if 0 == mbLoadCount {
-                    loading.removeFromSuperview()
-                }
-            }
-        }
+    public func hideLoad() {
+        mbLoadConfig?.mask?.removeFromSuperview()
     }
 }
 
@@ -118,30 +86,10 @@ extension MBLoadable {
 
 /**
  满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框
-  - 实现 loading 可以自定义加载
+  - 实现 loading() 可以自定义加载
  */
 public protocol MBLoadable : class {
-    var loading:UIView { get }
-}
-
-
-// MARK: - MBLoadType
-
-/**
- 加载的类型
- */
-public enum MBLoadType: String {
-    case DEFAULT, FULL, NONE
-}
-
-
-// MARK: - MBLoadSizable
-
-/**
- 满足 MBLoadSizable 协议的类型可以自定义加载的边距
- */
-public protocol MBLoadSizable {
-    var loadingEdgeInsets:UIEdgeInsets {get}
+    var loadConfig : MBLoadConfig { get }
 }
 
 
