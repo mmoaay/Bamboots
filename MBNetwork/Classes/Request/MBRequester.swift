@@ -36,12 +36,12 @@ public extension MBRequestable  {
                     let json = JSON(value)
                     print("JSON: \(json)")
                     
-//                    self.hideLoad(load)
+                    self.hideLoad(load)
                 }
             case .Failure(let error):
                 print(error)
                 
-//                self.hideLoad(load)
+                self.hideLoad(load)
             }
         }
     }

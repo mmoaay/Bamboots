@@ -125,6 +125,7 @@ extension MBRequestable {
             if let scrollView = mbConfig.container as? UIScrollView { // 对 UIScrollView 和 UITableView 做特殊处理
                 if let superView = scrollView.superview {
                     superView.addMBSubView(mbConfig.mask, insets: mbConfig.insets)
+                    scrollView.setContentOffset(scrollView.contentOffset, animated: false)
                     scrollView.scrollEnabled = false
                 }
             } else {
