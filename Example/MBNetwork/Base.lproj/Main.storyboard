@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vnl-R7-zUe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,23 +18,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZl-gt-sKV">
-                                <rect key="frame" x="285" y="285" width="30" height="30"/>
-                                <state key="normal" title="load"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qBj-B2-AYc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="load:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vAW-WA-6Kb"/>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="uFR-Zg-UWp"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="i08-Of-i49"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xZl-gt-sKV" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="Ecl-Ih-uRL"/>
-                            <constraint firstItem="xZl-gt-sKV" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="klJ-yz-usD"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qBj-B2-AYc" secondAttribute="bottom" id="8Wk-pg-fH1"/>
+                            <constraint firstItem="qBj-B2-AYc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RTu-EC-ull"/>
+                            <constraint firstItem="qBj-B2-AYc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="VH0-Qi-Hcq"/>
+                            <constraint firstAttribute="trailing" secondItem="qBj-B2-AYc" secondAttribute="trailing" id="jbc-75-5Fq"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qBj-B2-AYc" secondAttribute="bottom" id="m4A-G2-ZXd"/>
+                            <constraint firstItem="qBj-B2-AYc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="m9v-tf-uZP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="m9v-tf-uZP"/>
+                                <exclude reference="8Wk-pg-fH1"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="GRi-Lm-wei">
+                        <rightBarButtonItems>
+                            <barButtonItem title="loadTable" id="iaY-EA-oIF">
+                                <connections>
+                                    <action selector="loadTable:" destination="vXZ-lx-hvc" id="vHb-Hi-dHT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="load" id="ZSo-Ri-ZI4">
+                                <connections>
+                                    <action selector="load:" destination="vXZ-lx-hvc" id="ynr-mx-UD1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="qBj-B2-AYc" id="VvS-oI-xRh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="391" y="261"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rYg-de-ZOd">
+            <objects>
+                <navigationController id="Vnl-R7-zUe" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6rO-Ro-5Xm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="NuR-Q0-HNW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yVV-zi-H2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-353" y="261"/>
         </scene>
     </scenes>
 </document>

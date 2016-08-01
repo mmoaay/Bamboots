@@ -27,9 +27,7 @@ public extension MBRequestable  {
      */
     public func send(form:MBFormable, load:MBLoadable)  {
         
-        if let loadable = self as? MBLoadable {
-            loadable.showLoad(loadType)
-        }
+        showLoad(load)
         
         Alamofire.request(form.method, form.url, parameters: form.parameters).validate().responseJSON { response in
             switch response.result {
@@ -38,16 +36,12 @@ public extension MBRequestable  {
                     let json = JSON(value)
                     print("JSON: \(json)")
                     
-                    if let loadable = self as? MBLoadable {
-                        loadable.hideLoad(loadType)
-                    }
+//                    self.hideLoad(load)
                 }
             case .Failure(let error):
                 print(error)
                 
-                if let loadable = self as? MBLoadable {
-                    loadable.hideLoad(loadType)
-                }
+//                self.hideLoad(load)
             }
         }
     }

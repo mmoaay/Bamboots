@@ -12,34 +12,56 @@ import Foundation
 
 /**
  加载配置对象
- - 实现 url 指定请求地址
- - 实现 parameters 设置请求参数
- - 实现 method 设置请求方式
- - 实现 id 设置请求编号，如：GET_USER_INFO (注：开发者需要保证请求ID的唯一性)
+ - mask 指定遮罩视图
+ - container 指定显示遮罩视图的视图
+ - insets 指定遮罩视图和显示视图的边距
+ - id 设置请求编号，如：GET_USER_INFO (注：会根据 id 对并发的请求进行分组，同一个 id 的请求会共用一个 loading)
  */
+
+extension MBLoadDefault : MBLoadable {
+    public var loadConfig : MBLoadConfig? {
+        return MBLoadConfig(container:container)
+    }
+}
+
+extension MBLoadNone : MBLoadable {
+    public var loadConfig : MBLoadConfig? {
+        return nil
+    }
+}
+
+public class MBLoadNone {
+    public init() {}
+}
+
+public class MBLoadDefault {
+    var container:UIView
+    public init(container:UIView) {
+        self.container = container
+    }
+}
+
+extension MBLoadConfig:MBLoadable {
+    public var loadConfig : MBLoadConfig? {
+        return self
+    }
+}
 
 public class MBLoadConfig {
     
-    var mask:UIView?
-    var container:UIView?
+    var mask:UIView
+    var container:UIView
     var insets:UIEdgeInsets
+    
+    internal var count = 1
     
     var id:String
     
-    init(id:String, mask:UIView?, container:UIView?, insets:UIEdgeInsets) {
+    public init(id:String = "MBLOAD_CONFIG_DEFAULT", mask:UIView = MBLoading.loading(), container:UIView, insets:UIEdgeInsets = UIEdgeInsetsZero) {
         self.mask = mask
         self.container = container
         self.insets = insets
         self.id = id
-    }
-}
-
-/**
- 实现默认加载
- */
-extension MBLoadable {
-    func loadConfig() -> MBLoadConfig {
-        return MBLoadConfig(id:"MBLOADCONFIGDEFAULT", mask:MBLoading.loading(), container:nil, insets:UIEdgeInsetsZero)
     }
 }
 
@@ -51,7 +73,7 @@ private struct MBLoadableKeys {
     static var loadingKey = "loadingKey"
 }
 
-extension MBLoadable {
+extension MBRequestable {
     private var mbLoadConfig:MBLoadConfig? {
         get {
             return objc_getAssociatedObject(self, &MBLoadableKeys.loadingKey) as? MBLoadConfig
@@ -67,18 +89,55 @@ extension MBLoadable {
     }
 }
 
-extension MBLoadable {
-    public func showLoad() {
-        if let mbLoadConfig = self.mbLoadConfig {
-            if loadConfig.id == mbLoadConfig.id {
-                return
+extension MBRequestable {
+    public func showLoad(load:MBLoadable) {
+        if let config = load.loadConfig { // 如果有配置则说明需要加载框
+            if let mbConfig = mbLoadConfig { // 判断之前是否已经有加载框的配置
+                if mbConfig.id == config.id { // 判断 id 是否一致，如果一致，则表示和之前的加载框是同一个
+                    mbConfig.count += 1
+                } else { // 否则用新的加载框替换旧的加载框
+                    removeLoad(mbConfig)
+                    addLoad(config)
+                }
+            } else { // 否则设置初始加载框
+                addLoad(config)
             }
         }
-        mbLoadConfig = loadConfig
     }
     
-    public func hideLoad() {
-        mbLoadConfig?.mask?.removeFromSuperview()
+    public func hideLoad(load:MBLoadable) {
+        if let config = load.loadConfig { // 如果有配置则说明需要加载框
+            if let mbConfig = mbLoadConfig { // 判断之前是否已经有加载框的配置
+                if mbConfig.id == config.id { // 判断 id 是否一致，如果一致，则表示和之前的加载框是同一个
+                    mbLoadConfig?.count -= 1
+                    if (0 == mbLoadConfig?.count) {
+                        removeLoad(mbConfig)
+                        mbLoadConfig = nil
+                    }
+                }
+            }
+        }
+    }
+    
+    private func addLoad(loadConfig:MBLoadConfig) {
+        mbLoadConfig = loadConfig
+        if let mbConfig = mbLoadConfig {
+            if let scrollView = mbConfig.container as? UIScrollView { // 对 UIScrollView 和 UITableView 做特殊处理
+                if let superView = scrollView.superview {
+                    superView.addMBSubView(mbConfig.mask, insets: mbConfig.insets)
+                    scrollView.scrollEnabled = false
+                }
+            } else {
+                mbConfig.container.addMBSubView(mbConfig.mask, insets: mbConfig.insets)
+            }
+        }
+    }
+    
+    private func removeLoad(loadConfig:MBLoadConfig) {
+        if let scrollView = loadConfig.container as? UIScrollView {
+            scrollView.scrollEnabled = true
+        }
+        loadConfig.mask.removeFromSuperview()
     }
 }
 
@@ -89,7 +148,7 @@ extension MBLoadable {
   - 实现 loading() 可以自定义加载
  */
 public protocol MBLoadable : class {
-    var loadConfig : MBLoadConfig { get }
+    var loadConfig : MBLoadConfig? { get }
 }
 
 
