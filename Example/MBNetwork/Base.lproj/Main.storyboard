@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qBj-B2-AYc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_image" translatesAutoresizingMaskIntoConstraints="NO" id="bK6-Cv-Vsb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bK6-Cv-Vsb" secondAttribute="height" id="VoM-Ez-K2I"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qBj-B2-AYc" customClass="MBParallelHeaderTableView" customModule="MBNetwork_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -29,9 +36,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bK6-Cv-Vsb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="1yf-nd-sED"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qBj-B2-AYc" secondAttribute="bottom" id="8Wk-pg-fH1"/>
                             <constraint firstItem="qBj-B2-AYc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RTu-EC-ull"/>
                             <constraint firstItem="qBj-B2-AYc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="VH0-Qi-Hcq"/>
+                            <constraint firstAttribute="trailing" secondItem="bK6-Cv-Vsb" secondAttribute="trailing" id="cxa-9w-sqq"/>
+                            <constraint firstItem="bK6-Cv-Vsb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="ipf-Hy-HAP"/>
                             <constraint firstAttribute="trailing" secondItem="qBj-B2-AYc" secondAttribute="trailing" id="jbc-75-5Fq"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qBj-B2-AYc" secondAttribute="bottom" id="m4A-G2-ZXd"/>
                             <constraint firstItem="qBj-B2-AYc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="m9v-tf-uZP"/>
@@ -45,12 +55,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="GRi-Lm-wei">
                         <rightBarButtonItems>
-                            <barButtonItem title="loadTable" id="iaY-EA-oIF">
+                            <barButtonItem systemItem="refresh" id="iaY-EA-oIF">
                                 <connections>
                                     <action selector="loadTable:" destination="vXZ-lx-hvc" id="vHb-Hi-dHT"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="load" id="ZSo-Ri-ZI4">
+                            <barButtonItem systemItem="refresh" id="ZSo-Ri-ZI4">
                                 <connections>
                                     <action selector="load:" destination="vXZ-lx-hvc" id="ynr-mx-UD1"/>
                                 </connections>
@@ -58,6 +68,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="headerImage" destination="bK6-Cv-Vsb" id="dzo-rh-wZ7"/>
                         <outlet property="tableView" destination="qBj-B2-AYc" id="VvS-oI-xRh"/>
                     </connections>
                 </viewController>
@@ -82,4 +93,7 @@
             <point key="canvasLocation" x="-353" y="261"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="head_image" width="480" height="480"/>
+    </resources>
 </document>

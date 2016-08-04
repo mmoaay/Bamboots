@@ -65,6 +65,16 @@ public class MBLoadConfig {
     }
 }
 
+// MARK: - MBLoadable
+
+/**
+ 满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框
+  - 实现 loading() 可以自定义加载
+ */
+public protocol MBLoadable : class {
+    var loadConfig : MBLoadConfig? { get }
+}
+
 /**
  黑魔法－使用 runtime 为 extension 增加成员变量
  */
@@ -140,16 +150,6 @@ extension MBRequestable {
         }
         loadConfig.mask.removeFromSuperview()
     }
-}
-
-// MARK: - MBLoadable
-
-/**
- 满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框
-  - 实现 loading() 可以自定义加载
- */
-public protocol MBLoadable : class {
-    var loadConfig : MBLoadConfig? { get }
 }
 
 

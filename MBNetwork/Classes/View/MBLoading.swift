@@ -9,9 +9,9 @@
 
 public struct MBLoading {
     public static func loading() -> UIView {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         activityIndicatorView.startAnimating()
-        activityIndicatorView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
+        activityIndicatorView.backgroundColor = UIColor.whiteColor()
         
         return activityIndicatorView
     }

@@ -10,6 +10,14 @@ import UIKit
 import MBNetwork
 
 extension ViewController {
+    private func initTableView() {
+        let tableHeaderView = MBTableHeaderView.shareInstance().getView()
+        tableHeaderView.frame = CGRectMake(0, 0, SCREEN_SIZE.width, SCREEN_SIZE.width)
+        self.tableView.tableHeaderView = tableHeaderView
+
+        tableView.parallelHeaderView = headerImage
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
@@ -41,11 +49,16 @@ extension ViewController {
 class ViewController: UIViewController, MBRequestable{
     
 //    var loading: UIView = UIView()
-    @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var tableView: MBParallelHeaderTableView!
+    @IBOutlet weak var headerImage: UIImageView!
+    
+    let SCREEN_SIZE = UIScreen.mainScreen().bounds
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        initTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +83,7 @@ class ViewController: UIViewController, MBRequestable{
     }
     
     @IBAction func loadTable(sender: AnyObject) {
-        let load = MBLoadConfig(id:"LOAD_TABLE", container:self.tableView, insets: UIEdgeInsetsMake(200, 0, 0, 0))
+        let load = MBLoadConfig(id:"LOAD_TABLE", container:self.tableView, insets: UIEdgeInsetsMake(SCREEN_SIZE.width - self.tableView.contentOffset.y > 0 ? SCREEN_SIZE.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
         send(BaiduGeoCoderForm(), load: load)
         send(BaiduGeoCoderForm(), load: load)
     }

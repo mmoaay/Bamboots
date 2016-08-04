@@ -12,6 +12,9 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		C211CAB31D52E55100493CEF /* MBTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */; };
+		C211CAB41D52E55100493CEF /* MBTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C211CAB21D52E55000493CEF /* MBTableHeaderView.xib */; };
+		C211CAB71D52E5A300493CEF /* MBParallelHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C211CAB61D52E5A300493CEF /* MBParallelHeaderTableView.swift */; };
 		C2ACD7081D2FA9F600080022 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACD7071D2FA9F600080022 /* ViewController.swift */; };
 		C2ACD70A1D2FAA7D00080022 /* BaiduGeoCoderForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACD7091D2FAA7D00080022 /* BaiduGeoCoderForm.swift */; };
 		FD294508CF03946B828E78A0 /* Pods_MBNetwork_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464E8352B4CC18B4BD07DBB5 /* Pods_MBNetwork_Example.framework */; };
@@ -40,6 +43,9 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		63CAB3091B7513B3CD6FF6AE /* MBNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MBNetwork.podspec; path = ../MBNetwork.podspec; sourceTree = "<group>"; };
 		776D9779AFBC73F96B67D6F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTableHeaderView.swift; sourceTree = "<group>"; };
+		C211CAB21D52E55000493CEF /* MBTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBTableHeaderView.xib; sourceTree = "<group>"; };
+		C211CAB61D52E5A300493CEF /* MBParallelHeaderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBParallelHeaderTableView.swift; sourceTree = "<group>"; };
 		C2ACD7071D2FA9F600080022 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C2ACD7091D2FAA7D00080022 /* BaiduGeoCoderForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiduGeoCoderForm.swift; sourceTree = "<group>"; };
 		C441800D892423DF566BBCBB /* Pods-MBNetwork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBNetwork_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBNetwork_Example/Pods-MBNetwork_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 		607FACD21AFB9204008FA782 /* Example for MBNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				C211CAB01D52E52800493CEF /* View */,
 				C2ACD7061D2FA9DF00080022 /* Model */,
 				C2ACD7051D2FA9D800080022 /* Form */,
 				C2ACD7041D2FA9CB00080022 /* ViewController */,
@@ -136,6 +143,16 @@
 				E5AEB5628DAAD66E2A72E387 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		C211CAB01D52E52800493CEF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C211CAB61D52E5A300493CEF /* MBParallelHeaderTableView.swift */,
+				C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */,
+				C211CAB21D52E55000493CEF /* MBTableHeaderView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C2ACD7041D2FA9CB00080022 /* ViewController */ = {
@@ -263,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				C211CAB41D52E55100493CEF /* MBTableHeaderView.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -331,7 +349,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2ACD70A1D2FAA7D00080022 /* BaiduGeoCoderForm.swift in Sources */,
+				C211CAB31D52E55100493CEF /* MBTableHeaderView.swift in Sources */,
 				C2ACD7081D2FA9F600080022 /* ViewController.swift in Sources */,
+				C211CAB71D52E5A300493CEF /* MBParallelHeaderTableView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

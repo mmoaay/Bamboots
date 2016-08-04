@@ -11,7 +11,7 @@ import MBNetwork
 import Alamofire
 
 struct BaiduGeoCoderForm :MBFormable {
-    var url = "http://api.map.baidu.com/geocoder/v2/"
+    var url = "https://github.com/mmoaay"
     var parameters = ["address":"北京市海淀区上地十街10号", "output":"json", "ak":"E4805d16520de693a3fe707cdc962045", "callback":"showLocation"]
     var method = Alamofire.Method.POST
     

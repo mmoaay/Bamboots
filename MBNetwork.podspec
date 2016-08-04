@@ -38,4 +38,6 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'Alamofire', '~> 3.4'
   s.dependency 'SwiftyJSON'
+  s.dependency 'ObjectMapper', '~> 1.3'
+  s.dependency 'AlamofireObjectMapper', '~> 3.0'
 end
