@@ -10,14 +10,6 @@ import Foundation
 
 // MARK: - MBLoader
 
-/**
- 加载配置对象
- - mask 指定遮罩视图
- - container 指定显示遮罩视图的视图
- - insets 指定遮罩视图和显示视图的边距
- - id 设置请求编号，如：GET_USER_INFO (注：会根据 id 对并发的请求进行分组，同一个 id 的请求会共用一个 loading)
- */
-
 extension MBLoadDefault : MBLoadable {
     public var loadConfig : MBLoadConfig? {
         return MBLoadConfig(container:container)
@@ -30,10 +22,22 @@ extension MBLoadNone : MBLoadable {
     }
 }
 
+extension MBLoadConfig:MBLoadable {
+    public var loadConfig : MBLoadConfig? {
+        return self
+    }
+}
+
+/**
+  默认加载，mask 遮罩整个 container
+ */
 public class MBLoadNone {
     public init() {}
 }
 
+/**
+ 没有加载
+ */
 public class MBLoadDefault {
     var container:UIView
     public init(container:UIView) {
@@ -41,12 +45,13 @@ public class MBLoadDefault {
     }
 }
 
-extension MBLoadConfig:MBLoadable {
-    public var loadConfig : MBLoadConfig? {
-        return self
-    }
-}
-
+/**
+ 加载配置对象
+ - mask 指定遮罩视图
+ - container 指定显示遮罩视图的视图
+ - insets 指定遮罩视图和显示视图的边距
+ - id 设置请求编号，如：GET_USER_INFO (注：会根据 id 对并发的请求进行分组，同一个 id 的请求会共用一个 loading)
+ */
 public class MBLoadConfig {
     
     var mask:UIView
