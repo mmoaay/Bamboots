@@ -25,7 +25,7 @@ public extension MBRequestable  {
      
      - returns: The created request.
      */
-    public func send(form:MBFormable, load:MBLoadable, reload:MBReloadable)  {
+    public func send(form:MBFormable, load:MBLoadable = MBLoadType.None, reload:MBReloadable = MBReloadType.None)  {
         
         showLoad(load)
         

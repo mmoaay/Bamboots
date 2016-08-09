@@ -10,39 +10,26 @@ import Foundation
 
 // MARK: - MBLoader
 
-extension MBLoadDefault : MBLoadable {
-    public var loadConfig : MBLoadConfig? {
-        return MBLoadConfig(container:container)
-    }
-}
-
-extension MBLoadNone : MBLoadable {
-    public var loadConfig : MBLoadConfig? {
-        return nil
-    }
-}
-
 extension MBLoadConfig:MBLoadable {
     public var loadConfig : MBLoadConfig? {
         return self
     }
 }
 
-/**
-  默认加载，mask 遮罩整个 container
- */
-public class MBLoadNone {
-    public init() {}
+extension MBLoadType:MBLoadable {
+    public var loadConfig : MBLoadConfig? {
+        switch self {
+        case .Default(let container):
+            return MBLoadConfig(container:container)
+        case .None:
+            return nil
+        }
+    }
 }
 
-/**
- 没有加载
- */
-public class MBLoadDefault {
-    var container:UIView
-    public init(container:UIView) {
-        self.container = container
-    }
+public enum MBLoadType {
+    case None
+    case Default(container:UIView)
 }
 
 /**
@@ -76,7 +63,7 @@ public class MBLoadConfig {
  满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框
   - 实现 loading() 可以自定义加载
  */
-public protocol MBLoadable : class {
+public protocol MBLoadable {
     var loadConfig : MBLoadConfig? { get }
 }
 

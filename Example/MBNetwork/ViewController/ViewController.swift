@@ -69,13 +69,12 @@ class ViewController: UIViewController, MBRequestable{
     @IBAction func load(sender: AnyObject) {
         
         // 遮罩 NavigationController 的加载
-//        send(BaiduGeoCoderForm(), load: MBLoadDefault(container:self.navigationController!.view))
-        
+//        send(BaiduGeoCoderForm(), load: MBLoadType.Default(container: self.navigationController!.view))
         // 遮罩 ViewController 的加载
-        send(BaiduGeoCoderForm(), load: MBLoadDefault(container:self.view))
+        send(BaiduGeoCoderForm(), load:MBLoadType.Default(container: view))
         
         // 没有加载
-//        send(BaiduGeoCoderForm(), load: MBLoadNone())
+//        send(BaiduGeoCoderForm())
         
         // 自定义加载
 //        let load = MBLoadConfig(id: "LOAD_CUSTOM", mask: MBLoading.loading(), container: self.view, insets: UIEdgeInsetsMake(100, 0, 0, 0))

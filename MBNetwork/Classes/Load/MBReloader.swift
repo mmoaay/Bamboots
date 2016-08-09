@@ -8,10 +8,28 @@
 
 import Foundation
 
-extension MBReloadConfig {
-    var loadConfig : MBReloadConfig? {
+typealias reload = ()->Void
+
+extension MBReloadConfig:MBReloadable {
+    public var reloadConfig : MBReloadConfig? {
         return self
     }
+}
+
+extension MBReloadType:MBReloadable {
+    public var reloadConfig : MBReloadConfig? {
+        switch self {
+        case .Default(let container):
+            return MBReloadConfig(container:container)
+        case .None:
+            return nil
+        }
+    }
+}
+
+public enum MBReloadType {
+    case None
+    case Default(container:UIView)
 }
 
 public class MBReloadConfig {
@@ -19,8 +37,6 @@ public class MBReloadConfig {
     var mask:UIView
     var container:UIView
     var insets:UIEdgeInsets
-    
-    internal var count = 1
     
     var id:String
     
@@ -33,8 +49,6 @@ public class MBReloadConfig {
     }
 }
 
-public protocol MBReloadable {
-    func reload()
-    
-    var loadConfig : MBReloadConfig? { get }
+public protocol MBReloadable  {
+    var reloadConfig : MBReloadConfig? { get }
 }
