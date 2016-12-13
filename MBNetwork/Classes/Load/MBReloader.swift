@@ -19,20 +19,20 @@ extension MBReloadConfig:MBReloadable {
 extension MBReloadType:MBReloadable {
     public var reloadConfig : MBReloadConfig? {
         switch self {
-        case .Default(let container):
+        case .default(let container):
             return MBReloadConfig(container:container)
-        case .None:
+        case .none:
             return nil
         }
     }
 }
 
 public enum MBReloadType {
-    case None
-    case Default(container:UIView)
+    case none
+    case `default`(container:UIView)
 }
 
-public class MBReloadConfig {
+open class MBReloadConfig {
     
     var mask:UIView
     var container:UIView
@@ -41,7 +41,7 @@ public class MBReloadConfig {
     var id:String
     
     
-    public init(id:String = "MBLOAD_CONFIG_DEFAULT", mask:UIView = MBLoading.loading(), container:UIView, insets:UIEdgeInsets = UIEdgeInsetsZero) {
+    public init(id:String = "MBLOAD_CONFIG_DEFAULT", mask:UIView = MBLoading.loading(), container:UIView, insets:UIEdgeInsets = UIEdgeInsets.zero) {
         self.mask = mask
         self.container = container
         self.insets = insets

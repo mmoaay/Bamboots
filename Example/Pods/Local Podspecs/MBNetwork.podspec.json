@@ -1,0 +1,36 @@
+{
+  "name": "MBNetwork",
+  "version": "0.1.0",
+  "summary": "A short description of MBNetwork.",
+  "description": "A long description of MBNetwork.",
+  "homepage": "https://github.com/mmoaay/MBNetwork",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "mmoaay": "mmoaay@sina.com"
+  },
+  "source": {
+    "git": "https://github.com/mmoaay/MBNetwork.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "MBNetwork/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+      "4.0.1"
+    ],
+    "SwiftyJSON": [
+
+    ],
+    "ObjectMapper": [
+
+    ],
+    "AlamofireObjectMapper": [
+
+    ]
+  }
+}

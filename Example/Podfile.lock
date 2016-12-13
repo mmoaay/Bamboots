@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.0.1)
+  - AlamofireObjectMapper (4.0.0):
+    - Alamofire (~> 4.0)
+    - ObjectMapper (~> 2.0)
+  - MBNetwork (0.1.0):
+    - Alamofire (= 4.0.1)
+    - AlamofireObjectMapper
+    - ObjectMapper
+    - SwiftyJSON
+  - ObjectMapper (2.2.1)
+  - SwiftyJSON (3.1.1)
+
+DEPENDENCIES:
+  - MBNetwork (from `../`)
+
+EXTERNAL SOURCES:
+  MBNetwork:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
+  MBNetwork: 61bbea9c6737aa513d281d5d4ade5a6b91f52494
+  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+
+PODFILE CHECKSUM: 46c1336528b2f519ca1915cd7cf979aa9f57dc14
+
+COCOAPODS: 1.2.0.beta.1

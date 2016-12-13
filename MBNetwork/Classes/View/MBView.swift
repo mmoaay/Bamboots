@@ -9,17 +9,17 @@
 import Foundation
 
 extension UIView {
-    func addMBSubView(subview:UIView, insets:UIEdgeInsets) {
+    func addMBSubView(_ subview:UIView, insets:UIEdgeInsets) {
         
         self.addSubview(subview)
         
         subview.translatesAutoresizingMaskIntoConstraints = false
         
         let views:[String:UIView] = ["subview":subview]
-        let layoutStringH:String = "H:|-" + String(insets.left) + "-[subview]-" + String(insets.right) + "-|"
-        let layoutStringV:String = "V:|-" + String(insets.top) + "-[subview]-" + String(insets.bottom) + "-|"
-        let contraintsH:[NSLayoutConstraint] = NSLayoutConstraint.constraintsWithVisualFormat(layoutStringH, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views)
-        let contraintsV:[NSLayoutConstraint] = NSLayoutConstraint.constraintsWithVisualFormat(layoutStringV, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views)
+        let layoutStringH:String = "H:|-" + String(describing: insets.left) + "-[subview]-" + String(describing: insets.right) + "-|"
+        let layoutStringV:String = "V:|-" + String(describing: insets.top) + "-[subview]-" + String(describing: insets.bottom) + "-|"
+        let contraintsH:[NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: layoutStringH, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views)
+        let contraintsV:[NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: layoutStringV, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views)
         
         self.addConstraints(contraintsH)
         self.addConstraints(contraintsV)

@@ -46,22 +46,22 @@ extension MBParallelHeaderTableView : UIScrollViewDelegate{
             
             self.parallelHeaderViewHeight = (view?.bounds.size.height)!
             
-            self.backgroundColor = UIColor.clearColor()
+            self.backgroundColor = UIColor.clear
             
             let scrollView = self as UIScrollView
             scrollView.delegate = self
         }
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yPos = scrollView.contentOffset.y
         
         if yPos < 0.0 {
-            let transform = CGAffineTransformMakeTranslation(0.0, -yPos/2.0)
-            self.parallelHeaderView?.transform = CGAffineTransformScale(transform, 1.0-(yPos/self.parallelHeaderViewHeight)*2.0, 1.0-(yPos/self.parallelHeaderViewHeight)*2.0)
+            let transform = CGAffineTransform(translationX: 0.0, y: -yPos/2.0)
+            self.parallelHeaderView?.transform = transform.scaledBy(x: 1.0-(yPos/self.parallelHeaderViewHeight)*2.0, y: 1.0-(yPos/self.parallelHeaderViewHeight)*2.0)
         }else {
-            let transform = CGAffineTransformMakeTranslation(0.0, -yPos/2.0)
-            self.parallelHeaderView?.transform = CGAffineTransformScale(transform, 1.0, 1.0)
+            let transform = CGAffineTransform(translationX: 0.0, y: -yPos/2.0)
+            self.parallelHeaderView?.transform = transform.scaledBy(x: 1.0, y: 1.0)
         }
     }
 }

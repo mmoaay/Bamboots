@@ -9,19 +9,44 @@
 import Foundation
 import Alamofire
 
+
 // MARK: - MBFormable
+public extension MBFormable {
+    
+    /// 实现默认编码方式
+    ///
+    /// - Returns: Alamofire 默认 URLEncoding
+    func encoding() -> ParameterEncoding {
+        return Alamofire.URLEncoding.default
+    }
+}
 
-/**
- 实现 MBFormable 协议的类型可以做为请求网络时候的参数
- - 实现 url 指定请求地址
- - 实现 parameters 设置请求参数
- - 实现 method 设置请求方式
- */
 
+/// 请求协议
 public protocol MBFormable {
+    
+    /// 请求头 - 正常全局实现一次即可
+    ///
+    /// - Returns: 请求头
+    func headers() -> [String: String]
+    
+    
+    /// 编码方式 - 如果需要自定义编码可以重新实现该方法
+    ///
+    /// - Returns: 编码方式
+    func encoding() -> ParameterEncoding
+    
+    
+    /// 请求 url
     var url:String { get }
     
-    var parameters:Dictionary<String, String> { get }
     
-    var method:Alamofire.Method { get }
+    /// 请求方式
+    var method:Alamofire.HTTPMethod { get }
+    
+    
+    /// 请求参数
+    ///
+    /// - Returns: 请求参数
+    func parameters() -> [String: Any]
 }

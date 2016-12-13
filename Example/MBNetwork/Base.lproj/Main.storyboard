@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vnl-R7-zUe">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vnl-R7-zUe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,32 +19,32 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_image" translatesAutoresizingMaskIntoConstraints="NO" id="bK6-Cv-Vsb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bK6-Cv-Vsb" secondAttribute="height" id="VoM-Ez-K2I"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qBj-B2-AYc" customClass="MBParallelHeaderTableView" customModule="MBNetwork_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="uFR-Zg-UWp"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="i08-Of-i49"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bK6-Cv-Vsb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="1yf-nd-sED"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qBj-B2-AYc" secondAttribute="bottom" id="8Wk-pg-fH1"/>
                             <constraint firstItem="qBj-B2-AYc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RTu-EC-ull"/>
                             <constraint firstItem="qBj-B2-AYc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="VH0-Qi-Hcq"/>
                             <constraint firstAttribute="trailing" secondItem="bK6-Cv-Vsb" secondAttribute="trailing" id="cxa-9w-sqq"/>
-                            <constraint firstItem="bK6-Cv-Vsb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="ipf-Hy-HAP"/>
+                            <constraint firstItem="bK6-Cv-Vsb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="ipf-Hy-HAP"/>
                             <constraint firstAttribute="trailing" secondItem="qBj-B2-AYc" secondAttribute="trailing" id="jbc-75-5Fq"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qBj-B2-AYc" secondAttribute="bottom" id="m4A-G2-ZXd"/>
                             <constraint firstItem="qBj-B2-AYc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="m9v-tf-uZP"/>
@@ -74,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="391" y="261"/>
+            <point key="canvasLocation" x="389.60000000000002" y="260.41979010494754"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rYg-de-ZOd">

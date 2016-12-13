@@ -11,11 +11,11 @@ import MBNetwork
 import Alamofire
 
 struct BaiduGeoCoderForm :MBFormable {
-    var url = "https://github.com/mmoaay"
-    var parameters = ["address":"北京市海淀区上地十街10号", "output":"json", "ak":"E4805d16520de693a3fe707cdc962045", "callback":"showLocation"]
-    var method = Alamofire.Method.POST
     
-    init (){
-        self.parameters = ["address":"北京市海淀区上地十街10号", "output":"json", "ak":"E4805d16520de693a3fe707cdc962045", "callback":"showLocation"]
+    public func parameters() -> [String : Any] {
+        return [:]
     }
+
+    var url = "https://httpbin.org/get"
+    var method = Alamofire.HTTPMethod.get
 }

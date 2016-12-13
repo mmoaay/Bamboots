@@ -19,27 +19,21 @@ extension MBLoadConfig:MBLoadable {
 extension MBLoadType:MBLoadable {
     public var loadConfig : MBLoadConfig? {
         switch self {
-        case .Default(let container):
+        case .default(let container):
             return MBLoadConfig(container:container)
-        case .None:
+        case .none:
             return nil
         }
     }
 }
 
 public enum MBLoadType {
-    case None
-    case Default(container:UIView)
+    case none
+    case `default`(container:UIView)
 }
 
-/**
- 加载配置对象
- - mask 指定遮罩视图
- - container 指定显示遮罩视图的视图
- - insets 指定遮罩视图和显示视图的边距
- - id 设置请求编号，如：GET_USER_INFO (注：会根据 id 对并发的请求进行分组，同一个 id 的请求会共用一个 loading)
- */
-public class MBLoadConfig {
+/// 加载配置对象
+open class MBLoadConfig {
     
     var mask:UIView
     var container:UIView
@@ -49,7 +43,15 @@ public class MBLoadConfig {
     
     var id:String
     
-    public init(id:String = "MBLOAD_CONFIG_DEFAULT", mask:UIView = MBLoading.loading(), container:UIView, insets:UIEdgeInsets = UIEdgeInsetsZero) {
+    
+    /// 构造加载配置对象
+    ///
+    /// - Parameters:
+    ///   - id: 设置请求编号，如：GET_USER_INFO (注：会根据 id 对并发的请求进行分组，同一个 id 的请求会共用一个 loading)
+    ///   - mask: 指定遮罩视图
+    ///   - container: 指定显示遮罩视图的视图
+    ///   - insets: 指定遮罩视图和显示视图的边距
+    public init(id:String = "MBLOAD_CONFIG_DEFAULT", mask:UIView = MBLoading.loading(), container:UIView, insets:UIEdgeInsets = UIEdgeInsets.zero) {
         self.mask = mask
         self.container = container
         self.insets = insets
@@ -59,24 +61,18 @@ public class MBLoadConfig {
 
 // MARK: - MBLoadable
 
-/**
- 满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框
-  - 实现 loading() 可以自定义加载
- */
+///  满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框 - 实现 loading() 可以自定义加载
 public protocol MBLoadable {
     var loadConfig : MBLoadConfig? { get }
 }
 
-/**
- 黑魔法－使用 runtime 为 extension 增加成员变量
- */
-
+/// 黑魔法－使用 runtime 为 extension 增加成员变量
 private struct MBLoadableKeys {
     static var loadingKey = "loadingKey"
 }
 
 extension MBRequestable {
-    private var mbLoadConfig:MBLoadConfig? {
+    fileprivate var mbLoadConfig:MBLoadConfig? {
         get {
             return objc_getAssociatedObject(self, &MBLoadableKeys.loadingKey) as? MBLoadConfig
         }
@@ -92,7 +88,7 @@ extension MBRequestable {
 }
 
 extension MBRequestable {
-    public func showLoad(load:MBLoadable) {
+    public func showLoad(_ load:MBLoadable) {
         if let config = load.loadConfig { // 如果有配置则说明需要加载框
             if let mbConfig = mbLoadConfig { // 判断之前是否已经有加载框的配置
                 if mbConfig.id == config.id { // 判断 id 是否一致，如果一致，则表示和之前的加载框是同一个
@@ -107,7 +103,7 @@ extension MBRequestable {
         }
     }
     
-    public func hideLoad(load:MBLoadable) {
+    public func hideLoad(_ load:MBLoadable) {
         if let config = load.loadConfig { // 如果有配置则说明需要加载框
             if let mbConfig = mbLoadConfig { // 判断之前是否已经有加载框的配置
                 if mbConfig.id == config.id { // 判断 id 是否一致，如果一致，则表示和之前的加载框是同一个
@@ -121,14 +117,14 @@ extension MBRequestable {
         }
     }
     
-    private func addLoad(loadConfig:MBLoadConfig) {
+    fileprivate func addLoad(_ loadConfig:MBLoadConfig) {
         mbLoadConfig = loadConfig
         if let mbConfig = mbLoadConfig {
             if let scrollView = mbConfig.container as? UIScrollView { // 对 UIScrollView 和 UITableView 做特殊处理
                 if let superView = scrollView.superview {
                     superView.addMBSubView(mbConfig.mask, insets: mbConfig.insets)
                     scrollView.setContentOffset(scrollView.contentOffset, animated: false)
-                    scrollView.scrollEnabled = false
+                    scrollView.isScrollEnabled = false
                 }
             } else {
                 mbConfig.container.addMBSubView(mbConfig.mask, insets: mbConfig.insets)
@@ -136,9 +132,9 @@ extension MBRequestable {
         }
     }
     
-    private func removeLoad(loadConfig:MBLoadConfig) {
+    fileprivate func removeLoad(_ loadConfig:MBLoadConfig) {
         if let scrollView = loadConfig.container as? UIScrollView {
-            scrollView.scrollEnabled = true
+            scrollView.isScrollEnabled = true
         }
         loadConfig.mask.removeFromSuperview()
     }

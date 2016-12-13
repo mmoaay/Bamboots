@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Alamofire
+import AlamofireObjectMapper
+import ObjectMapper
 
 public extension MBRequestable  {
     // MARK: - send 方法
@@ -25,24 +26,12 @@ public extension MBRequestable  {
      
      - returns: The created request.
      */
-    public func send(form:MBFormable, load:MBLoadable = MBLoadType.None, reload:MBReloadable = MBReloadType.None)  {
+    public func send(_ form:MBFormable, load:MBLoadable = MBLoadType.none, reload:MBReloadable = MBReloadType.none)  {
         
         showLoad(load)
         
-        Alamofire.request(form.method, form.url, parameters: form.parameters).validate().responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    print("JSON: \(json)")
-                    
-                    self.hideLoad(load)
-                }
-            case .Failure(let error):
-                print(error)
-                
-                self.hideLoad(load)
-            }
+        Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers()).responseJSON { (data:DataResponse<Any>) in
+            self.hideLoad(load)
         }
     }
 }
