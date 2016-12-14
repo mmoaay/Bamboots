@@ -12,7 +12,8 @@ public protocol MBContainable {
     func containerView() -> UIView
 }
 
-
-extension MBContainable:MBLoadable {
-    
+extension MBContainable {
+    func hasMask() -> Bool {
+        for subview 
+    }
 }

@@ -75,27 +75,6 @@ public protocol MBLoadProgressable {
     func progress(progress:Progress)
 }
 
-/// 黑魔法－使用 runtime 为 extension 增加成员变量
-private struct MBLoadableKeys {
-    static var loadingKey = "loadingKey"
-}
-
-extension MBRequestable {
-    fileprivate var mbLoadConfig:MBLoadConfig? {
-        get {
-            return objc_getAssociatedObject(self, &MBLoadableKeys.loadingKey) as? MBLoadConfig
-        }
-        set(loading) {
-            objc_setAssociatedObject(
-                self,
-                &MBLoadableKeys.loadingKey,
-                loading as MBLoadConfig?,
-                objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
-            )
-        }
-    }
-}
-
 extension MBRequestable {
     public func showLoad(_ load:MBLoadable) {
         if let config = load.loadConfig { // 如果有配置则说明需要加载框
