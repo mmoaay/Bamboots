@@ -25,3 +25,9 @@ extension UIView {
         self.addConstraints(contraintsV)
     }
 }
+
+extension UIView:MBContainable {
+    public func containerView() -> UIView {
+        return self;
+    }
+}

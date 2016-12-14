@@ -9,6 +9,14 @@
 import Foundation
 import ObjectMapper
 
-public protocol MBResponsable: Mappable{
+public protocol MBSerializable {
     
+    /// 数据节点名
+    var data:String? { get }
+    
+    /// 错误码节点名
+    var code:String? { get }
+    
+    /// 错误信息节点名
+    var message:String? { get }
 }

@@ -11,9 +11,10 @@ import MBNetwork
 import Alamofire
 
 struct BaiduGeoCoderForm :MBFormable {
+    var word = "word"
     
     public func parameters() -> [String : Any] {
-        return [:]
+        return ["word":word]
     }
 
     var url = "https://httpbin.org/get"

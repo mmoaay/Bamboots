@@ -14,3 +14,9 @@ extension MBFormable {
         return ["accessToken":"xxx"];
     }
 }
+
+extension MBFormable where Self : BaiduGeoCoderForm {
+    public func headers() -> [String : String] {
+        return ["accessToken":"xxx", "hah":"xxx"];
+    }
+}

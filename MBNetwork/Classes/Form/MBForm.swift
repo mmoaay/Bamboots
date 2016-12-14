@@ -24,26 +24,22 @@ public extension MBFormable {
 
 /// 请求协议
 public protocol MBFormable {
+    /// 请求 url
+    var url: String { get }
+    
+    /// 请求方式
+    var method: Alamofire.HTTPMethod { get }
+    
     
     /// 请求头 - 正常全局实现一次即可
     ///
     /// - Returns: 请求头
     func headers() -> [String: String]
     
-    
     /// 编码方式 - 如果需要自定义编码可以重新实现该方法
     ///
     /// - Returns: 编码方式
     func encoding() -> ParameterEncoding
-    
-    
-    /// 请求 url
-    var url:String { get }
-    
-    
-    /// 请求方式
-    var method:Alamofire.HTTPMethod { get }
-    
     
     /// 请求参数
     ///

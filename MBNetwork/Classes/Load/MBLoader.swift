@@ -10,60 +10,69 @@ import Foundation
 
 // MARK: - MBLoader
 
-extension MBLoadConfig:MBLoadable {
-    public var loadConfig : MBLoadConfig? {
-        return self
-    }
-}
-
-extension MBLoadType:MBLoadable {
-    public var loadConfig : MBLoadConfig? {
+extension MBLoadType: MBLoadable {
+    public var mask:MBMaskable? {
         switch self {
         case .default(let container):
-            return MBLoadConfig(container:container)
+            return MBLoading()
         case .none:
             return nil
+        }
+    }
+    
+    public var container:MBContainable? {
+        switch self {
+        case .default(let container):
+            return container
+        case .none:
+            return nil
+        }
+    }
+    
+    /// 请求开始
+    public func begin() {
+        switch self {
+        case .default(let container):
+            break
+        case .none:
+            break
+        }
+    }
+    
+    /// 请求结束
+    public func end() {
+        switch self {
+        case .default(let container):
+            break
+        case .none:
+            break
         }
     }
 }
 
 public enum MBLoadType {
     case none
-    case `default`(container:UIView)
-}
-
-/// 加载配置对象
-open class MBLoadConfig {
-    
-    var mask:UIView
-    var container:UIView
-    var insets:UIEdgeInsets
-    
-    internal var count = 1
-    
-    var id:String
-    
-    
-    /// 构造加载配置对象
-    ///
-    /// - Parameters:
-    ///   - id: 设置请求编号，如：GET_USER_INFO (注：会根据 id 对并发的请求进行分组，同一个 id 的请求会共用一个 loading)
-    ///   - mask: 指定遮罩视图
-    ///   - container: 指定显示遮罩视图的视图
-    ///   - insets: 指定遮罩视图和显示视图的边距
-    public init(id:String = "MBLOAD_CONFIG_DEFAULT", mask:UIView = MBLoading.loading(), container:UIView, insets:UIEdgeInsets = UIEdgeInsets.zero) {
-        self.mask = mask
-        self.container = container
-        self.insets = insets
-        self.id = id
-    }
+    case `default`(container:MBContainable)
 }
 
 // MARK: - MBLoadable
 
 ///  满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框 - 实现 loading() 可以自定义加载
-public protocol MBLoadable {
-    var loadConfig : MBLoadConfig? { get }
+public protocol MBLoadable {    
+    var mask:MBMaskable? { get }
+    
+    var container:MBContainable? { get }
+    
+    /// 请求开始
+    func begin()
+    
+    /// 请求结束
+    func end()
+}
+
+///
+public protocol MBLoadProgressable {
+    func progress(progress:Progress)
 }
 
 /// 黑魔法－使用 runtime 为 extension 增加成员变量

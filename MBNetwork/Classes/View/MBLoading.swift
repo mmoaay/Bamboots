@@ -7,8 +7,10 @@
 //
 
 
-public struct MBLoading {
-    public static func loading() -> UIView {
+public struct MBLoading: MBMaskable {
+    public var maskId:String = "MBMaskDefault"
+    
+    public func maskView() -> UIView {
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatorView.startAnimating()
         activityIndicatorView.backgroundColor = UIColor.white
