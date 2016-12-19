@@ -13,11 +13,14 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		67CD272E79E27D3D18CDDC87 /* Pods_MBNetwork_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2772FB800B4815B9755B470 /* Pods_MBNetwork_Tests.framework */; };
+		85399C221E029C760076BE65 /* LoadConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85399C211E029C760076BE65 /* LoadConfig.swift */; };
+		856526C21E02B2C60070A562 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856526C11E02B2C60070A562 /* HomeViewController.swift */; };
 		8584731D1DFFA85300997A66 /* BaseForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8584731C1DFFA85300997A66 /* BaseForm.swift */; };
+		85B4CBCB1E04FAE40022DD61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CBCA1E04FAE40022DD61 /* ViewController.swift */; };
 		C211CAB31D52E55100493CEF /* MBTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */; };
 		C211CAB41D52E55100493CEF /* MBTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C211CAB21D52E55000493CEF /* MBTableHeaderView.xib */; };
-		C211CAB71D52E5A300493CEF /* MBParallelHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C211CAB61D52E5A300493CEF /* MBParallelHeaderTableView.swift */; };
-		C2ACD7081D2FA9F600080022 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACD7071D2FA9F600080022 /* ViewController.swift */; };
+		C2ACD7081D2FA9F600080022 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACD7071D2FA9F600080022 /* TableViewController.swift */; };
 		C2ACD70A1D2FAA7D00080022 /* BaiduGeoCoderForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACD7091D2FAA7D00080022 /* BaiduGeoCoderForm.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040682E6C5F81DBFF5054EE0 /* Pods-MBNetwork_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBNetwork_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBNetwork_Tests/Pods-MBNetwork_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3EFF8DF6346BB0D8B0B758A1 /* Pods-MBNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBNetwork_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBNetwork_Tests/Pods-MBNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MBNetwork_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBNetwork_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,16 +50,19 @@
 		63CC26C75E5F918CBBA6EF5A /* Pods-MBNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBNetwork_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBNetwork_Example/Pods-MBNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
 		776D9779AFBC73F96B67D6F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		805EEC370D29A2AFEC5197B9 /* Pods-MBNetwork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBNetwork_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBNetwork_Example/Pods-MBNetwork_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		85399C211E029C760076BE65 /* LoadConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadConfig.swift; sourceTree = "<group>"; };
+		856526C11E02B2C60070A562 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8584731C1DFFA85300997A66 /* BaseForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseForm.swift; sourceTree = "<group>"; };
 		85ACE8691D87ABAF00A1A2F0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		85ACE86A1D87ABAF00A1A2F0 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
 		85ACE86B1D87ABAF00A1A2F0 /* MBNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBNetwork.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/MBNetwork/MBNetwork.framework"; sourceTree = "<group>"; };
 		85ACE86C1D87ABAF00A1A2F0 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		85ACE86D1D87ABAF00A1A2F0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		85B4CBCA1E04FAE40022DD61 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A2772FB800B4815B9755B470 /* Pods_MBNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTableHeaderView.swift; sourceTree = "<group>"; };
 		C211CAB21D52E55000493CEF /* MBTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBTableHeaderView.xib; sourceTree = "<group>"; };
-		C211CAB61D52E5A300493CEF /* MBParallelHeaderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBParallelHeaderTableView.swift; sourceTree = "<group>"; };
-		C2ACD7071D2FA9F600080022 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C2ACD7071D2FA9F600080022 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		C2ACD7091D2FAA7D00080022 /* BaiduGeoCoderForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiduGeoCoderForm.swift; sourceTree = "<group>"; };
 		D260361FF9C5A79FC3B73A00 /* Pods_MBNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5AEB5628DAAD66E2A72E387 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -73,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67CD272E79E27D3D18CDDC87 /* Pods_MBNetwork_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +93,8 @@
 			children = (
 				805EEC370D29A2AFEC5197B9 /* Pods-MBNetwork_Example.debug.xcconfig */,
 				63CC26C75E5F918CBBA6EF5A /* Pods-MBNetwork_Example.release.xcconfig */,
+				040682E6C5F81DBFF5054EE0 /* Pods-MBNetwork_Tests.debug.xcconfig */,
+				3EFF8DF6346BB0D8B0B758A1 /* Pods-MBNetwork_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -112,6 +123,7 @@
 		607FACD21AFB9204008FA782 /* Example for MBNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				85399C201E029C650076BE65 /* Load */,
 				C211CAB01D52E52800493CEF /* View */,
 				C2ACD7061D2FA9DF00080022 /* Model */,
 				C2ACD7051D2FA9D800080022 /* Form */,
@@ -170,14 +182,22 @@
 				85ACE86C1D87ABAF00A1A2F0 /* ObjectMapper.framework */,
 				85ACE86D1D87ABAF00A1A2F0 /* SwiftyJSON.framework */,
 				D260361FF9C5A79FC3B73A00 /* Pods_MBNetwork_Example.framework */,
+				A2772FB800B4815B9755B470 /* Pods_MBNetwork_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		85399C201E029C650076BE65 /* Load */ = {
+			isa = PBXGroup;
+			children = (
+				85399C211E029C760076BE65 /* LoadConfig.swift */,
+			);
+			path = Load;
 			sourceTree = "<group>";
 		};
 		C211CAB01D52E52800493CEF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C211CAB61D52E5A300493CEF /* MBParallelHeaderTableView.swift */,
 				C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */,
 				C211CAB21D52E55000493CEF /* MBTableHeaderView.xib */,
 			);
@@ -187,7 +207,9 @@
 		C2ACD7041D2FA9CB00080022 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C2ACD7071D2FA9F600080022 /* ViewController.swift */,
+				C2ACD7071D2FA9F600080022 /* TableViewController.swift */,
+				856526C11E02B2C60070A562 /* HomeViewController.swift */,
+				85B4CBCA1E04FAE40022DD61 /* ViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -235,9 +257,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "MBNetwork_Tests" */;
 			buildPhases = (
+				C32DB0E6B8A5C009D689C8A4 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
+				3BE55C83E4E51C247E221E8C /* [CP] Embed Pods Frameworks */,
+				637DA98B3DF709508FFAE7C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,12 +287,12 @@
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 8682P4GC47;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 8682P4GC47;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -343,6 +368,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBNetwork_Example/Pods-MBNetwork_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3BE55C83E4E51C247E221E8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBNetwork_Tests/Pods-MBNetwork_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		637DA98B3DF709508FFAE7C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBNetwork_Tests/Pods-MBNetwork_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		797066D22943BC7457DF4C12 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +413,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBNetwork_Example/Pods-MBNetwork_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C32DB0E6B8A5C009D689C8A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -368,8 +438,10 @@
 				C2ACD70A1D2FAA7D00080022 /* BaiduGeoCoderForm.swift in Sources */,
 				C211CAB31D52E55100493CEF /* MBTableHeaderView.swift in Sources */,
 				8584731D1DFFA85300997A66 /* BaseForm.swift in Sources */,
-				C2ACD7081D2FA9F600080022 /* ViewController.swift in Sources */,
-				C211CAB71D52E5A300493CEF /* MBParallelHeaderTableView.swift in Sources */,
+				856526C21E02B2C60070A562 /* HomeViewController.swift in Sources */,
+				85399C221E029C760076BE65 /* LoadConfig.swift in Sources */,
+				C2ACD7081D2FA9F600080022 /* TableViewController.swift in Sources */,
+				85B4CBCB1E04FAE40022DD61 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +528,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -495,6 +568,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -506,12 +580,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8682P4GC47;
 				INFOPLIST_FILE = MBNetwork/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -522,17 +596,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8682P4GC47;
 				INFOPLIST_FILE = MBNetwork/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 040682E6C5F81DBFF5054EE0 /* Pods-MBNetwork_Tests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 8682P4GC47;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -547,12 +622,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EFF8DF6346BB0D8B0B758A1 /* Pods-MBNetwork_Tests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 8682P4GC47;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -563,7 +639,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};

@@ -7,14 +7,17 @@
 //
 
 
-public struct MBLoading: MBMaskable {
-    public var maskId:String = "MBMaskDefault"
+open class MBLoading:UIActivityIndicatorView, MBMaskable {
+    open var maskId:String = "MBMaskDefault"
     
-    public func maskView() -> UIView {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicatorView.startAnimating()
-        activityIndicatorView.backgroundColor = UIColor.white
+    override public init(activityIndicatorStyle style: UIActivityIndicatorViewStyle) {
+        super.init(activityIndicatorStyle: style)
         
-        return activityIndicatorView
+        backgroundColor = UIColor.white
+        startAnimating()
+    }
+    
+    required public init(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }

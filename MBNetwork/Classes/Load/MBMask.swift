@@ -10,6 +10,4 @@ import Foundation
 
 public protocol MBMaskable {
     var maskId:String { get }
-    
-    func maskView() -> UIView
 }

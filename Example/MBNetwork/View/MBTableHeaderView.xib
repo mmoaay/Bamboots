@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,6 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="473" height="287"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_image" translatesAutoresizingMaskIntoConstraints="NO" id="wSg-nC-1f9">
+                    <rect key="frame" x="0.0" y="0.0" width="473" height="287"/>
+                </imageView>
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epB-6c-qVD">
                     <rect key="frame" x="143" y="116" width="188" height="56"/>
                     <subviews>
@@ -51,7 +55,11 @@
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="wSg-nC-1f9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="A7i-bi-wCh"/>
                 <constraint firstItem="epB-6c-qVD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TCK-1D-IIl"/>
+                <constraint firstItem="wSg-nC-1f9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UCB-PI-1eA"/>
+                <constraint firstAttribute="bottom" secondItem="wSg-nC-1f9" secondAttribute="bottom" id="eEg-0n-cdh"/>
+                <constraint firstAttribute="trailing" secondItem="wSg-nC-1f9" secondAttribute="trailing" id="lfO-mT-5qi"/>
                 <constraint firstItem="epB-6c-qVD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pJz-Am-dof"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -61,4 +69,7 @@
             <point key="canvasLocation" x="367.5" y="290.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="head_image" width="480" height="480"/>
+    </resources>
 </document>

@@ -1,15 +1,14 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  MBNetwork
 //
-//  Created by ZhengYidong on 17/12/2016.
+//  Created by ZhengYidong on 15/12/2016.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
 import UIKit
-import MBNetwork
 
-class ViewController: UIViewController, MBRequestable {
+class HomeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +21,15 @@ class ViewController: UIViewController, MBRequestable {
         // Dispose of any resources that can be recreated.
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 3:
+            self.performSegue(withIdentifier: "fromHomeToTable", sender: nil)
+            break
+        default:
+            break
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -32,8 +40,5 @@ class ViewController: UIViewController, MBRequestable {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func load(_ sender: Any) {
-        request(BaiduGeoCoderForm(), load:MBLoadType.default(container: view))
-    }
 
 }

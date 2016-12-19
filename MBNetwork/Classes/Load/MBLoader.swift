@@ -8,17 +8,11 @@
 
 import Foundation
 
-// MARK: - MBLoader
+
+
+// MARK: - MBLoadType
 
 extension MBLoadType: MBLoadable {
-    public var mask:MBMaskable? {
-        switch self {
-        case .default(let container):
-            return MBLoading()
-        case .none:
-            return nil
-        }
-    }
     
     public var container:MBContainable? {
         switch self {
@@ -31,22 +25,12 @@ extension MBLoadType: MBLoadable {
     
     /// 请求开始
     public func begin() {
-        switch self {
-        case .default(let container):
-            break
-        case .none:
-            break
-        }
+        show()
     }
     
     /// 请求结束
     public func end() {
-        switch self {
-        case .default(let container):
-            break
-        case .none:
-            break
-        }
+        hide()
     }
 }
 
@@ -56,10 +40,10 @@ public enum MBLoadType {
 }
 
 // MARK: - MBLoadable
-
-///  满足 MBLoadable 协议的类型可以在进行网络请求时显示加载框 - 实现 loading() 可以自定义加载
 public protocol MBLoadable {    
     var mask:MBMaskable? { get }
+    
+    var inset:UIEdgeInsets { get }
     
     var container:MBContainable? { get }
     
@@ -72,59 +56,46 @@ public protocol MBLoadable {
 
 ///
 public protocol MBLoadProgressable {
-    func progress(progress:Progress)
+    func progress(_ progress:Progress)
 }
 
-extension MBRequestable {
-    public func showLoad(_ load:MBLoadable) {
-        if let config = load.loadConfig { // 如果有配置则说明需要加载框
-            if let mbConfig = mbLoadConfig { // 判断之前是否已经有加载框的配置
-                if mbConfig.id == config.id { // 判断 id 是否一致，如果一致，则表示和之前的加载框是同一个
-                    mbConfig.count += 1
-                } else { // 否则用新的加载框替换旧的加载框
-                    removeLoad(mbConfig)
-                    addLoad(config)
-                }
-            } else { // 否则设置初始加载框
-                addLoad(config)
+
+// MARK: - MBLoadable
+extension MBLoadable {
+    public var mask:MBMaskable? {
+        return MBLoading(activityIndicatorStyle: .gray)
+    }
+    
+    public var inset:UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    public func show() {
+        if let mask = self.mask as? UIView {
+            var isHidden = false
+            if let latestMask = self.container?.latestMask() {
+                isHidden = true
+            }
+            self.container?.container()?.addMBSubView(mask, insets: self.inset)
+            mask.isHidden = isHidden
+            
+            if let container = self.container , let scrollView = container as? UIScrollView {
+                scrollView.setContentOffset(scrollView.contentOffset, animated: false)
+                scrollView.isScrollEnabled = false
             }
         }
     }
     
-    public func hideLoad(_ load:MBLoadable) {
-        if let config = load.loadConfig { // 如果有配置则说明需要加载框
-            if let mbConfig = mbLoadConfig { // 判断之前是否已经有加载框的配置
-                if mbConfig.id == config.id { // 判断 id 是否一致，如果一致，则表示和之前的加载框是同一个
-                    mbLoadConfig?.count -= 1
-                    if (0 == mbLoadConfig?.count) {
-                        removeLoad(mbConfig)
-                        mbLoadConfig = nil
-                    }
+    public func hide() {
+        if let latestMask = self.container?.latestMask() {
+            latestMask.removeFromSuperview()
+            
+            if let container = self.container , let scrollView = container as? UIScrollView {
+                if false == latestMask.isHidden {
+                    scrollView.isScrollEnabled = true
                 }
             }
         }
-    }
-    
-    fileprivate func addLoad(_ loadConfig:MBLoadConfig) {
-        mbLoadConfig = loadConfig
-        if let mbConfig = mbLoadConfig {
-            if let scrollView = mbConfig.container as? UIScrollView { // 对 UIScrollView 和 UITableView 做特殊处理
-                if let superView = scrollView.superview {
-                    superView.addMBSubView(mbConfig.mask, insets: mbConfig.insets)
-                    scrollView.setContentOffset(scrollView.contentOffset, animated: false)
-                    scrollView.isScrollEnabled = false
-                }
-            } else {
-                mbConfig.container.addMBSubView(mbConfig.mask, insets: mbConfig.insets)
-            }
-        }
-    }
-    
-    fileprivate func removeLoad(_ loadConfig:MBLoadConfig) {
-        if let scrollView = loadConfig.container as? UIScrollView {
-            scrollView.isScrollEnabled = true
-        }
-        loadConfig.mask.removeFromSuperview()
     }
 }
 

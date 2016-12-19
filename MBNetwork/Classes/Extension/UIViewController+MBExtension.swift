@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIViewController: MBContainable {
-    public func containerView() -> UIView {
+    public func container() -> UIView? {
         return self.view
     }
 }

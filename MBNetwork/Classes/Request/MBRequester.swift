@@ -16,18 +16,17 @@ public extension MBRequestable  {
     /// request
     ///
     /// - Parameters:
-    ///   - form: <#form description#>
-    ///   - load: <#load description#>
-    ///   - serialize: <#serialize description#>
-    public func request(_ form:MBFormable, load:MBLoadable = MBLoadType.none, serialize:MBSerializable)  {
+    ///   - form:
+    ///   - load:
+    ///   - serialize: 
+    public func request(_ form:MBFormable, load:MBLoadable = MBLoadType.none, serialize:MBSerializable? = nil)  {
         
-        load.start(taskId: 1)
+        load.begin()
         
         Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers()).responseJSON(completionHandler: { (response:DataResponse<Any>) in
-        }).responseObject(keyPath: serialize.data) { (response:DataResponse<Mappable>)->Void in
-            load.end(taskId: 1)
-        }
-        
+            
+            load.end()
+        })
     }
 }
 

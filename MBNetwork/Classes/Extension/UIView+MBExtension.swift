@@ -27,7 +27,7 @@ extension UIView {
 }
 
 extension UIView:MBContainable {
-    public func containerView() -> UIView {
+    public func container() -> UIView? {
         return self;
     }
 }

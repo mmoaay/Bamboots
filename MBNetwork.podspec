@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/mmoaay/MBNetwork.git', :tag => s.version.to_s }
   # s.social_media_url = 'http://weibo.com/smmoaay'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'MBNetwork/Classes/**/*'
   
@@ -36,8 +36,7 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Alamofire', '4.0.1'
-  s.dependency 'SwiftyJSON'
+  s.dependency 'Alamofire', '~>4'
   s.dependency 'ObjectMapper'
   s.dependency 'AlamofireObjectMapper'
 end
