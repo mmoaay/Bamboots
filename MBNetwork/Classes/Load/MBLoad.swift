@@ -40,7 +40,7 @@ public enum MBLoadType {
 }
 
 // MARK: - MBLoadable
-public protocol MBLoadable {    
+public protocol MBLoadable {
     var mask:MBMaskable? { get }
     
     var inset:UIEdgeInsets { get }

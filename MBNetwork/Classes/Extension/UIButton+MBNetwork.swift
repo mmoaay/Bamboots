@@ -1,5 +1,5 @@
 //
-//  UIButton+MBExtension.swift
+//  UIButton+MBNetwork.swift
 //  Pods
 //
 //  Created by ZhengYidong on 15/12/2016.
@@ -21,7 +21,11 @@ extension UIButton:MBLoadable {
     
     /// 请求结束
     open func end() {
-        isEnabled = true
+        if let latestMask = self.container?.latestMask() {
+            if false == latestMask.isHidden {
+                isEnabled = true
+            }
+        }
         hide()
     }
 }

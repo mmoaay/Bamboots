@@ -1,5 +1,5 @@
 //
-//  MBView.swift
+//  UIView+MBNetwork.swift
 //  Pods
 //
 //  Created by Perry on 16/7/7.

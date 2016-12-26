@@ -60,22 +60,8 @@ class TableViewController: UITableViewController, MBRequestable{
     }
 
     @IBAction func load(_ sender: AnyObject) {
-        
         let load = MBLoadConfig(container:self.tableView, inset: UIEdgeInsetsMake(SCREEN_SIZE.width - self.tableView.contentOffset.y > 0 ? SCREEN_SIZE.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
         request(BaiduGeoCoderForm(), load: load)
-        
-        // 遮罩 NavigationController 的加载
-//        request(BaiduGeoCoderForm(), load: MBLoadType.default(container: self.navigationController!.view))
-        
-        // 遮罩 ViewController 的加载
-//        request(BaiduGeoCoderForm(), load:MBLoadType.default(container: view))
-        
-        // 没有加载
-//        request(BaiduGeoCoderForm())
-        
-        // 自定义加载
-//        let load = MBLoadConfig(container: self.view, inset: UIEdgeInsetsMake(100, 0, 0, 0))
-//        request(BaiduGeoCoderForm(), load: loadButton)
     }
 }
 

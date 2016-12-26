@@ -1,15 +1,17 @@
 //
-//  ViewController.swift
+//  LoadableViewController.swift
 //  MBNetwork
 //
-//  Created by ZhengYidong on 17/12/2016.
+//  Created by ZhengYidong on 19/12/2016.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import MBNetwork
 
-class ViewController: UIViewController, MBRequestable {
+class LoadableViewController: UIViewController, MBRequestable {
+    
+    @IBOutlet weak var button: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +34,22 @@ class ViewController: UIViewController, MBRequestable {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func load(_ sender: Any) {
+
+    @IBAction func loadCustom(_ sender: AnyObject) {
+        let load = MBLoadConfig(container: self.view, inset: UIEdgeInsetsMake(200, 0, 0, 0))
+        request(BaiduGeoCoderForm(), load: load)
+    }
+    
+    @IBAction func loadDefault(_ sender: AnyObject) {
         request(BaiduGeoCoderForm(), load:MBLoadType.default(container: view))
     }
-
+    
+    @IBAction func loadNav(_ sender: AnyObject) {
+        request(BaiduGeoCoderForm(), load: MBLoadType.default(container: self.navigationController!.view))
+        request(BaiduGeoCoderForm(), load:MBLoadType.none)
+    }
+    
+    @IBAction func loadButton(_ sender: AnyObject) {
+        request(BaiduGeoCoderForm(), load: button)
+    }
 }

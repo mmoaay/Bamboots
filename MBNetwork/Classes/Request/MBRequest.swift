@@ -19,7 +19,7 @@ public extension MBRequestable  {
     ///   - form:
     ///   - load:
     ///   - serialize: 
-    public func request(_ form:MBFormable, load:MBLoadable = MBLoadType.none, serialize:MBSerializable? = nil)  {
+    public func request(_ form:MBFormable, load:MBLoadable = MBLoadType.none, serialize:MBSerializable? = nil) -> DataRequest  {
         
         load.begin()
         
@@ -28,6 +28,20 @@ public extension MBRequestable  {
             load.end()
         })
     }
+    
+    public func download(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> DataRequest {
+        
+        load.begin()
+        
+        Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination).response { (response:DefaultDownloadResponse) in
+            load.end()
+            }.downloadProgress { (prog:Progress) in
+                progress?.progress(prog)
+            }.responseData { (data:DownloadResponse<Data>) in
+            
+        }
+    }
+
 }
 
 // MARK: - MBRequestable

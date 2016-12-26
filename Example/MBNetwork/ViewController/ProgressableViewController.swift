@@ -1,14 +1,16 @@
 //
-//  HomeViewController.swift
+//  ProgressableViewController.swift
 //  MBNetwork
 //
-//  Created by ZhengYidong on 15/12/2016.
+//  Created by ZhengYidong on 26/12/2016.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
 import UIKit
+import MBNetwork
 
-class HomeViewController: UITableViewController {
+class ProgressableViewController: UIViewController, MBRequestable {
+    @IBOutlet weak var progress: UIProgressView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,20 +23,8 @@ class HomeViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 2:
-            self.performSegue(withIdentifier: "fromHomeToLoad", sender: nil)
-            break
-        case 3:
-            self.performSegue(withIdentifier: "fromHomeToTable", sender: nil)
-            break
-        case 4:
-            self.performSegue(withIdentifier: "fromHomeToProgress", sender: nil)
-            break;
-        default:
-            break
-        }
+    @IBAction func load(_ sender: Any) {
+        self.download(ImageDownloadForm(), load: MBLoadType.none, progress: progress)
     }
 
     /*

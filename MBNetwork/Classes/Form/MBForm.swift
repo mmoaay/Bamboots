@@ -21,6 +21,10 @@ public extension MBFormable {
     }
 }
 
+public protocol MBDownloadForm:MBFormable {
+    var destination: DownloadRequest.DownloadFileDestination { get }
+}
+
 
 /// 请求协议
 public protocol MBFormable {
