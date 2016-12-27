@@ -8,6 +8,7 @@
 
 import UIKit
 import MBNetwork
+import AlamofireObjectMapper
 
 class LoadableViewController: UIViewController, MBRequestable {
     

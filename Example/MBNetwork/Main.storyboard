@@ -62,10 +62,19 @@
                                     <constraint firstAttribute="height" constant="2" id="7oP-py-qYV"/>
                                 </constraints>
                             </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LHJ-rg-xod">
+                                <rect key="frame" x="0.0" y="66" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="100" id="R1m-Ec-Dnj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="LHJ-rg-xod" firstAttribute="top" secondItem="r8F-cE-Ff0" secondAttribute="bottom" id="5pm-Cb-2Dc"/>
+                            <constraint firstAttribute="trailing" secondItem="LHJ-rg-xod" secondAttribute="trailing" id="Bk5-Cg-dj1"/>
                             <constraint firstItem="r8F-cE-Ff0" firstAttribute="top" secondItem="G9m-Ek-USK" secondAttribute="bottom" id="dc7-Wj-9xp"/>
+                            <constraint firstItem="LHJ-rg-xod" firstAttribute="leading" secondItem="8Sz-g7-DaQ" secondAttribute="leading" id="leZ-rO-lxD"/>
                             <constraint firstItem="r8F-cE-Ff0" firstAttribute="leading" secondItem="8Sz-g7-DaQ" secondAttribute="leading" id="rNk-KK-qSI"/>
                             <constraint firstAttribute="trailing" secondItem="r8F-cE-Ff0" secondAttribute="trailing" id="vqZ-Te-SEQ"/>
                         </constraints>
@@ -78,6 +87,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageView" destination="LHJ-rg-xod" id="f7I-pN-J7L"/>
                         <outlet property="progress" destination="r8F-cE-Ff0" id="YOM-My-FPY"/>
                     </connections>
                 </viewController>
@@ -364,7 +374,7 @@
         <scene sceneID="X0I-7B-T71">
             <objects>
                 <navigationController id="Nhz-yE-5sC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kur-9d-iVG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kur-9d-iVG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

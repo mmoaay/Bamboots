@@ -23,23 +23,23 @@ public extension MBRequestable  {
         
         load.begin()
         
-        Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers()).responseJSON(completionHandler: { (response:DataResponse<Any>) in
-            
+        return Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers()).response(completionHandler: { (response:DefaultDataResponse) in
             load.end()
         })
     }
     
-    public func download(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> DataRequest {
+    public func download(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> DownloadRequest {
         
         load.begin()
         
-        Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination).response { (response:DefaultDownloadResponse) in
+        return Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination).response { (response:DefaultDownloadResponse) in
             load.end()
             }.downloadProgress { (prog:Progress) in
                 progress?.progress(prog)
-            }.responseData { (data:DownloadResponse<Data>) in
-            
         }
+    }
+    
+    public func upload(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> UploadRequest {
     }
 
 }

@@ -12,11 +12,8 @@ import ObjectMapper
 public protocol MBSerializable {
     
     /// 数据节点名
-    var data:String? { get }
+    var dataNode:String? { get }
     
-    /// 错误码节点名
-    var code:String? { get }
-    
-    /// 错误信息节点名
-    var message:String? { get }
+    /// 错误节点名
+    var errorNode:String? { get }
 }

@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'MBNetwork_Example' do
   pod 'MBNetwork', :path => '../'
+  pod 'SnapKit'
   target 'MBNetwork_Tests' do
       inherit! :search_paths
       

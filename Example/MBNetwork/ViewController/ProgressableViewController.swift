@@ -8,10 +8,14 @@
 
 import UIKit
 import MBNetwork
+import Alamofire
+import AlamofireObjectMapper
+import SnapKit
 
 class ProgressableViewController: UIViewController, MBRequestable {
     @IBOutlet weak var progress: UIProgressView!
 
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +28,19 @@ class ProgressableViewController: UIViewController, MBRequestable {
     }
     
     @IBAction func load(_ sender: Any) {
-        self.download(ImageDownloadForm(), load: MBLoadType.none, progress: progress)
+        self.download(ImageDownloadForm(), load: MBLoadType.none, progress: progress).responseData { (response:DownloadResponse<Data>) in
+            switch response.result {
+            case .success(let data):
+                let image = UIImage(data: data)
+                self.imageView.snp.updateConstraints({ (make:ConstraintMaker) in
+                    make.width.equalTo(self.imageView.snp.height).multipliedBy(image!.size.width/image!.size.height)
+                })
+                self.imageView.image = image
+                break
+            case .failure:
+                break
+            }
+        }
     }
 
     /*
