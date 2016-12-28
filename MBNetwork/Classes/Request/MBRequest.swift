@@ -39,8 +39,8 @@ public extension MBRequestable  {
         }
     }
     
-    public func upload(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> UploadRequest {
-    }
+//    public func upload(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> UploadRequest {
+//    }
 
 }
 

@@ -8,18 +8,23 @@
 
 import Foundation
 
+
+// MARK: - Making UIButton conforms to MBLoadable
 extension UIButton:MBLoadable {
+    
+    /// Self as container
     open var container:MBContainable? {
         return self
     }
     
-    /// 请求开始
+    
+    /// Making disabled when network request begins
     open func begin() {
         isEnabled = false
         show()
     }
     
-    /// 请求结束
+    /// Making enabled when the last network request ends
     open func end() {
         if let latestMask = self.container?.latestMask() {
             if false == latestMask.isHidden {

@@ -8,8 +8,21 @@
 
 import Foundation
 
+// MARK: - Making UIScrollView conforms to MBContainable
 extension UIScrollView {
+    
+    /// Return latest superview that is not UIScrollView as container for UIScrollView, because add mask to UIScrollView(PS: Including UITableView and UICollectionView) will cause something abnormal
+    ///
+    /// - Returns: Latest superview that is not UIScrollView
     override public func container() -> UIView? {
-        return self.superview
+        var next = superview
+        while nil != next {
+            if let _ = next as? UIScrollView {
+                next = next?.superview
+            } else {
+                return next
+            }
+        }
+        return nil
     }
 }

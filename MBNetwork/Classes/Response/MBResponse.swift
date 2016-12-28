@@ -7,13 +7,20 @@
 //
 
 import Foundation
+import Alamofire
 import ObjectMapper
 
+public protocol MBJSONSerializable:MBSerializable {
+}
+
+public protocol MBProtobufSerializable: MBSerializable{
+}
+
 public protocol MBSerializable {
-    
-    /// 数据节点名
-    var dataNode:String? { get }
-    
-    /// 错误节点名
-    var errorNode:String? { get }
+}
+
+extension DataRequest {
+    public func responseProtobuf<T: BaseMappable>(queue: DispatchQueue? = nil, keyPath: String? = nil, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
+        return response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(keyPath, mapToObject: object, context: context), completionHandler: completionHandler)
+    }
 }

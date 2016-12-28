@@ -13,9 +13,9 @@ import Alamofire
 // MARK: - MBFormable
 public extension MBFormable {
     
-    /// 实现默认编码方式
+    /// Default encoding
     ///
-    /// - Returns: Alamofire 默认 URLEncoding
+    /// - Returns: Default URLEncoding
     func encoding() -> ParameterEncoding {
         return Alamofire.URLEncoding.default
     }
@@ -26,27 +26,27 @@ public protocol MBDownloadForm:MBFormable {
 }
 
 
-/// 请求协议
+/// MBFormable
 public protocol MBFormable {
-    /// 请求 url
+    /// request url
     var url: String { get }
     
-    /// 请求方式
+    /// request method
     var method: Alamofire.HTTPMethod { get }
     
     
-    /// 请求头
+    /// request headers
     ///
-    /// - Returns: 请求头
+    /// - Returns: headers
     func headers() -> [String: String]
     
-    /// 编码方式
+    /// encoding
     ///
-    /// - Returns: 编码方式
+    /// - Returns: encoding
     func encoding() -> ParameterEncoding
     
-    /// 请求参数
+    /// request parameters
     ///
-    /// - Returns: 请求参数
+    /// - Returns: parameters
     func parameters() -> [String: Any]
 }

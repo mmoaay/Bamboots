@@ -23,7 +23,7 @@
     "Alamofire": [
       "~>4"
     ],
-    "ObjectMapper": [
+    "SwiftProtobuf": [
 
     ],
     "AlamofireObjectMapper": [

@@ -8,7 +8,13 @@
 
 import Foundation
 
-extension UIView {
+internal extension UIView {
+    
+    /// Inner addSubView for MBNetwork, making autolayout when addSubView
+    ///
+    /// - Parameters:
+    ///   - subview: view to be added
+    ///   - insets: insets between subview and view itself
     func addMBSubView(_ subview:UIView, insets:UIEdgeInsets) {
         
         self.addSubview(subview)
@@ -26,7 +32,13 @@ extension UIView {
     }
 }
 
+
+// MARK: - Making UIView conforms to MBContainable
 extension UIView:MBContainable {
+    
+    /// Return self as container for view
+    ///
+    /// - Returns: View itself
     public func container() -> UIView? {
         return self;
     }

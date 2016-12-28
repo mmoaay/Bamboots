@@ -16,6 +16,13 @@ extension TableViewController{
         tableView.tableHeaderView = tableHeaderView
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        refresh.addTarget(self, action: #selector(TableViewController.refresh(refresh:)), for: .valueChanged)
+        tableView.addSubview(refresh)
+    }
+    
+    func refresh(refresh:UIRefreshControl) {
+        request(BaiduGeoCoderForm(), load:refresh , serialize: nil)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,6 +53,7 @@ extension TableViewController{
 class TableViewController: UITableViewController, MBRequestable{
     
     let SCREEN_SIZE = UIScreen.main.bounds
+    let refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()

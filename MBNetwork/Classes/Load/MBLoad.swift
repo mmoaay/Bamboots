@@ -23,12 +23,10 @@ extension MBLoadType: MBLoadable {
         }
     }
     
-    /// 请求开始
     public func begin() {
         show()
     }
     
-    /// 请求结束
     public func end() {
         hide()
     }
@@ -47,10 +45,10 @@ public protocol MBLoadable {
     
     var container:MBContainable? { get }
     
-    /// 请求开始
+    /// request begin
     func begin()
     
-    /// 请求结束
+    /// request end
     func end()
 }
 
