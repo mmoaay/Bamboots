@@ -10,10 +10,10 @@ import Foundation
 
 
 // MARK: - Making UIButton conforms to MBLoadable
-extension UIButton:MBLoadable {
+extension UIButton: MBLoadable {
     
     /// Self as container
-    open var container:MBContainable? {
+    open var container: MBContainable? {
         return self
     }
     

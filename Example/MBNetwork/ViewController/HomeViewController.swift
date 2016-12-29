@@ -23,6 +23,9 @@ class HomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 1:
+            self.performSegue(withIdentifier: "fromHomeToSerialize", sender: nil)
+            break
         case 2:
             self.performSegue(withIdentifier: "fromHomeToLoad", sender: nil)
             break

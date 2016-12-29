@@ -14,7 +14,7 @@ import Foundation
 
 extension MBLoadType: MBLoadable {
     
-    public var container:MBContainable? {
+    public var container: MBContainable? {
         switch self {
         case .default(let container):
             return container
@@ -39,11 +39,11 @@ public enum MBLoadType {
 
 // MARK: - MBLoadable
 public protocol MBLoadable {
-    var mask:MBMaskable? { get }
+    var mask: MBMaskable? { get }
     
-    var inset:UIEdgeInsets { get }
+    var inset: UIEdgeInsets { get }
     
-    var container:MBContainable? { get }
+    var container: MBContainable? { get }
     
     /// request begin
     func begin()
@@ -60,11 +60,11 @@ public protocol MBLoadProgressable {
 
 // MARK: - MBLoadable
 extension MBLoadable {
-    public var mask:MBMaskable? {
+    public var mask: MBMaskable? {
         return MBLoading(activityIndicatorStyle: .gray)
     }
     
-    public var inset:UIEdgeInsets {
+    public var inset: UIEdgeInsets {
         return UIEdgeInsets.zero
     }
     

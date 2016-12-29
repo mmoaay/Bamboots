@@ -15,7 +15,7 @@ internal extension UIView {
     /// - Parameters:
     ///   - subview: view to be added
     ///   - insets: insets between subview and view itself
-    func addMBSubView(_ subview:UIView, insets:UIEdgeInsets) {
+    func addMBSubView(_ subview: UIView, insets: UIEdgeInsets) {
         
         self.addSubview(subview)
         
@@ -30,11 +30,23 @@ internal extension UIView {
         self.addConstraints(contraintsH)
         self.addConstraints(contraintsV)
     }
+    
+    public func viewController() -> UIViewController? {
+        var next:UIView? = self.superview!
+        while next != nil{
+            let nextResponder = next!.next
+            if nextResponder?.isKind(of: UIViewController.classForCoder()) == true {
+                return nextResponder as? UIViewController
+            }
+            next = next!.superview
+        }
+        return nil
+    }
 }
 
 
 // MARK: - Making UIView conforms to MBContainable
-extension UIView:MBContainable {
+extension UIView: MBContainable {
     
     /// Return self as container for view
     ///

@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol MBMaskable {
-    var maskId:String { get }
+    var maskId: String { get }
 }

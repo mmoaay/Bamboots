@@ -38,19 +38,19 @@ class LoadableViewController: UIViewController, MBRequestable {
 
     @IBAction func loadCustom(_ sender: AnyObject) {
         let load = MBLoadConfig(container: self.view, inset: UIEdgeInsetsMake(200, 0, 0, 0))
-        request(BaiduGeoCoderForm(), load: load)
+        request(WeatherForm(), load: load)
     }
     
-    @IBAction func loadDefault(_ sender: AnyObject) {
-        request(BaiduGeoCoderForm(), load:MBLoadType.default(container: view))
+    @IBAction func loadViewController(_ sender: AnyObject) {
+        request(WeatherForm(), load:MBLoadType.default(container: view))
     }
     
-    @IBAction func loadNav(_ sender: AnyObject) {
-        request(BaiduGeoCoderForm(), load: MBLoadType.default(container: self.navigationController!.view))
-        request(BaiduGeoCoderForm(), load:MBLoadType.none)
+    @IBAction func loadNavigationController(_ sender: AnyObject) {
+        request(WeatherForm(), load: MBLoadType.default(container: self.navigationController!.view))
+        request(WeatherForm(), load:MBLoadType.none)
     }
     
     @IBAction func loadButton(_ sender: AnyObject) {
-        request(BaiduGeoCoderForm(), load: button)
+        request(WeatherForm(), load: button)
     }
 }

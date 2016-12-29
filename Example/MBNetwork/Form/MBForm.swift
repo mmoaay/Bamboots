@@ -10,7 +10,7 @@ import Foundation
 import MBNetwork
 
 extension MBFormable {
-    public func headers() -> [String : String] {
+    public func headers() -> [String: String] {
         return ["accessToken":"xxx"];
     }
 }

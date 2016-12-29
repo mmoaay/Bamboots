@@ -7,7 +7,7 @@
 //
 
 
-open class MBLoading:UIActivityIndicatorView, MBMaskable {
+open class MBLoading: UIActivityIndicatorView, MBMaskable {
     open var maskId:String = "MBMaskDefault"
     
     override public init(activityIndicatorStyle style: UIActivityIndicatorViewStyle) {

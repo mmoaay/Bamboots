@@ -1,14 +1,18 @@
 syntax = "proto3";
 
-message BookInfo {
+message SearchRequest {
    int64 id = 1;
    string title = 2;
    string author = 3;
 }
 
-message MyLibrary {
+message SearchResponse {
    int64 id = 1;
    string name = 2;
-   repeated BookInfo books = 3;
    map<string,string> keys = 4;
+}
+
+
+service SearchService {
+   rpc Search (SearchRequest) returns (SearchResponse);
 }

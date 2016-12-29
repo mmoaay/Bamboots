@@ -10,17 +10,21 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-public protocol MBJSONSerializable:MBSerializable {
-}
-
-public protocol MBProtobufSerializable: MBSerializable{
-}
-
-public protocol MBSerializable {
-}
-
 extension DataRequest {
-    public func responseProtobuf<T: BaseMappable>(queue: DispatchQueue? = nil, keyPath: String? = nil, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
-        return response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(keyPath, mapToObject: object, context: context), completionHandler: completionHandler)
+    public func error<T: MBErrorSerializable>(queue: DispatchQueue? = nil, config: MBErrorConfigurable, serialize: T.Type, alert: MBAlertable = MBAlertType.none, completionHandler: ((MBErrorSerializable) -> Void)? = nil) -> Self {
+
+        return responseObject(queue: queue, keyPath: config.node, mapToObject: nil, context: nil, completionHandler: { (response:DataResponse<T>) in
+            if let error = response.result.value {
+                if let code = error.code {
+                    if true == config.codes.contains(code) {
+                        if let completion = completionHandler {
+                            completion(error)
+                        }
+                    } else {
+                        alert.show(error: error)
+                    }
+                }
+            }
+        })
     }
 }

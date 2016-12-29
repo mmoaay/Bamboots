@@ -9,8 +9,8 @@
 import Foundation
 import MBNetwork
 
-class MBLoadConfig:MBLoadable {
-    init(container:MBContainable? = nil, mask:MBMaskable? = MBLoading(activityIndicatorStyle: .gray), inset: UIEdgeInsets = UIEdgeInsets.zero) {
+class MBLoadConfig: MBLoadable {
+    init(container: MBContainable? = nil, mask: MBMaskable? = MBLoading(activityIndicatorStyle: .gray), inset: UIEdgeInsets = UIEdgeInsets.zero) {
         self.inset = inset
         self.mask = mask
         self.container = container
@@ -27,6 +27,6 @@ class MBLoadConfig:MBLoadable {
     }
     
     var inset: UIEdgeInsets
-    var mask:MBMaskable?
-    var container:MBContainable?
+    var mask: MBMaskable?
+    var container: MBContainable?
 }

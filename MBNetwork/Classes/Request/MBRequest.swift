@@ -19,7 +19,7 @@ public extension MBRequestable  {
     ///   - form:
     ///   - load:
     ///   - serialize: 
-    public func request(_ form:MBFormable, load:MBLoadable = MBLoadType.none, serialize:MBSerializable? = nil) -> DataRequest  {
+    public func request(_ form: MBFormable, load: MBLoadable = MBLoadType.none) -> DataRequest  {
         
         load.begin()
         
@@ -28,7 +28,7 @@ public extension MBRequestable  {
         })
     }
     
-    public func download(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> DownloadRequest {
+    public func download(_ form: MBDownloadForm, load: MBLoadable = MBLoadType.none, progress: MBLoadProgressable? = nil) -> DownloadRequest {
         
         load.begin()
         
@@ -39,7 +39,7 @@ public extension MBRequestable  {
         }
     }
     
-//    public func upload(_ form:MBDownloadForm, load:MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil) -> UploadRequest {
+//    public func upload(_ form: MBDownloadForm, load: MBLoadable = MBLoadType.none, progress: MBLoadProgressable? = nil) -> UploadRequest {
 //    }
 
 }
@@ -49,7 +49,7 @@ public extension MBRequestable  {
 /**
  满足 MBRequestable 协议的类型可以进行网络请求
  */
-public protocol MBRequestable : class{
+public protocol MBRequestable: class{
     
 }
 

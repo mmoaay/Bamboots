@@ -21,7 +21,7 @@ public extension MBFormable {
     }
 }
 
-public protocol MBDownloadForm:MBFormable {
+public protocol MBDownloadForm: MBFormable {
     var destination: DownloadRequest.DownloadFileDestination { get }
 }
 

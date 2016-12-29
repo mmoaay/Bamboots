@@ -8,6 +8,8 @@
 
 import UIKit
 import MBNetwork
+import Alamofire
+import AlamofireObjectMapper
 
 extension TableViewController{
     fileprivate func initTableView() {
@@ -21,8 +23,8 @@ extension TableViewController{
         tableView.addSubview(refresh)
     }
     
-    func refresh(refresh:UIRefreshControl) {
-        request(BaiduGeoCoderForm(), load:refresh , serialize: nil)
+    func refresh(refresh: UIRefreshControl) {
+        request(WeatherForm(), load:refresh)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,7 +48,7 @@ extension TableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: false)
         let cell = tableView.cellForRow(at: indexPath)
-        request(BaiduGeoCoderForm(), load:MBLoadType.default(container: cell!))
+        request(WeatherForm(), load:MBLoadType.default(container: cell!))
     }
 }
 
@@ -69,7 +71,7 @@ class TableViewController: UITableViewController, MBRequestable{
 
     @IBAction func load(_ sender: AnyObject) {
         let load = MBLoadConfig(container:self.tableView, inset: UIEdgeInsetsMake(SCREEN_SIZE.width - self.tableView.contentOffset.y > 0 ? SCREEN_SIZE.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
-        request(BaiduGeoCoderForm(), load: load)
+        request(WeatherForm(), load: load).error(config: MBErrorConfig(), serialize:MBErrorSerialize.self, alert: MBAlertType.default(container: self))
     }
 }
 
