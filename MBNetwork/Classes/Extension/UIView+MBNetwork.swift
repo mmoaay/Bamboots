@@ -32,7 +32,7 @@ internal extension UIView {
     }
     
     public func viewController() -> UIViewController? {
-        var next:UIView? = self.superview!
+        var next:UIView? = self.superview
         while next != nil{
             let nextResponder = next!.next
             if nextResponder?.isKind(of: UIViewController.classForCoder()) == true {
@@ -51,7 +51,7 @@ extension UIView: MBContainable {
     /// Return self as container for view
     ///
     /// - Returns: View itself
-    public func container() -> UIView? {
+    public func contentContainer() -> UIView? {
         return self;
     }
 }

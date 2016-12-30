@@ -74,7 +74,7 @@ extension MBLoadable {
             if let latestMask = self.container?.latestMask() {
                 isHidden = true
             }
-            self.container?.container()?.addMBSubView(mask, insets: self.inset)
+            self.container?.contentContainer()?.addMBSubView(mask, insets: self.inset)
             mask.isHidden = isHidden
             
             if let container = self.container , let scrollView = container as? UIScrollView {

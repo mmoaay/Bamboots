@@ -14,7 +14,7 @@ extension UITableViewCell {
     /// Return contentView as container for UITableViewCell
     ///
     /// - Returns: ContentView of UITableViewCell
-    public override func container() -> UIView? {
+    public override func contentContainer() -> UIView? {
         return self.contentView
     }
 }

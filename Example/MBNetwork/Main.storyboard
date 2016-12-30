@@ -12,18 +12,27 @@
         <!--UITableView&UIScrollView-->
         <scene sceneID="PEB-i5-aGI">
             <objects>
-                <tableViewController title="UITableView&amp;UIScrollView" id="upx-FR-CWQ" customClass="TableViewController" customModule="MBNetwork_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="UITableView&amp;UIScrollView" id="upx-FR-CWQ" customClass="LoadableTableViewController" customModule="MBNetwork_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="J6x-hy-cDw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="k3U-Ds-ruV">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadableCell" textLabel="Cic-6C-3J0" style="IBUITableViewCellStyleDefault" id="k3U-Ds-ruV">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k3U-Ds-ruV" id="s7k-gn-zHn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cic-6C-3J0">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -278,6 +287,7 @@
                         </segue>
                         <segue destination="HLf-AX-aav" kind="show" identifier="fromHomeToProgress" id="2iJ-PT-8XG"/>
                         <segue destination="UCb-zt-FPE" kind="show" identifier="fromHomeToSerialize" id="C9B-dy-nOB"/>
+                        <segue destination="rY7-oj-58I" kind="show" identifier="fromHomeToAlert" id="Sjv-Ve-YQC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-ve-LhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,7 +312,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jv3-Ea-mOI"/>
                                 </constraints>
-                                <state key="normal" title="ViewController"/>
+                                <state key="normal" title="Show Loading on ViewController"/>
                                 <connections>
                                     <action selector="loadViewController:" destination="ZOK-qs-d8c" eventType="touchUpInside" id="wD0-K8-G2U"/>
                                 </connections>
@@ -314,7 +324,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="h7I-35-7IT"/>
                                     <constraint firstAttribute="height" constant="44" id="x6D-x5-q0n"/>
                                 </constraints>
-                                <state key="normal" title="NavigationController"/>
+                                <state key="normal" title="Show Loading on NavigationController"/>
                                 <connections>
                                     <action selector="loadNavigationController:" destination="ZOK-qs-d8c" eventType="touchUpInside" id="zjq-jl-Y5Y"/>
                                 </connections>
@@ -327,7 +337,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="CF0-8T-QTs"/>
                                     <constraint firstAttribute="height" constant="44" id="GoN-8e-2bJ"/>
                                 </constraints>
-                                <state key="normal" title="Custom"/>
+                                <state key="normal" title="Show Customized Loading"/>
                                 <connections>
                                     <action selector="loadCustom:" destination="ZOK-qs-d8c" eventType="touchUpInside" id="tC0-sK-zlG"/>
                                 </connections>
@@ -341,7 +351,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="h0v-MM-ZdM"/>
                                     <constraint firstAttribute="height" constant="44" id="kue-qd-Qqg"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Show Loading on Button"/>
                                 <connections>
                                     <action selector="loadButton:" destination="ZOK-qs-d8c" eventType="touchUpInside" id="PDd-3R-jvI"/>
                                 </connections>
@@ -371,6 +381,31 @@
             </objects>
             <point key="canvasLocation" x="1222" y="432"/>
         </scene>
+        <!--Alertable-->
+        <scene sceneID="w7g-Gn-0aA">
+            <objects>
+                <viewController id="rY7-oj-58I" customClass="AlertableViewController" customModule="MBNetwork_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dJ9-DB-cBX"/>
+                        <viewControllerLayoutGuide type="bottom" id="cuf-gd-mVf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CXu-sn-Vh5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Alertable" id="B2i-8g-LoK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="xXv-rH-fwx">
+                            <connections>
+                                <action selector="load:" destination="rY7-oj-58I" id="4ge-2C-3qG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ejc-pC-yZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="1104"/>
+        </scene>
         <!--Serializable-->
         <scene sceneID="mme-LV-9pE">
             <objects>
@@ -380,21 +415,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="ZXE-oZ-X61" detailTextLabel="xuU-jk-QyK" style="IBUITableViewCellStyleSubtitle" id="qdK-WM-F7m">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SerializableCell" textLabel="0IC-7v-RZB" detailTextLabel="7V6-vr-7xm" style="IBUITableViewCellStyleSubtitle" id="qdK-WM-F7m">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qdK-WM-F7m" id="IaU-qb-K4J">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZXE-oZ-X61">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0IC-7v-RZB">
                                             <rect key="frame" x="15" y="4" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xuU-jk-QyK">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7V6-vr-7xm">
                                             <rect key="frame" x="15" y="25" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>

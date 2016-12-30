@@ -12,18 +12,16 @@ import Alamofire
 import AlamofireObjectMapper
 
 extension SerializableViewController{
-    fileprivate func initTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SerializableCell", for: indexPath)
         
         if let _ = weatherResponse {
             let threeDayForecast = weatherResponse!.threeDayForecast!
             let forecast = threeDayForecast[indexPath.row]
             
-            cell.textLabel!.text = forecast.conditions! + "(" +  String(forecast.temperature!) + ")-" + forecast.day!
+            cell.textLabel?.text = forecast.day
+            cell.detailTextLabel?.text = forecast.conditions! + " - " +  String(forecast.temperature!) + "℃"
         }
         
         return cell
@@ -49,14 +47,12 @@ extension SerializableViewController{
 class SerializableViewController: UITableViewController, MBRequestable {
     
     var weatherResponse: WeatherResponse?
-    
-    let SCREEN_SIZE = UIScreen.main.bounds
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        initTableView()
+        load()
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,12 +70,16 @@ class SerializableViewController: UITableViewController, MBRequestable {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func load(_ sender: Any) {
+    
+    private func load() {
         let load = MBLoadConfig(container:self.tableView, inset: UIEdgeInsets.zero)
         request(WeatherForm(), load:load).responseObject(keyPath: "data") { (response:DataResponse<WeatherResponse>) in
             self.weatherResponse = response.result.value
             self.tableView.reloadData()
         }
+    }
+
+    @IBAction func load(_ sender: Any) {
+        load()
     }
 }

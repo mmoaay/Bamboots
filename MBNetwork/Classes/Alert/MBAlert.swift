@@ -29,7 +29,7 @@ extension MBAlertType: MBAlertable {
             let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            if let container = container.container() {
+            if let container = container.contentContainer() {
                 container.viewController()?.present(alertController, animated: true, completion: nil)
             }
             break

@@ -9,13 +9,13 @@
 import Foundation
 
 public protocol MBContainable {
-    func container() -> UIView?
+    func contentContainer() -> UIView?
 }
 
 extension MBContainable {
     func latestMask() -> UIView? {
         var latestMask:UIView? = nil
-        if let container = self.container() {
+        if let container = contentContainer() {
             for subview in container.subviews {
                 if let _ = subview as? MBMaskable {
                     latestMask = subview

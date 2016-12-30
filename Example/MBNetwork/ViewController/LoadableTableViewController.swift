@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoadableTableViewController.swift
 //  MBNetwork
 //
 //  Created by mmoaay on 07/06/2016.
@@ -8,18 +8,15 @@
 
 import UIKit
 import MBNetwork
-import Alamofire
-import AlamofireObjectMapper
 
-extension TableViewController{
+extension LoadableTableViewController{
     fileprivate func initTableView() {
         let tableHeaderView = MBTableHeaderView.shared.getView()
-        tableHeaderView?.frame = CGRect(x: 0, y: 0, width: SCREEN_SIZE.width, height: SCREEN_SIZE.width)
+        tableHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
         tableView.tableHeaderView = tableHeaderView
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
-        refresh.addTarget(self, action: #selector(TableViewController.refresh(refresh:)), for: .valueChanged)
+        refresh.attributedTitle = NSAttributedString(string: "Loadable refresh control")
+        refresh.addTarget(self, action: #selector(LoadableTableViewController.refresh(refresh:)), for: .valueChanged)
         tableView.addSubview(refresh)
     }
     
@@ -28,21 +25,13 @@ extension TableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel!.text = String(format: "Cell %d", indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LoadableCell", for: indexPath)
+        cell.textLabel?.text = String(format: "Show loading on cell", indexPath.row)
         return cell
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(format: "Section %d", section)
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -52,9 +41,8 @@ extension TableViewController{
     }
 }
 
-class TableViewController: UITableViewController, MBRequestable{
-    
-    let SCREEN_SIZE = UIScreen.main.bounds
+class LoadableTableViewController: UITableViewController, MBRequestable{
+
     let refresh = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -70,8 +58,8 @@ class TableViewController: UITableViewController, MBRequestable{
     }
 
     @IBAction func load(_ sender: AnyObject) {
-        let load = MBLoadConfig(container:self.tableView, inset: UIEdgeInsetsMake(SCREEN_SIZE.width - self.tableView.contentOffset.y > 0 ? SCREEN_SIZE.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
-        request(WeatherForm(), load: load).error(config: MBErrorConfig(), serialize:MBErrorSerialize.self, alert: MBAlertType.default(container: self))
+        let load = MBLoadConfig(container:self.tableView, inset: UIEdgeInsetsMake(UIScreen.main.bounds.width - self.tableView.contentOffset.y > 0 ? UIScreen.main.bounds.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
+        request(WeatherForm(), load: load)
     }
 }
 

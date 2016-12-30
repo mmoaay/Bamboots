@@ -35,6 +35,8 @@ class HomeViewController: UITableViewController {
         case 4:
             self.performSegue(withIdentifier: "fromHomeToProgress", sender: nil)
             break;
+        case 6:
+            self.performSegue(withIdentifier: "fromHomeToAlert", sender: nil)
         default:
             break
         }

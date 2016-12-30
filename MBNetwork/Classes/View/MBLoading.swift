@@ -20,4 +20,8 @@ open class MBLoading: UIActivityIndicatorView, MBMaskable {
     required public init(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    deinit {
+        stopAnimating()
+    }
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 import MBNetwork
-import AlamofireObjectMapper
 
 class LoadableViewController: UIViewController, MBRequestable {
     
@@ -18,6 +17,7 @@ class LoadableViewController: UIViewController, MBRequestable {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loadCustom(NSObject())
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +37,7 @@ class LoadableViewController: UIViewController, MBRequestable {
     */
 
     @IBAction func loadCustom(_ sender: AnyObject) {
-        let load = MBLoadConfig(container: self.view, inset: UIEdgeInsetsMake(200, 0, 0, 0))
+        let load = MBLoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
         request(WeatherForm(), load: load)
     }
     
@@ -46,11 +46,11 @@ class LoadableViewController: UIViewController, MBRequestable {
     }
     
     @IBAction func loadNavigationController(_ sender: AnyObject) {
-        request(WeatherForm(), load: MBLoadType.default(container: self.navigationController!.view))
-        request(WeatherForm(), load:MBLoadType.none)
+        request(WeatherForm(), load: MBLoadType.default(container: navigationController!.view))
     }
     
     @IBAction func loadButton(_ sender: AnyObject) {
-        request(WeatherForm(), load: button)
+        let load = MBLoadConfig(container: button, inset: UIEdgeInsets.zero)
+        request(WeatherForm(), load: load)
     }
 }

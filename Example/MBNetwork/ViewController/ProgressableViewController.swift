@@ -9,7 +9,6 @@
 import UIKit
 import MBNetwork
 import Alamofire
-import AlamofireObjectMapper
 import SnapKit
 
 class ProgressableViewController: UIViewController, MBRequestable {
@@ -28,7 +27,7 @@ class ProgressableViewController: UIViewController, MBRequestable {
     }
     
     @IBAction func load(_ sender: Any) {
-        self.download(ImageDownloadForm(), load: MBLoadType.none, progress: progress).responseData { (response:DownloadResponse<Data>) in
+        self.download(ImageDownloadForm(), load: MBLoadType.none).progress(progress: progress).responseData { (response:DownloadResponse<Data>) in
             switch response.result {
             case .success(let data):
                 let image = UIImage(data: data)

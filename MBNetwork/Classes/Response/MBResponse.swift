@@ -28,3 +28,12 @@ extension DataRequest {
         })
     }
 }
+
+
+extension DownloadRequest {
+    public func progress(progress: MBLoadProgressable? = nil) -> Self {
+        return downloadProgress(closure: { (prog:Progress) in
+            progress?.progress(prog)
+        })
+    }
+}
