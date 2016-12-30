@@ -22,7 +22,7 @@ public extension MBRequestable  {
     public func request(_ form: MBFormable, load: MBLoadable = MBLoadType.none) -> DataRequest  {
         load.begin()
         return Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers()).response(completionHandler: { (response:DefaultDataResponse) in
-//            load.end()
+            load.end()
         })
     }
     
