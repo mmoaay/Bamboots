@@ -10,7 +10,7 @@ import Foundation
 import MBNetwork
 import Alamofire
 
-struct WeatherForm: MBFormable {
+struct WeatherForm: MBRequestFormable {
     var city = "shanghai"
     
     public func parameters() -> [String: Any] {
