@@ -12,11 +12,13 @@ import Foundation
 // MARK: - Making UIButton conforms to MBLoadable
 extension UIButton: MBLoadable {
     
-    /// Self as container
-    open var container: MBContainable? {
+    open func maskContainer() -> MBContainable? {
         return self
     }
     
+    public func mask() -> MBMaskable? {
+        return MBActivityIndicator()
+    }
     
     /// Making disabled when network request begins
     open func begin() {
@@ -26,7 +28,7 @@ extension UIButton: MBLoadable {
     
     /// Making enabled when the last network request ends
     open func end() {
-        if let latestMask = self.container?.latestMask() {
+        if let latestMask = self.maskContainer()?.latestMask() {
             if false == latestMask.isHidden {
                 isEnabled = true
             }

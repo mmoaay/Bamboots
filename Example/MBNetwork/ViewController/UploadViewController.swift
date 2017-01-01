@@ -1,15 +1,17 @@
 //
-//  AlertableViewController.swift
+//  UploadViewController.swift
 //  MBNetwork
 //
-//  Created by ZhengYidong on 30/12/2016.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Created by ZhengYidong on 01/01/2017.
+//  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import MBNetwork
+import AlamofireObjectMapper
+import Alamofire
 
-class AlertableViewController: UIViewController, MBRequestable {
+class UploadViewController: UIViewController, MBRequestable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +34,9 @@ class AlertableViewController: UIViewController, MBRequestable {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func load(_ sender: Any) {
-        request(WeatherForm()).alert(error: MBBaseError(), alert: MBAlertType.alertController(container: self))
-    }
 
+    @IBAction func uploadPressed(_ sender: Any) {
+        self.upload(UploadForm(), load: MBLoadType.default(container: self), error:MBBaseError(), alert:MBAlertType.alertController(container: self)) { (response:DataResponse<WeatherResponse>) in
+        }
+    }
 }

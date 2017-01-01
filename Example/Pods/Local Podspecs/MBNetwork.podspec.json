@@ -19,6 +19,7 @@
     "ios": "8.0"
   },
   "source_files": "MBNetwork/Classes/**/*",
+  "resources": "MBNetwork/Assets/**/*",
   "dependencies": {
     "Alamofire": [
       "~>4"

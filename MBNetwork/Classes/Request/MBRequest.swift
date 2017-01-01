@@ -17,52 +17,52 @@ public extension MBRequestable  {
     ///
     /// - Parameters:
     ///   - form:
-    ///   - load:
-    ///   - serialize: 
-    public func request(_ form: MBRequestFormable, load: MBLoadable = MBLoadType.none) -> DataRequest  {
-        load.begin()
-        return Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers()).response(completionHandler: { (response: DefaultDataResponse) in
-            load.end()
-        })
+    @discardableResult
+    public func request(_ form: MBRequestFormable) -> DataRequest  {
+        return Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers())
     }
     
-    public func download(_ form: MBDownloadFormable, load: MBLoadable = MBLoadType.none) -> DownloadRequest {
-        load.begin()
-        return Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination).response { (response: DefaultDownloadResponse) in
-            load.end()
+    @discardableResult
+    public func download(_ form: MBDownloadFormable) -> DownloadRequest {
+        return Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination)
+    }
+    
+    @discardableResult
+    public func download(_ form: MBDownloadResumeFormable) -> DownloadRequest {
+        return Alamofire.download(resumingWith: form.resumeData, to: form.destination)
+    }
+    
+    @discardableResult
+    public func upload(_ form: MBUploadDataFormable) -> UploadRequest {
+        return Alamofire.upload(form.data, to: form.url, method: form.method, headers: form.headers())
+    }
+    
+    @discardableResult
+    public func upload(_ form: MBUploadFileFormable) -> UploadRequest {
+        return Alamofire.upload(form.fileURL, to: form.url, method: form.method, headers: form.headers())
+    }
+    
+    @discardableResult
+    public func upload<E: MBServerErrorable, T: BaseMappable>(_ form: MBUploadMultiFormDataFormable, load: MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil, error: E? = nil, alert:MBAlertable = MBAlertType.none, errorHandler: ((MBServerErrorable) -> Void)? = nil, queue: DispatchQueue? = nil, serialize: MBSerializable? = nil, mapToObject object: T? = nil, context: MapContext? = nil, dataHandler: @escaping (DataResponse<T>) -> Void) {
+        Alamofire.upload(multipartFormData: form.multipartFormData, usingThreshold: form.encodingMemoryThreshold, to: form.url, method: form.method, headers: form.headers(), encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(var upload, _, _):
+                upload = upload.load(load: load).progress(progress:progress).alert(error: error, alert: alert, completionHandler: errorHandler).response(completionHandler: { (response: DefaultDataResponse) in
+                    if let error = response.error {
+                        alert.show(error: error.localizedDescription)
+                    }
+                }).response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize?.dataNode, mapToObject: object, context: context), completionHandler: dataHandler)
+                break
+            case .failure(let encodingError):
+                alert.show(error: encodingError.localizedDescription)
+                break
             }
-    }
-    
-    public func download(_ form: MBDownloadResumeFormable, load: MBLoadable = MBLoadType.none) -> DownloadRequest {
-        load.begin()
-        return Alamofire.download(resumingWith: form.resumeData, to: form.destination).response { (response: DefaultDownloadResponse) in
-            load.end()
-        }
-    }
-    
-    public func upload(_ form: MBUploadDataFormable, load: MBLoadable = MBLoadType.none) -> UploadRequest {
-        load.begin()
-        return Alamofire.upload(form.data, to: form.url, method: form.method, headers: form.headers()).response(completionHandler: { (response: DefaultDataResponse) in
-            load.end()
         })
     }
     
-    public func upload(_ form: MBUploadFileFormable, load: MBLoadable = MBLoadType.none) -> UploadRequest {
-        load.begin()
-        return Alamofire.upload(form.fileURL, to: form.url, method: form.method, headers: form.headers()).response(completionHandler: { (response: DefaultDataResponse) in
-            load.end()
-        })
-    }
-    
-    public func upload(_ form: MBUploadMultiFormDataFormable, load: MBLoadable = MBLoadType.none) {
-        Alamofire.upload(multipartFormData: form.multipartFormData, usingThreshold: form.encodingMemoryThreshold, to: form.url, method: form.method, headers: form.headers(), encodingCompletion: form.encodingCompletion)
-    }
-    
-    public func upload(_ form: MBUploadStreamFormable, load: MBLoadable = MBLoadType.none) -> UploadRequest {
-        load.begin()
-        return Alamofire.upload(form.stream, to: form.url, method: form.method, headers: form.headers()).response(completionHandler: { (response: DefaultDataResponse) in
-            load.end()
-        })
+    @discardableResult
+    public func upload(_ form: MBUploadStreamFormable) -> UploadRequest {
+        return Alamofire.upload(form.stream, to: form.url, method: form.method, headers: form.headers())
     }
 }
 

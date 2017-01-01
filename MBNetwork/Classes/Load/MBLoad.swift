@@ -13,8 +13,7 @@ import Foundation
 // MARK: - MBLoadType
 
 extension MBLoadType: MBLoadable {
-    
-    public var container: MBContainable? {
+    public func maskContainer() -> MBContainable? {
         switch self {
         case .default(let container):
             return container
@@ -39,11 +38,11 @@ public enum MBLoadType {
 
 // MARK: - MBLoadable
 public protocol MBLoadable {
-    var mask: MBMaskable? { get }
+    func mask() -> MBMaskable?
     
-    var inset: UIEdgeInsets { get }
+    func inset() -> UIEdgeInsets
     
-    var container: MBContainable? { get }
+    func maskContainer() -> MBContainable?
     
     /// request begin
     func begin()
@@ -60,24 +59,36 @@ public protocol MBLoadProgressable {
 
 // MARK: - MBLoadable
 extension MBLoadable {
-    public var mask: MBMaskable? {
-        return MBLoading(activityIndicatorStyle: .gray)
+    public func mask() -> MBMaskable? {
+        return MBMaskView()
     }
     
-    public var inset: UIEdgeInsets {
+    public func inset() -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
     
+    public func maskContainer() -> MBContainable? {
+        return nil
+    }
+    
+    public func begin() {
+        show()
+    }
+
+    public func end() {
+        hide()
+    }
+    
     public func show() {
-        if let mask = self.mask as? UIView {
+        if let mask = self.mask() as? UIView {
             var isHidden = false
-            if let latestMask = self.container?.latestMask() {
+            if let latestMask = self.maskContainer()?.latestMask() {
                 isHidden = true
             }
-            self.container?.contentContainer()?.addMBSubView(mask, insets: self.inset)
+            self.maskContainer()?.containerView()?.addMBSubView(mask, insets: self.inset())
             mask.isHidden = isHidden
             
-            if let container = self.container , let scrollView = container as? UIScrollView {
+            if let container = self.maskContainer(), let scrollView = container as? UIScrollView {
                 scrollView.setContentOffset(scrollView.contentOffset, animated: false)
                 scrollView.isScrollEnabled = false
             }
@@ -85,10 +96,10 @@ extension MBLoadable {
     }
     
     public func hide() {
-        if let latestMask = self.container?.latestMask() {
+        if let latestMask = self.maskContainer()?.latestMask() {
             latestMask.removeFromSuperview()
             
-            if let container = self.container , let scrollView = container as? UIScrollView {
+            if let container = self.maskContainer(), let scrollView = container as? UIScrollView {
                 if false == latestMask.isHidden {
                     scrollView.isScrollEnabled = true
                 }

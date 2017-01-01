@@ -8,28 +8,20 @@
 
 import Foundation
 import ObjectMapper
+import Alamofire
 
 extension MBAlertType: MBAlertable {
-    public var container: MBContainable? {
-        switch self {
-        case .default(let container):
-            return container
-        case .none:
-            return nil
-        }
-    }
-    
-    public func show(error: MBErrorable) {
+    public func show(error: MBErrorable?) {
         switch self {
         case .none:
             break
-        case .default(let container):
-            let alertController = UIAlertController(title: "Warnning", message: error.message, preferredStyle: .alert)
+        case .alertController(let container):
+            let alertController = UIAlertController(title: "Warnning", message: error?.message, preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            if let container = container.contentContainer() {
+            if let container = container.containerView() {
                 container.viewController()?.present(alertController, animated: true, completion: nil)
             }
             break
@@ -39,18 +31,17 @@ extension MBAlertType: MBAlertable {
 
 public enum MBAlertType {
     case none
-    case `default`(container:MBContainable)
+    case alertController(container:MBContainable)
+}
+
+extension MBAlertable {
+    public func alertContainer() -> MBContainable? {
+        return nil
+    }
 }
 
 public protocol MBAlertable {
-    var container: MBContainable? { get }
+    func alertContainer() -> MBContainable?
     
-    func show(error: MBErrorable)
-}
-
-public protocol MBErrorable: Mappable {
-    var successCodes: [String] { get }
-    
-    var code: String? { get }
-    var message: String? { get }
+    func show(error: MBErrorable?)
 }

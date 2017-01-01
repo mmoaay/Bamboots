@@ -14,7 +14,7 @@ extension UIScrollView {
     /// Return latest superview that is not UIScrollView as container for UIScrollView, because add mask to UIScrollView(PS: Including UITableView and UICollectionView) will cause something abnormal
     ///
     /// - Returns: Latest superview that is not UIScrollView
-    override public func contentContainer() -> UIView? {
+    override public func containerView() -> UIView? {
         var next = superview
         while nil != next {
             if let _ = next as? UIScrollView {
