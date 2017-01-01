@@ -9,15 +9,21 @@
 import Foundation
 import Alamofire
 
-
-// MARK: - MBFormable
-public extension MBFormable {
-    
+extension MBRequestFormable {
     /// Default encoding
     ///
     /// - Returns: Default URLEncoding
-    func encoding() -> ParameterEncoding {
+    public func encoding() -> ParameterEncoding {
         return Alamofire.URLEncoding.default
+    }
+    
+    public func parameters() -> [String: Any] {
+        return [ : ]
+    }
+    
+    /// request method
+    public var method: Alamofire.HTTPMethod {
+        return .get
     }
 }
 
@@ -41,24 +47,38 @@ public protocol MBDownloadResumeFormable: MBDownloadFormable {
     var resumeData: Data { get }
 }
 
-public protocol MBUploadFileFormable: MBFormable {
-    var fileURL: URL { get }
+extension MBUploadMultiFormDataFormable {
+    public var encodingMemoryThreshold: UInt64 {
+        return SessionManager.multipartFormDataEncodingMemoryThreshold
+    }
 }
 
-public protocol MBUploadDataFormable: MBFormable {
-    var data: Data { get }
-}
-
-public protocol MBUploadStreamFormable: MBFormable {
-    var stream: InputStream { get }
-}
-
-public protocol MBUploadMultiFormDataFormable: MBFormable {
-    var encodingCompletion: ((SessionManager.MultipartFormDataEncodingResult) -> Void)? { get }
-    
+public protocol MBUploadMultiFormDataFormable: MBUploadFormable {
     var encodingMemoryThreshold: UInt64 { get }
     
     var multipartFormData: (MultipartFormData) -> Void { get }
+}
+
+public protocol MBUploadFileFormable: MBUploadFormable {
+    var fileURL: URL { get }
+}
+
+public protocol MBUploadDataFormable: MBUploadFormable {
+    var data: Data { get }
+}
+
+public protocol MBUploadStreamFormable: MBUploadFormable {
+    var stream: InputStream { get }
+}
+
+extension MBUploadFormable {
+    public var method: Alamofire.HTTPMethod {
+        return .post
+    }
+}
+
+public protocol MBUploadFormable: MBFormable {
+    
 }
 
 /// MBFormable

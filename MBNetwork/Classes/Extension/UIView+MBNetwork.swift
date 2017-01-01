@@ -15,7 +15,7 @@ internal extension UIView {
     /// - Parameters:
     ///   - subview: view to be added
     ///   - insets: insets between subview and view itself
-    func addMBSubView(_ subview: UIView, insets: UIEdgeInsets) {
+    func addMBSubView(_ subview: UIView, insets: UIEdgeInsets = UIEdgeInsets.zero) {
         
         self.addSubview(subview)
         
@@ -51,7 +51,7 @@ extension UIView: MBContainable {
     /// Return self as container for view
     ///
     /// - Returns: View itself
-    public func contentContainer() -> UIView? {
+    public func containerView() -> UIView? {
         return self;
     }
 }

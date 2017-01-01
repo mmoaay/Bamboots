@@ -10,10 +10,22 @@ import Foundation
 import MBNetwork
 
 class MBLoadConfig: MBLoadable {
-    init(container: MBContainable? = nil, mask: MBMaskable? = MBLoading(activityIndicatorStyle: .gray), inset: UIEdgeInsets = UIEdgeInsets.zero) {
-        self.inset = inset
-        self.mask = mask
-        self.container = container
+    init(container: MBContainable? = nil, mask: MBMaskable? = MBMaskView(), inset: UIEdgeInsets = UIEdgeInsets.zero) {
+        insetMine = inset
+        maskMine = mask
+        containerMine = container
+    }
+    
+    func mask() -> MBMaskable? {
+        return maskMine
+    }
+    
+    func inset() -> UIEdgeInsets {
+        return insetMine
+    }
+    
+    func container() -> MBContainable? {
+        return containerMine
     }
     
     /// 请求开始
@@ -26,7 +38,7 @@ class MBLoadConfig: MBLoadable {
         hide()
     }
     
-    var inset: UIEdgeInsets
-    var mask: MBMaskable?
-    var container: MBContainable?
+    var insetMine: UIEdgeInsets
+    var maskMine: MBMaskable?
+    var containerMine: MBContainable?
 }

@@ -1,5 +1,5 @@
 //
-//  MBError.swift
+//  MBBaseError.swift
 //  MBNetwork
 //
 //  Created by ZhengYidong on 29/12/2016.
@@ -10,7 +10,7 @@ import Foundation
 import MBNetwork
 import ObjectMapper
 
-class MBError: MBErrorable {
+class MBBaseError: MBServerErrorable {
     var successCodes: [String] = ["200"]
     
     var code: String?

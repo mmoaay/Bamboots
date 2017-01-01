@@ -38,19 +38,18 @@ class LoadableViewController: UIViewController, MBRequestable {
 
     @IBAction func loadCustom(_ sender: AnyObject) {
         let load = MBLoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
-        request(WeatherForm(), load: load)
+        request(WeatherForm()).load(load:load)
     }
     
     @IBAction func loadViewController(_ sender: AnyObject) {
-        request(WeatherForm(), load:MBLoadType.default(container: view))
+        request(WeatherForm()).load(load:MBLoadType.default(container: view))
     }
     
     @IBAction func loadNavigationController(_ sender: AnyObject) {
-        request(WeatherForm(), load: MBLoadType.default(container: navigationController!.view))
+        request(WeatherForm()).load(load: MBLoadType.default(container: navigationController!.view))
     }
     
     @IBAction func loadButton(_ sender: AnyObject) {
-        let load = MBLoadConfig(container: button, inset: UIEdgeInsets.zero)
-        request(WeatherForm(), load: load)
+        request(WeatherForm()).load(load: button)
     }
 }

@@ -143,75 +143,66 @@ public class ConstraintMaker {
         return self.makeExtendableWithAttributes(.centerWithinMargins)
     }
     
-    private let item: LayoutConstraintItem
+    private let view: ConstraintView
     private var descriptions = [ConstraintDescription]()
     
-    internal init(item: LayoutConstraintItem) {
-        self.item = item
-        self.item.prepare()
+    internal init(view: ConstraintView) {
+        self.view = view
+        self.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     internal func makeExtendableWithAttributes(_ attributes: ConstraintAttributes) -> ConstraintMakerExtendable {
-        let description = ConstraintDescription(item: self.item, attributes: attributes)
+        let description = ConstraintDescription(view: self.view, attributes: attributes)
         self.descriptions.append(description)
         return ConstraintMakerExtendable(description)
     }
     
-    internal static func prepareConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) -> [Constraint] {
-        let maker = ConstraintMaker(item: item)
+    internal static func prepareConstraints(view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) -> [Constraint] {
+        let maker = ConstraintMaker(view: view)
         closure(maker)
-        var constraints: [Constraint] = []
-        for description in maker.descriptions {
-            guard let constraint = description.constraint else {
-                continue
-            }
-            constraints.append(constraint)
-        }
+        let constraints = maker.descriptions
+            .map { $0.constraint }
+            .filter { $0 != nil }
+            .map { $0! }
         return constraints
     }
     
-    internal static func makeConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) {
-        let maker = ConstraintMaker(item: item)
+    internal static func makeConstraints(view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) {
+        let maker = ConstraintMaker(view: view)
         closure(maker)
-        var constraints: [Constraint] = []
-        for description in maker.descriptions {
-            guard let constraint = description.constraint else {
-                continue
-            }
-            constraints.append(constraint)
-        }
+        let constraints = maker.descriptions
+            .map { $0.constraint }
+            .filter { $0 != nil }
+            .map { $0! }
         for constraint in constraints {
             constraint.activateIfNeeded(updatingExisting: false)
         }
     }
     
-    internal static func remakeConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) {
-        self.removeConstraints(item: item)
-        self.makeConstraints(item: item, closure: closure)
+    internal static func remakeConstraints(view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) {
+        self.removeConstraints(view: view)
+        self.makeConstraints(view: view, closure: closure)
     }
     
-    internal static func updateConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) {
-        guard item.constraints.count > 0 else {
-            self.makeConstraints(item: item, closure: closure)
+    internal static func updateConstraints(view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) {
+        guard view.snp.constraints.count > 0 else {
+            self.makeConstraints(view: view, closure: closure)
             return
         }
         
-        let maker = ConstraintMaker(item: item)
+        let maker = ConstraintMaker(view: view)
         closure(maker)
-        var constraints: [Constraint] = []
-        for description in maker.descriptions {
-            guard let constraint = description.constraint else {
-                continue
-            }
-            constraints.append(constraint)
-        }
+        let constraints = maker.descriptions
+            .map { $0.constraint }
+            .filter { $0 != nil }
+            .map { $0! }
         for constraint in constraints {
             constraint.activateIfNeeded(updatingExisting: true)
         }
     }
     
-    internal static func removeConstraints(item: LayoutConstraintItem) {
-        let constraints = item.constraints
+    internal static func removeConstraints(view: ConstraintView) {
+        let constraints = view.snp.constraints
         for constraint in constraints {
             constraint.deactivateIfNeeded()
         }

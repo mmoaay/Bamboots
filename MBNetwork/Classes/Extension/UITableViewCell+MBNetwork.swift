@@ -14,7 +14,17 @@ extension UITableViewCell {
     /// Return contentView as container for UITableViewCell
     ///
     /// - Returns: ContentView of UITableViewCell
-    public override func contentContainer() -> UIView? {
+    public override func containerView() -> UIView? {
         return self.contentView
+    }
+}
+
+extension UITableViewCell: MBLoadable {
+    open func maskContainer() -> MBContainable? {
+        return self
+    }
+    
+    public func mask() -> MBMaskable? {
+        return MBActivityIndicator()
     }
 }

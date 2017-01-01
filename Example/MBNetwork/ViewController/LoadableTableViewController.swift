@@ -21,7 +21,7 @@ extension LoadableTableViewController{
     }
     
     func refresh(refresh: UIRefreshControl) {
-        request(WeatherForm(), load:refresh)
+        request(WeatherForm()).load(load: refresh)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,7 +37,7 @@ extension LoadableTableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: false)
         let cell = tableView.cellForRow(at: indexPath)
-        request(WeatherForm(), load:MBLoadType.default(container: cell!))
+        request(WeatherForm()).load(load: cell!)
     }
 }
 
@@ -58,8 +58,8 @@ class LoadableTableViewController: UITableViewController, MBRequestable{
     }
 
     @IBAction func load(_ sender: AnyObject) {
-        let load = MBLoadConfig(container:self.tableView, inset: UIEdgeInsetsMake(UIScreen.main.bounds.width - self.tableView.contentOffset.y > 0 ? UIScreen.main.bounds.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
-        request(WeatherForm(), load: load)
+        let load = MBLoadConfig(container:self.tableView, mask: MBActivityIndicator(), inset: UIEdgeInsetsMake(UIScreen.main.bounds.width - self.tableView.contentOffset.y > 0 ? UIScreen.main.bounds.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
+        request(WeatherForm()).load(load: load)
     }
 }
 

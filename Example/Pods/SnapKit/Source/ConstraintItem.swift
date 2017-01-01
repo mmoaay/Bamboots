@@ -28,7 +28,7 @@
 #endif
 
 
-public final class ConstraintItem {
+public class ConstraintItem: Equatable {
     
     internal weak var target: AnyObject?
     internal let attributes: ConstraintAttributes
@@ -38,8 +38,8 @@ public final class ConstraintItem {
         self.attributes = attributes
     }
     
-    internal var layoutConstraintItem: LayoutConstraintItem? {
-        return self.target as? LayoutConstraintItem
+    internal var view: ConstraintView? {
+        return self.target as? ConstraintView
     }
     
 }

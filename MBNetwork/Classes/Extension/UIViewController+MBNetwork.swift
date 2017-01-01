@@ -14,7 +14,7 @@ extension UIViewController: MBContainable {
     /// Return view as container for UIViewController
     ///
     /// - Returns: View of UIViewController
-    public func contentContainer() -> UIView? {
+    public func containerView() -> UIView? {
         return self.view
     }
 }

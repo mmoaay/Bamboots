@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MBNetwork
 
-class HomeViewController: UITableViewController {
+class HomeViewController: UITableViewController, MBRequestable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +24,28 @@ class HomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 1:
-            self.performSegue(withIdentifier: "fromHomeToSerialize", sender: nil)
+        case 0, 1:
+            request(WeatherForm())
             break
         case 2:
-            self.performSegue(withIdentifier: "fromHomeToLoad", sender: nil)
+            self.performSegue(withIdentifier: "fromHomeToDownload", sender: nil)
             break
         case 3:
-            self.performSegue(withIdentifier: "fromHomeToTable", sender: nil)
+            self.performSegue(withIdentifier: "fromHomeToUpload", sender: nil)
             break
         case 4:
+            self.performSegue(withIdentifier: "fromHomeToSerialize", sender: nil)
+            break
+        case 5:
+            self.performSegue(withIdentifier: "fromHomeToLoad", sender: nil)
+            break
+        case 6:
+            self.performSegue(withIdentifier: "fromHomeToTable", sender: nil)
+            break
+        case 7:
             self.performSegue(withIdentifier: "fromHomeToProgress", sender: nil)
             break;
-        case 6:
+        case 8:
             self.performSegue(withIdentifier: "fromHomeToAlert", sender: nil)
         default:
             break

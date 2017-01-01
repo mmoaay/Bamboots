@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'MBNetwork/Classes/**/*'
+  s.resources = 'MBNetwork/Assets/**/*'
   
   # s.resource_bundles = {
   #   'MBNetwork' => ['MBNetwork/Assets/*.png']
