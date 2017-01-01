@@ -10,7 +10,7 @@ import Foundation
 import MBNetwork
 import Alamofire
 
-struct ImageDownloadForm: MBDownloadForm {
+struct ImageDownloadForm: MBDownloadFormable {
     var destination: DownloadRequest.DownloadFileDestination = { _, _ in
         var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent("pig.png")

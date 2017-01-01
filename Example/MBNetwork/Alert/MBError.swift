@@ -10,22 +10,19 @@ import Foundation
 import MBNetwork
 import ObjectMapper
 
-class MBErrorConfig: MBErrorConfigurable {
-    var node: String? = "data"
+class MBError: MBErrorable {
+    var successCodes: [String] = ["200"]
     
-    var codes: [String] = ["200"]
-}
-
-class MBErrorSerialize: MBErrorSerializable {
     var code: String?
     var message: String?
     
-    required init?(map: Map){
-        
-    }
+    init() { }
+    
+    required init?(map: Map) { }
     
     func mapping(map: Map) {
-        code <- map["location"]
-        message <- map["location"]
+        code <- map["data.location"]
+        message <- map["data.location"]
     }
 }
+

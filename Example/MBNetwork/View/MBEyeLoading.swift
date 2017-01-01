@@ -89,7 +89,7 @@ class MBEyeLoading: UIView , MBMaskable{
         
         
         eyeballView.snp.makeConstraints { (make: ConstraintMaker) in
-            make.width.height.equalTo(14)
+            make.width.height.equalTo(16)
             make.center.equalTo(whitesView)
         }
         
@@ -130,13 +130,13 @@ class MBEyeLoading: UIView , MBMaskable{
         
         let eyelidGroup = CAAnimationGroup()
         eyelidGroup.duration = 4.2
-        eyelidGroup.animations = [animationForEyelid(duration: 0.5, beginTime: 1, marginTop: -6, marginBottom: 0), animationForEyelid(duration: 0.5, beginTime: 1.5, marginTop: 0, marginBottom: 0), animationForEyelid(duration: 1, beginTime: 2.5, marginTop: -6, marginBottom: 0), animationForEyelid(duration: 0.5, beginTime: 3.5, marginTop: 0, marginBottom: 0), animationForEyelid(duration: 0.1, beginTime: 4.0, marginTop: 16, marginBottom: 16), animationForEyelid(duration: 0.1, beginTime: 4.1, marginTop: 0, marginBottom: 0)]
+        eyelidGroup.animations = [animationForEyelid(duration: 0.5, beginTime: 1, marginTop: -6, marginBottom: 0), animationForEyelid(duration: 1, beginTime: 1.5, marginTop: 0, marginBottom: 0), animationForEyelid(duration: 0.5, beginTime: 3, marginTop: -6, marginBottom: 0), animationForEyelid(duration: 0.5, beginTime: 3.5, marginTop: 0, marginBottom: 0), animationForEyelid(duration: 0.1, beginTime: 4.0, marginTop: 16, marginBottom: 16), animationForEyelid(duration: 0.1, beginTime: 4.1, marginTop: 0, marginBottom: 0)]
         eyelidGroup.repeatCount = MAXFLOAT
         eyelidLayer.add(eyelidGroup, forKey: nil)
         
         let eyeballGroup = CAAnimationGroup()
         eyeballGroup.duration = 4.2
-        eyeballGroup.animations = [positionAnimationForEyeballPath(duration: 1, beginTime: 1, offset: -10), scaleAnimationForEyeballPath(duration: 1, beginTime: 1, height: 0.7), positionAnimationForEyeballPath(duration: 0.5, beginTime: 3.5, offset: 0), scaleAnimationForEyeballPath(duration: 0.5, beginTime: 3.5, height: 1)]
+        eyeballGroup.animations = [positionAnimationForEyeballPath(duration: 0.5, beginTime: 1, offset: -10), scaleAnimationForEyeballPath(duration: 0.5, beginTime: 1, height: 0.6), positionAnimationForEyeballPath(duration: 0.5, beginTime: 3.5, offset: 0), scaleAnimationForEyeballPath(duration: 0.5, beginTime: 3.5, height: 1)]
         eyeballGroup.repeatCount = MAXFLOAT
         self.eyeballView.layer.add(eyeballGroup, forKey: nil)
         
@@ -153,7 +153,7 @@ class MBEyeLoading: UIView , MBMaskable{
         animation.duration = duration
         animation.beginTime = beginTime
         animation.fillMode = kCAFillModeForwards
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         animation.isRemovedOnCompletion = false
         animation.toValue = getEyelidPath(marginTop: marginTop, marginBottom: marginBottom)
         
@@ -166,7 +166,7 @@ class MBEyeLoading: UIView , MBMaskable{
         animation.duration = duration
         animation.beginTime = beginTime
         animation.fillMode = kCAFillModeForwards
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         animation.isRemovedOnCompletion = false
         animation.toValue = offset
         
@@ -179,7 +179,7 @@ class MBEyeLoading: UIView , MBMaskable{
         animation.duration = duration
         animation.beginTime = beginTime
         animation.fillMode = kCAFillModeForwards
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         animation.isRemovedOnCompletion = false
         animation.toValue = height
         
@@ -192,7 +192,7 @@ class MBEyeLoading: UIView , MBMaskable{
         animation.duration = duration
         animation.beginTime = beginTime
         animation.fillMode = kCAFillModeForwards
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         animation.isRemovedOnCompletion = false
         animation.toValue = M_PI * 2
         

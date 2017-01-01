@@ -19,7 +19,7 @@ extension MBAlertType: MBAlertable {
         }
     }
     
-    public func show(error: MBErrorSerializable) {
+    public func show(error: MBErrorable) {
         switch self {
         case .none:
             break
@@ -45,15 +45,12 @@ public enum MBAlertType {
 public protocol MBAlertable {
     var container: MBContainable? { get }
     
-    func show(error: MBErrorSerializable)
+    func show(error: MBErrorable)
 }
 
-public protocol MBErrorConfigurable {
-    var node: String? { get }
-    var codes: [String] { get }
-}
-
-public protocol MBErrorSerializable: Mappable {
+public protocol MBErrorable: Mappable {
+    var successCodes: [String] { get }
+    
     var code: String? { get }
     var message: String? { get }
 }

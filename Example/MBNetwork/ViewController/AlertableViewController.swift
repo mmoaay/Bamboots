@@ -33,7 +33,7 @@ class AlertableViewController: UIViewController, MBRequestable {
     }
     */
     @IBAction func load(_ sender: Any) {
-        request(WeatherForm()).error(config: MBErrorConfig(), serialize:MBErrorSerialize.self, alert: MBAlertType.default(container: self))
+        request(WeatherForm()).alert(error: MBError(), alert: MBAlertType.default(container: self))
     }
 
 }

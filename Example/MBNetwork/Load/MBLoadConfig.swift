@@ -1,5 +1,5 @@
 //
-//  LoadConfig.swift
+//  MBLoadConfig.swift
 //  MBNetwork
 //
 //  Created by ZhengYidong on 15/12/2016.
