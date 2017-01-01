@@ -12,14 +12,14 @@ import Foundation
 extension UIRefreshControl: MBLoadable {
     
     /// Begin refreshing when network request begins
-    open func begin() {
+    public func begin() {
         if false == self.isRefreshing {
             self.beginRefreshing()
         }
     }
     
     /// End refreshing when network request ends
-    open func end() {
+    public func end() {
         self.endRefreshing()
     }
 }

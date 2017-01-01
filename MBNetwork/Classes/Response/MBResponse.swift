@@ -14,9 +14,9 @@ public protocol MBSerializable {
     var dataNode: String? { get }
 }
 
-extension DataRequest {
+public extension DataRequest {
     @discardableResult
-    public func alert<T: MBServerErrorable>(error: T? = nil, alert: MBAlertable = MBAlertType.none, completionHandler: ((MBServerErrorable) -> Void)? = nil) -> Self {
+    func alert<T: MBServerErrorable>(error: T? = nil, alert: MBAlertable = MBAlertType.none, completionHandler: ((MBServerErrorable) -> Void)? = nil) -> Self {
 
         return response(completionHandler: { (response:DefaultDataResponse) in
             if let error = response.error {
@@ -26,9 +26,7 @@ extension DataRequest {
             if let error = response.result.value {
                 if let code = error.code {
                     if true == error.successCodes.contains(code) {
-                        if let completion = completionHandler {
-                            completion(error)
-                        }
+                        completionHandler?(error)
                     } else {
                         alert.show(error: error)
                     }
@@ -37,13 +35,26 @@ extension DataRequest {
         })
     }
     
+    func inform<T: MBServerErrorable>(success: T? = nil, inform: MBInformable = MBInformType.none) -> Self {
+        
+        return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil, completionHandler: { (response:DataResponse<T>) in
+            if let error = response.result.value {
+                if let code = error.code {
+                    if true == error.successCodes.contains(code) {
+                        inform.show()
+                    }
+                }
+            }
+        })
+    }
+    
     @discardableResult
-    public func responseObject<T: BaseMappable>(queue: DispatchQueue? = nil, serialize: MBSerializable? = nil, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
+    func responseObject<T: BaseMappable>(queue: DispatchQueue? = nil, serialize: MBSerializable? = nil, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
         return response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize?.dataNode, mapToObject: object, context: context), completionHandler: completionHandler)
     }
     
     @discardableResult
-    public func load(load: MBLoadable = MBLoadType.none) -> Self {
+    func load(load: MBLoadable = MBLoadType.none) -> Self {
         load.begin()
         return response(completionHandler: { (response:DefaultDataResponse) in
             load.end()
@@ -52,18 +63,18 @@ extension DataRequest {
 }
 
 
-extension DownloadRequest {
+public extension DownloadRequest {
     @discardableResult
-    public func progress(progress: MBLoadProgressable? = nil) -> Self {
+    func progress(progress: MBLoadProgressable? = nil) -> Self {
         return downloadProgress(closure: { (prog: Progress) in
             progress?.progress(prog)
         })
     }
 }
 
-extension UploadRequest {
+public extension UploadRequest {
     @discardableResult
-    public func progress(progress: MBLoadProgressable? = nil) -> Self {
+    func progress(progress: MBLoadProgressable? = nil) -> Self {
         return uploadProgress(closure: { (prog: Progress) in
             progress?.progress(prog)
         })

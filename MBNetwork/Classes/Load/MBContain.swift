@@ -12,8 +12,8 @@ public protocol MBContainable {
     func containerView() -> UIView?
 }
 
-extension MBContainable {
-    func latestMask() -> UIView? {
+public extension MBContainable {
+    internal func latestMask() -> UIView? {
         var latestMask:UIView? = nil
         if let container = containerView() {
             for subview in container.subviews {

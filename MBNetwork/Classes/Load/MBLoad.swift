@@ -58,28 +58,28 @@ public protocol MBLoadProgressable {
 
 
 // MARK: - MBLoadable
-extension MBLoadable {
-    public func mask() -> MBMaskable? {
+public extension MBLoadable {
+    func mask() -> MBMaskable? {
         return MBMaskView()
     }
     
-    public func inset() -> UIEdgeInsets {
+    func inset() -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
     
-    public func maskContainer() -> MBContainable? {
+    func maskContainer() -> MBContainable? {
         return nil
     }
     
-    public func begin() {
+    func begin() {
         show()
     }
 
-    public func end() {
+    func end() {
         hide()
     }
     
-    public func show() {
+    func show() {
         if let mask = self.mask() as? UIView {
             var isHidden = false
             if let latestMask = self.maskContainer()?.latestMask() {
@@ -95,7 +95,7 @@ extension MBLoadable {
         }
     }
     
-    public func hide() {
+    func hide() {
         if let latestMask = self.maskContainer()?.latestMask() {
             latestMask.removeFromSuperview()
             

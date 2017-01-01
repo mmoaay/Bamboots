@@ -11,9 +11,6 @@ import MBNetwork
 import Alamofire
 
 struct WeatherForm: MBRequestFormable {
-    /// request method
-    public var method: HTTPMethod = .get
-
     var city = "shanghai"
     
     func parameters() -> [String: Any] {

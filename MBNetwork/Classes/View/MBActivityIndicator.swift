@@ -8,8 +8,8 @@
 
 import Foundation
 
-open class MBActivityIndicator: UIActivityIndicatorView, MBMaskable {
-    open var maskId:String = "MBActivityIndicator"
+public class MBActivityIndicator: UIActivityIndicatorView, MBMaskable {
+    public var maskId:String = "MBActivityIndicator"
     
     public override init(activityIndicatorStyle style: UIActivityIndicatorViewStyle = .gray) {
         super.init(activityIndicatorStyle: style)

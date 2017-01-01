@@ -20,7 +20,7 @@ extension UITableViewCell {
 }
 
 extension UITableViewCell: MBLoadable {
-    open func maskContainer() -> MBContainable? {
+    public func maskContainer() -> MBContainable? {
         return self
     }
     

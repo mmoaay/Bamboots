@@ -30,6 +30,7 @@
 		8584731D1DFFA85300997A66 /* MBForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8584731C1DFFA85300997A66 /* MBForm.swift */; };
 		85B4CBCD1E07FC3B0022DD61 /* LoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CBCC1E07FC3B0022DD61 /* LoadableViewController.swift */; };
 		85CF956C1E10C8A4009CB6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85CF956B1E10C8A4009CB6D4 /* Main.storyboard */; };
+		8A553B001E196332008E5437 /* MBBaseSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A553AFF1E196332008E5437 /* MBBaseSuccess.swift */; };
 		8ADB81C81E182247001C0D5B /* MBSerialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB81C71E182247001C0D5B /* MBSerialize.swift */; };
 		C211CAB31D52E55100493CEF /* MBTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */; };
 		C211CAB41D52E55100493CEF /* MBTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C211CAB21D52E55000493CEF /* MBTableHeaderView.xib */; };
@@ -84,6 +85,7 @@
 		85ACE86D1D87ABAF00A1A2F0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		85B4CBCC1E07FC3B0022DD61 /* LoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableViewController.swift; sourceTree = "<group>"; };
 		85CF956B1E10C8A4009CB6D4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8A553AFF1E196332008E5437 /* MBBaseSuccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBBaseSuccess.swift; sourceTree = "<group>"; };
 		8ADB81C71E182247001C0D5B /* MBSerialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSerialize.swift; sourceTree = "<group>"; };
 		A2772FB800B4815B9755B470 /* Pods_MBNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C211CAB11D52E55000493CEF /* MBTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTableHeaderView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		607FACD21AFB9204008FA782 /* Example for MBNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				8A553AFE1E196322008E5437 /* Inform */,
 				8ADB81C61E182235001C0D5B /* Serialize */,
 				855859E71E15217D00EEEBAE /* Alert */,
 				85399C201E029C650076BE65 /* Load */,
@@ -229,6 +232,14 @@
 				855859E81E1521A000EEEBAE /* MBBaseError.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		8A553AFE1E196322008E5437 /* Inform */ = {
+			isa = PBXGroup;
+			children = (
+				8A553AFF1E196332008E5437 /* MBBaseSuccess.swift */,
+			);
+			path = Inform;
 			sourceTree = "<group>";
 		};
 		8ADB81C61E182235001C0D5B /* Serialize */ = {
@@ -494,6 +505,7 @@
 				C2ACD70A1D2FAA7D00080022 /* WeatherForm.swift in Sources */,
 				855859ED1E1614C100EEEBAE /* AlertableViewController.swift in Sources */,
 				855859EF1E16221000EEEBAE /* MBEyeLoading.swift in Sources */,
+				8A553B001E196332008E5437 /* MBBaseSuccess.swift in Sources */,
 				85833AF91E10F2020014230B /* ImageDownloadForm.swift in Sources */,
 				85585A011E18F64D00EEEBAE /* UploadForm.swift in Sources */,
 				855859FB1E18F36300EEEBAE /* DownloadViewController.swift in Sources */,

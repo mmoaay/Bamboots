@@ -1,23 +1,21 @@
 //
-//  MBAlerter.swift
+//  MBInform.swift
 //  Pods
 //
-//  Created by Perry on 16/8/9.
+//  Created by zhengperry on 2017/1/1.
 //
 //
 
 import Foundation
-import ObjectMapper
-import Alamofire
 
-extension MBAlertType: MBAlertable {
-    public func show(error: MBErrorable?) {
+
+extension MBInformType: MBInformable {
+    public func show() {
         switch self {
         case .none:
             break
-        case .alertController(let container):
-            if "" == error?.message { return }
-            let alertController = UIAlertController(title: "Warnning", message: error?.message, preferredStyle: .alert)
+        case .alertController(let message, let container):
+            let alertController = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
             alertController.addAction(cancelAction)
@@ -30,19 +28,25 @@ extension MBAlertType: MBAlertable {
     }
 }
 
-public enum MBAlertType {
+public enum MBInformType {
     case none
-    case alertController(container: MBContainable)
+    case alertController(message: String, container: MBContainable)
 }
 
-public extension MBAlertable {
+public extension MBInformable {
     func alertContainer() -> MBContainable? {
         return nil
     }
+    
+    func message() -> String {
+        return "Success"
+    }
 }
 
-public protocol MBAlertable {
+public protocol MBInformable {
     func alertContainer() -> MBContainable?
     
-    func show(error: MBErrorable?)
+    func message() -> String
+    
+    func show()
 }

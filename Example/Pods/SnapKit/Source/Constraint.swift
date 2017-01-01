@@ -27,7 +27,7 @@
     import AppKit
 #endif
 
-public class Constraint {
+public final class Constraint {
     
     internal let sourceLocation: (String, UInt)
     internal let label: String?
@@ -73,7 +73,7 @@ public class Constraint {
         let layoutToAttributes = self.to.attributes.layoutAttributes
         
         // get layout from
-        let layoutFrom: ConstraintView = self.from.view!
+        let layoutFrom = self.from.layoutConstraintItem!
         
         // get relation
         let layoutRelation = self.relation.layoutRelation
@@ -247,14 +247,18 @@ public class Constraint {
     }
     
     internal func activateIfNeeded(updatingExisting: Bool = false) {
-        guard let view = self.from.view else {
-            print("WARNING: SnapKit failed to get from view from constraint. Activate will be a no-op.")
+        guard let item = self.from.layoutConstraintItem else {
+            print("WARNING: SnapKit failed to get from item from constraint. Activate will be a no-op.")
             return
         }
         let layoutConstraints = self.layoutConstraints
-        let existingLayoutConstraints = view.snp.constraints.map({ $0.layoutConstraints }).reduce([]) { $0 + $1 }
         
         if updatingExisting {
+            var existingLayoutConstraints: [LayoutConstraint] = []
+            for constraint in item.constraints {
+                existingLayoutConstraints += constraint.layoutConstraints
+            }
+            
             for layoutConstraint in layoutConstraints {
                 let existingLayoutConstraint = existingLayoutConstraints.first { $0 == layoutConstraint }
                 guard let updateLayoutConstraint = existingLayoutConstraint else {
@@ -266,17 +270,17 @@ public class Constraint {
             }
         } else {
             NSLayoutConstraint.activate(layoutConstraints)
-            view.snp.add(constraints: [self])
+            item.add(constraints: [self])
         }
     }
     
     internal func deactivateIfNeeded() {
-        guard let view = self.from.view else {
-            print("WARNING: SnapKit failed to get from view from constraint. Deactivate will be a no-op.")
+        guard let item = self.from.layoutConstraintItem else {
+            print("WARNING: SnapKit failed to get from item from constraint. Deactivate will be a no-op.")
             return
         }
         let layoutConstraints = self.layoutConstraints
         NSLayoutConstraint.deactivate(layoutConstraints)
-        view.snp.remove(constraints: [self])
+        item.remove(constraints: [self])
     }
 }

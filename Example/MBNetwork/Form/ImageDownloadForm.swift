@@ -11,15 +11,6 @@ import MBNetwork
 import Alamofire
 
 struct ImageDownloadForm: MBDownloadFormable {
-    /// request method
-    public var method: HTTPMethod = .get
-
-    /// request parameters
-    ///
-    /// - Returns: parameters
-    public func parameters() -> [String : Any] {
-        return [ :]
-    }
 
     var destination: DownloadRequest.DownloadFileDestination = { _, _ in
         var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]

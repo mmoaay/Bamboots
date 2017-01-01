@@ -9,20 +9,20 @@
 import Foundation
 import Alamofire
 
-extension MBRequestFormable {
+public extension MBRequestFormable {
     /// Default encoding
     ///
     /// - Returns: Default URLEncoding
-    public func encoding() -> ParameterEncoding {
+    func encoding() -> ParameterEncoding {
         return Alamofire.URLEncoding.default
     }
     
-    public func parameters() -> [String: Any] {
+    func parameters() -> [String: Any] {
         return [ : ]
     }
     
     /// request method
-    public var method: Alamofire.HTTPMethod {
+    var method: Alamofire.HTTPMethod {
         return .get
     }
 }
@@ -47,8 +47,8 @@ public protocol MBDownloadResumeFormable: MBDownloadFormable {
     var resumeData: Data { get }
 }
 
-extension MBUploadMultiFormDataFormable {
-    public var encodingMemoryThreshold: UInt64 {
+public extension MBUploadMultiFormDataFormable {
+    var encodingMemoryThreshold: UInt64 {
         return SessionManager.multipartFormDataEncodingMemoryThreshold
     }
 }
@@ -71,8 +71,8 @@ public protocol MBUploadStreamFormable: MBUploadFormable {
     var stream: InputStream { get }
 }
 
-extension MBUploadFormable {
-    public var method: Alamofire.HTTPMethod {
+public extension MBUploadFormable {
+    var method: Alamofire.HTTPMethod {
         return .post
     }
 }

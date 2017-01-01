@@ -9,16 +9,16 @@
 import Foundation
 import ObjectMapper
 
-extension MBErrorable {
-    public var successCodes: [String] {
+public extension MBErrorable {
+    var successCodes: [String] {
         return []
     }
     
-    public var code: String? {
+    var code: String? {
         return nil
     }
     
-    public var message: String? {
+    var message: String? {
         return nil
     }
 }

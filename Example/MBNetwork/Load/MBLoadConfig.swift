@@ -24,17 +24,17 @@ class MBLoadConfig: MBLoadable {
         return insetMine
     }
     
-    func container() -> MBContainable? {
+    func maskContainer() -> MBContainable? {
         return containerMine
     }
     
     /// 请求开始
-    open func begin() {
+    func begin() {
         show()
     }
     
     /// 请求结束
-    open func end() {
+    func end() {
         hide()
     }
     

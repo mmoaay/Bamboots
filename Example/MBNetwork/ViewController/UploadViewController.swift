@@ -36,7 +36,7 @@ class UploadViewController: UIViewController, MBRequestable {
     */
 
     @IBAction func uploadPressed(_ sender: Any) {
-        self.upload(UploadForm(), load: MBLoadType.default(container: self), error:MBBaseError(), alert:MBAlertType.alertController(container: self)) { (response:DataResponse<WeatherResponse>) in
+        self.upload(UploadForm(), load: MBLoadType.default(container: self), error:MBBaseError(), alert:MBAlertType.alertController(container: self), success:MBBaseSuccess(), inform: MBInformType.alertController(message: "Upload successfully", container: self)) { (response:DataResponse<WeatherResponse>) in
         }
     }
 }

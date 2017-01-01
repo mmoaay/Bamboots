@@ -31,7 +31,7 @@ internal extension UIView {
         self.addConstraints(contraintsV)
     }
     
-    public func viewController() -> UIViewController? {
+    func viewController() -> UIViewController? {
         var next:UIView? = self.superview
         while next != nil{
             let nextResponder = next!.next

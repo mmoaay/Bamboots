@@ -7,8 +7,8 @@
 //
 
 
-open class MBMaskView: UIView, MBMaskable {
-    open var maskId:String = "MBMaskView"
+public class MBMaskView: UIView, MBMaskable {
+    public var maskId:String = "MBMaskView"
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var contentView: UIView!
