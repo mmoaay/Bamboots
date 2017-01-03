@@ -1,5 +1,5 @@
 language: objective-c
 osx_image: xcode8.0
-xcode_project: ./Example/MBNetwork.xcworkspace
+xcode_project: ./Example/MBNetwork.xcodeproj
 xcode_scheme: MBNetwork
 xcode_sdk: iphonesimulator9.3
