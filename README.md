@@ -7,7 +7,7 @@
 
 ## What is MBNetwork
 
-`MBNetwork` is a network request framework based on `Alamofire` and `ObjectMapper`, aiming at making network request easier for developer. `MBNetwork` has made advantages of protocol-oriented programming and abstracted everything that relevant to network requests into protocol. Here is the protocol list: 
+`MBNetwork` is a network request framework based on `Alamofire` and `ObjectMapper`, aiming at making network request easier for business development. `MBNetwork` has made advantages of protocol-oriented programming and abstracted everything that relevant to network requests into protocol. Here is the protocol list: 
 
  - `MBRequestable`: Network request protocol, objects that conform to this protocol can make network requests.
  - `MBFormable`: Form protocol. Objects that conforms to this protocol can be used by the `request`, `download`, `upload` method in `MBRequestable` protocol.
@@ -82,7 +82,7 @@ And for other parameters such as `url`, `method`, `parameters` etc.
 Each request will has it's own value, So we create an object and make it conforms to the protocol
 
 ``` swift
-struct WeatherForm: MBFormable {
+struct WeatherForm: MBRequestFormable {
     var city = "shanghai"
     
     public func parameters() -> [String: Any] {
@@ -96,7 +96,53 @@ struct WeatherForm: MBFormable {
 
 ### `MBSerializable`
 
+First, we create an object and make it conforms to the protocol, where the `dataNode` property stands for the JSON path of the data node. For example, the path of the data node of the following JSON object is **data**
+
+``` JSON
+
+{
+    "data": {
+        "location": "Toronto, Canada",    
+        "three_day_forecast": [
+            { 
+                "conditions": "Partly cloudy",
+                "day" : "Monday",
+                "temperature": 20 
+            },
+            { 
+                "conditions": "Showers",
+                "day" : "Tuesday",
+                "temperature": 22 
+            },
+            { 
+                "conditions": "Sunny",
+                "day" : "Wednesday",
+                "temperature": 28 
+            }
+        ]
+    }
+}
+```
+
+``` swift
+struct BaseSerialize: MBSerializable {
+    var dataNode: String? = "data"
+}
+```
+
+Then, we pass it to the `responseObject` method of the `DataRequest` object 
+
+``` swift
+request(WeatherForm()).responseObject(serialize: BaseSerialize()) { (response:DataResponse<WeatherResponse>) in
+            // repsonse is a WeatherResponse object.
+        }
+```
+
+> Notice: `WeatherResponse` object conforms to `Mappable` protocol of [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper/), you can learn how to use it from the github page of it.
+
 ### `MBLoadable`
+
+We've already have **Default** extension for this protocol.
 
 #### `MBMaskable`
 
