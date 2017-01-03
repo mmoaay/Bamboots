@@ -5,43 +5,43 @@
 [![License](https://img.shields.io/cocoapods/l/MBNetwork.svg?style=flat)](http://cocoapods.org/pods/MBNetwork)
 [![Platform](https://img.shields.io/cocoapods/p/MBNetwork.svg?style=flat)](http://cocoapods.org/pods/MBNetwork)
 
-## 简介
+## What is MBNetwork
 
-`MBNetwork` 是基于 `Alamofire` 和 `ObjectMapper` 实现，面向业务层的网络请求库。`MBNetwork` 的设计主要采用了 `POP` 的思想，将网络请求时涉及的各个环节和对象都抽象成协议。下面是目前已经包含的协议列表：
+`MBNetwork` is a network request framework based on `Alamofire` and `ObjectMapper`, aiming at making network request easier for developer. `MBNetwork` has made advantages of protocol-oriented programming and abstracted everything that relevant to network requests into protocol. Here is the protocol list: 
 
- - `MBRequestable`：网络请求协议。满足该协议可以进行网络请求。
- - `MBFormable`：表单协议。实现该协议可以将 `Object` 转换成可以供 `Alamofire` 使用请求参数。
-   - `MBUploadFormable`：上传表单协议。
-     - `MBUploadStreamFormable`：上传流表单协议。
-     - `MBUploadDataFormable`：上传数据表单协议。
-     - `MBUploadFileFormable`：上传文件表单协议。
-     - `MBUploadMultiFormDataFormable`：上传 MultiFormData 表单协议。
-   - `MBDownloadFormable`：下载表单协议。
-     - `MBDownloadResumeFormable`：恢复下载表单协议。
-   - `MBRequestFormable`：请求表单协议。
- - `MBSerializable`：数据解析协议。
- - `MBLoadable`： 加载协议。
-   - `MBMaskable`：加载遮罩协议。
-   - `MBContainable`：加载容器协议。
-   - `MBLoadProgressable`：加载进度协议。
- - `MBMessageable`：消息提示协议。
-   - `MBWarnable`：告警协议。
-   - `MBInformable`：提示协议。
- - `MBErrorable`：错误协议。
-   - `MBServerErrorable`：服务端错误协议。
+ - `MBRequestable`: Network request protocol, objects that conform to this protocol can make network requests.
+ - `MBFormable`: Form protocol. Objects that conforms to this protocol can be used by the `request`, `download`, `upload` method in `MBRequestable` protocol.
+   - `MBUploadFormable`: Upload Form protocol, Base protocol for upload request form.
+     - `MBUploadStreamFormable`: Conforming to this protocol to create an upload form that contains a stream object.
+     - `MBUploadDataFormable`: Conforming to this protocol to create an upload form that contains a data object.
+     - `MBUploadFileFormable`: Conforming to this protocol to create an upload form that contains a file.
+     - `MBUploadMultiFormDataFormable`: Conforming to this protocol to create an upload form that contains multiformdata.
+   - `MBDownloadFormable`: Download Form protocol, Base protocol for download request form.
+     - `MBDownloadResumeFormable`: Conforming to this protocol to create a download form that can resume a download task.
+   - `MBRequestFormable`: Conforming to this protocol to create a request form.
+ - `MBSerializable`: Protocol used for serializing JSON object.
+ - `MBLoadable`: Protocol used for showing mask on specified container, such as add `UIActivityIndicatorView` on `UIViewcontroller`'s view when request begins, and remove it when request ends
+   - `MBMaskable`: Mask protocol for `MBLoadable`, View that conforms to this protocol will be treated as mask.
+   - `MBContainable`: Container protocol for `MBLoadable`, Objects conforms to this protocol can be used as container for the mask.
+   - `MBLoadProgressable`: Progress protocol for request, Objects conforms to this protocol can get the progress of the requset.
+ - `MBMessageable`: Message protocol.
+   - `MBWarnable`: Warn protocol. Conforming to this protocol to show warning messages that occur from the request.
+   - `MBInformable`: Inform protocol. Conforming to this protocol to show specified message when request done successfully
+ - `MBErrorable`: Error protocol. It defines the key things that an error should have.
+   - `MBServerErrorable`: Error protocol for the server. Conforming to this protocol to serialize error from the server.
 
-## 特点
+## Features
 
- 1. 相比 `OOP`，使用者不需要再采用继承基类的方法去获得相应功能，无侵入性。
- 2. 部分协议已经进行了默认实现，可以快速上手。
- 3. 如果需要定制，对协议进行重新实现即可。
- 4. 遵循 `Alamofire` 的 API 设计，使用者可以对数据解析部分进行自定义，从而支持 `JSON` 以外的数据格式解析。
+ 1. There is no need to inherit any object to get the features it has, so you can extension any features you want without changing the code of `MBNetwork` itself.
+ 2. We have **Default** extension for most of the protocol, so you can easily startup.
+ 3. And if you have special needs, extension or conform to it.
+ 4. The API was designed with the principles of `Alamofire`, So you can also extension it as `MBNetwork` already have done for you.
+ 5. Mainly focus on things between business development and `Alamofire`, not network request itself.
 
-## 用法
+## How to use
 
 ### `MBRequestable`
 
-满足 `MBRequestable` 协议的类即可进行网络请求。
 
 ``` swift
 class LoadableViewController: UIViewController, MBRequestable {
@@ -56,7 +56,8 @@ class LoadableViewController: UIViewController, MBRequestable {
 
 ### `MBFormable`
 
-一般来说网络请求头全局都是一致的，可以按照如下的方式进行实现：
+
+For business development, most of the reqeusts' headers are the same, so you can extension it only for once.
 
 ``` swift
 extension MBFormable {
@@ -65,6 +66,11 @@ extension MBFormable {
     }
 }
 
+```
+But also you can have extension for specified protocol
+
+``` swift
+
 extension MBFormable where Self : MBUploadFormable {
     public func headers() -> [String : String] {
         return ["accessToken":"xxx", "fileName":"xxx"];
@@ -72,7 +78,8 @@ extension MBFormable where Self : MBUploadFormable {
 }
 ```
 
-具体的请求表单按照如下的方式进行实现：
+And for other parameters such as `url`, `method`, `parameters` etc. 
+Each request will has it's own value, So we create an object and make it conforms to the protocol
 
 ``` swift
 struct WeatherForm: MBFormable {
@@ -91,8 +98,6 @@ struct WeatherForm: MBFormable {
 
 ### `MBLoadable`
 
-该协议的主要解决网络请求时需要遮罩的问题。
-
 #### `MBMaskable`
 
 #### `MBContainable`
@@ -108,6 +113,8 @@ struct WeatherForm: MBFormable {
 ### `MBErrorable`
 
 #### `MBServerErrorable`
+
+## Bonus
 
 ## Example
 

@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = 'MBNetwork is an network request framework based on Alamofire and ObjectMapper, aiming at making network request easier'
+  s.description      = 'MBNetwork is a network request framework based on Alamofire and ObjectMapper, aiming at making network request easier for developer'
 
   s.homepage         = 'https://github.com/mmoaay/MBNetwork'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
