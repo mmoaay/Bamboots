@@ -29,6 +29,7 @@
 		8584731D1DFFA85300997A66 /* BaseForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8584731C1DFFA85300997A66 /* BaseForm.swift */; };
 		85868CF21E1B5FA20039E221 /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85868CF11E1B5FA20039E221 /* BaseError.swift */; };
 		85868CF41E1B5FC10039E221 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85868CF31E1B5FC10039E221 /* WeatherError.swift */; };
+		85868CF61E1B75D60039E221 /* MBNetwork.travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 85868CF51E1B75D60039E221 /* MBNetwork.travis.yml */; };
 		85B4CBCD1E07FC3B0022DD61 /* LoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CBCC1E07FC3B0022DD61 /* LoadableViewController.swift */; };
 		85CF956C1E10C8A4009CB6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85CF956B1E10C8A4009CB6D4 /* Main.storyboard */; };
 		8ADB81C81E182247001C0D5B /* BaseSerialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB81C71E182247001C0D5B /* BaseSerialize.swift */; };
@@ -79,6 +80,7 @@
 		8584731C1DFFA85300997A66 /* BaseForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseForm.swift; sourceTree = "<group>"; };
 		85868CF11E1B5FA20039E221 /* BaseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
 		85868CF31E1B5FC10039E221 /* WeatherError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
+		85868CF51E1B75D60039E221 /* MBNetwork.travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MBNetwork.travis.yml; sourceTree = "<group>"; };
 		85ACE8691D87ABAF00A1A2F0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		85ACE86A1D87ABAF00A1A2F0 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
 		85ACE86B1D87ABAF00A1A2F0 /* MBNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBNetwork.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/MBNetwork/MBNetwork.framework"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				85868CF51E1B75D60039E221 /* MBNetwork.travis.yml */,
 				63CAB3091B7513B3CD6FF6AE /* MBNetwork.podspec */,
 				776D9779AFBC73F96B67D6F0 /* README.md */,
 				E5AEB5628DAAD66E2A72E387 /* LICENSE */,
@@ -383,6 +386,7 @@
 				8567D96A1E13B3B6006E9213 /* ProtobufModel.proto in Resources */,
 				C211CAB41D52E55100493CEF /* TableHeaderView.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				85868CF61E1B75D60039E221 /* MBNetwork.travis.yml in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
