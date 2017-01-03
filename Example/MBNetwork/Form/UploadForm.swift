@@ -10,7 +10,7 @@ import Foundation
 import MBNetwork
 import Alamofire
 
-struct UploadForm: MBUploadMultiFormDataFormable {
+struct UploadMultiFormDataForm: MBUploadMultiFormDataFormable {
     var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
 //        multipartFormData.append(, withName: "unicorn")
 //        multipartFormData.append("", withName: "rainbow")
@@ -18,4 +18,11 @@ struct UploadForm: MBUploadMultiFormDataFormable {
     
     /// request url
     var url: String  = "https://httpbin.org/post"
+}
+
+struct UploadImageForm: MBUploadDataFormable {
+    /// request url
+    public var url: String = "https://httpbin.org/post"
+
+    var data: Data  = UIImagePNGRepresentation(UIImage(named: "head_image")!)!
 }

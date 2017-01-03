@@ -43,18 +43,14 @@ public extension MBRequestable  {
     }
     
     @discardableResult
-    func upload<E: MBServerErrorable, S: MBServerErrorable, T: BaseMappable>(_ form: MBUploadMultiFormDataFormable, load: MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil, error: E? = nil, alert:MBAlertable = MBAlertType.none, errorHandler: ((MBServerErrorable) -> Void)? = nil, success: S? = nil, inform:MBInformable = MBInformType.none, queue: DispatchQueue? = nil, serialize: MBSerializable? = nil, mapToObject object: T? = nil, context: MapContext? = nil, dataHandler: @escaping (DataResponse<T>) -> Void) {
+    func upload<E: MBServerErrorable, T: BaseMappable>(_ form: MBUploadMultiFormDataFormable, load: MBLoadable = MBLoadType.none, progress:MBLoadProgressable? = nil, warnError: E? = nil, warn:MBWarnable = MBMessageType.none, errorHandler: ((MBServerErrorable) -> Void)? = nil, informError: E? = nil, inform:MBInformable = MBMessageType.none, queue: DispatchQueue? = nil, serialize: MBSerializable? = nil, mapToObject object: T? = nil, context: MapContext? = nil, dataHandler: @escaping (DataResponse<T>) -> Void) {
         Alamofire.upload(multipartFormData: form.multipartFormData, usingThreshold: form.encodingMemoryThreshold, to: form.url, method: form.method, headers: form.headers(), encodingCompletion: { encodingResult in
             switch encodingResult {
             case .success(var upload, _, _):
-                upload = upload.load(load: load).progress(progress:progress).alert(error: error, alert: alert, completionHandler: errorHandler).inform(success: success, inform: inform).response(completionHandler: { (response: DefaultDataResponse) in
-                    if let error = response.error {
-                        alert.show(error: error.localizedDescription)
-                    }
-                }).response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize?.dataNode, mapToObject: object, context: context), completionHandler: dataHandler)
+                upload = upload.load(load: load).progress(progress:progress).warn(error: warnError, warn: warn, completionHandler: errorHandler).inform(error: informError, inform: inform).response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize?.dataNode, mapToObject: object, context: context), completionHandler: dataHandler)
                 break
             case .failure(let encodingError):
-                alert.show(error: encodingError.localizedDescription)
+                warn.show(error: encodingError.localizedDescription)
                 break
             }
         })

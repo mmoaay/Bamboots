@@ -17,7 +17,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   MBNetwork:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -29,4 +29,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 28d0da2a1d92f2769ac2994e7b5809a9bd041454
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.0.beta.1

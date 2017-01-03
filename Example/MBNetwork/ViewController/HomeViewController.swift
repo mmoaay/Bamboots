@@ -23,30 +23,30 @@ class HomeViewController: UITableViewController, MBRequestable {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0, 1:
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0), (1, 0):
             request(WeatherForm())
             break
-        case 2:
+        case (1, 1):
             self.performSegue(withIdentifier: "fromHomeToDownload", sender: nil)
             break
-        case 3:
+        case (1, 2):
             self.performSegue(withIdentifier: "fromHomeToUpload", sender: nil)
             break
-        case 4:
+        case (0, 1):
             self.performSegue(withIdentifier: "fromHomeToSerialize", sender: nil)
             break
-        case 5:
+        case (2, 0):
             self.performSegue(withIdentifier: "fromHomeToLoad", sender: nil)
             break
-        case 6:
+        case (2, 1):
             self.performSegue(withIdentifier: "fromHomeToTable", sender: nil)
             break
-        case 7:
+        case (0, 2):
             self.performSegue(withIdentifier: "fromHomeToProgress", sender: nil)
             break;
-        case 8:
-            self.performSegue(withIdentifier: "fromHomeToAlert", sender: nil)
+        case (3, 0):
+            self.performSegue(withIdentifier: "fromHomeToWarn", sender: nil)
         default:
             break
         }

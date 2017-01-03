@@ -72,7 +72,7 @@ class SerializableViewController: UITableViewController, MBRequestable {
     */
     
     private func load() {
-        request(WeatherForm()).responseObject(serialize: MBSerialize()) { (response:DataResponse<WeatherResponse>) in
+        request(WeatherForm()).responseObject(serialize: BaseSerialize()) { (response:DataResponse<WeatherResponse>) in
             self.weatherResponse = response.result.value
             self.tableView.reloadData()
         }

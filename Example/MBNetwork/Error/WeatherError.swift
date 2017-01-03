@@ -1,17 +1,17 @@
 //
-//  MBBaseSuccess.swift
+//  WeatherError.swift
 //  MBNetwork
 //
-//  Created by zhengperry on 2017/1/2.
-//  Copyright © 2017年 CocoaPods. All rights reserved.
+//  Created by ZhengYidong on 03/01/2017.
+//  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
 import Foundation
 import MBNetwork
 import ObjectMapper
 
-class MBBaseSuccess: MBServerErrorable {
-    var successCodes: [String] = [""]
+class WeatherError: MBServerErrorable {
+    var successCodes: [String] = ["200"]
     
     var code: String?
     var message: String?
@@ -25,4 +25,3 @@ class MBBaseSuccess: MBServerErrorable {
         message <- map["data.location"]
     }
 }
-

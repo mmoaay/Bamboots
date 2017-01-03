@@ -1,5 +1,5 @@
 //
-//  MBBaseError.swift
+//  BaseError.swift
 //  MBNetwork
 //
 //  Created by ZhengYidong on 29/12/2016.
@@ -10,8 +10,8 @@ import Foundation
 import MBNetwork
 import ObjectMapper
 
-class MBBaseError: MBServerErrorable {
-    var successCodes: [String] = ["200"]
+class BaseError: MBServerErrorable {
+    var successCodes: [String] = [""]
     
     var code: String?
     var message: String?
@@ -21,8 +21,8 @@ class MBBaseError: MBServerErrorable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        code <- map["data.location"]
-        message <- map["data.location"]
+        code <- map["data"]
+        message <- map["url"]
     }
 }
 

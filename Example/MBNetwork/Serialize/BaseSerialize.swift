@@ -9,6 +9,6 @@
 import Foundation
 import MBNetwork
 
-class MBSerialize: MBSerializable {
+class BaseSerialize: MBSerializable {
     var dataNode: String? = "data"
 }

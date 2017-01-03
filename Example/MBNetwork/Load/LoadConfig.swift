@@ -1,5 +1,5 @@
 //
-//  MBLoadConfig.swift
+//  LoadConfig.swift
 //  MBNetwork
 //
 //  Created by ZhengYidong on 15/12/2016.
@@ -9,7 +9,7 @@
 import Foundation
 import MBNetwork
 
-class MBLoadConfig: MBLoadable {
+class LoadConfig: MBLoadable {
     init(container: MBContainable? = nil, mask: MBMaskable? = MBMaskView(), inset: UIEdgeInsets = UIEdgeInsets.zero) {
         insetMine = inset
         maskMine = mask

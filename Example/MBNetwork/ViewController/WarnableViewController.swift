@@ -1,5 +1,5 @@
 //
-//  AlertableViewController.swift
+//  WarnableViewController.swift
 //  MBNetwork
 //
 //  Created by ZhengYidong on 30/12/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import MBNetwork
 
-class AlertableViewController: UIViewController, MBRequestable {
+class WarnableViewController: UIViewController, MBRequestable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class AlertableViewController: UIViewController, MBRequestable {
     }
     */
     @IBAction func load(_ sender: Any) {
-        request(WeatherForm()).alert(error: MBBaseError(), alert: MBAlertType.alertController(container: self))
+        request(WeatherForm()).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
     }
 
 }

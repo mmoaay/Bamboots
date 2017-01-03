@@ -10,37 +10,35 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-public protocol MBSerializable {
-    var dataNode: String? { get }
-}
-
 public extension DataRequest {
     @discardableResult
-    func alert<T: MBServerErrorable>(error: T? = nil, alert: MBAlertable = MBAlertType.none, completionHandler: ((MBServerErrorable) -> Void)? = nil) -> Self {
+    func warn<T: MBServerErrorable>(error: T? = nil, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBServerErrorable) -> Void)? = nil) -> Self {
 
         return response(completionHandler: { (response:DefaultDataResponse) in
-            if let error = response.error {
-                alert.show(error: error.localizedDescription)
+            if let err = response.error {
+                warn.show(error: err.localizedDescription)
             }
         }).responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil, completionHandler: { (response:DataResponse<T>) in
-            if let error = response.result.value {
-                if let code = error.code {
-                    if true == error.successCodes.contains(code) {
-                        completionHandler?(error)
+            if let err = response.result.value {
+                if let code = err.code {
+                    if true == error?.successCodes.contains(code) {
+                        completionHandler?(err)
                     } else {
-                        alert.show(error: error)
+                        warn.show(error: err)
                     }
                 }
             }
         })
     }
     
-    func inform<T: MBServerErrorable>(success: T? = nil, inform: MBInformable = MBInformType.none) -> Self {
+    @discardableResult
+    func inform<T: MBServerErrorable>(error: T? = nil, inform: MBInformable = MBMessageType.none) -> Self {
         
         return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil, completionHandler: { (response:DataResponse<T>) in
-            if let error = response.result.value {
-                if let code = error.code {
-                    if true == error.successCodes.contains(code) {
+            debugPrint(response)
+            if let err = response.result.value {
+                if let code = err.code {
+                    if true == error?.successCodes.contains(code) {
                         inform.show()
                     }
                 }

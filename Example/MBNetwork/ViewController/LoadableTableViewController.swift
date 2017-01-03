@@ -11,7 +11,7 @@ import MBNetwork
 
 extension LoadableTableViewController{
     fileprivate func initTableView() {
-        let tableHeaderView = MBTableHeaderView.shared.getView()
+        let tableHeaderView = TableHeaderView.shared.getView()
         tableHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
         tableView.tableHeaderView = tableHeaderView
         
@@ -58,7 +58,7 @@ class LoadableTableViewController: UITableViewController, MBRequestable{
     }
 
     @IBAction func load(_ sender: AnyObject) {
-        let load = MBLoadConfig(container:self.tableView, mask: MBActivityIndicator(), inset: UIEdgeInsetsMake(UIScreen.main.bounds.width - self.tableView.contentOffset.y > 0 ? UIScreen.main.bounds.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
+        let load = LoadConfig(container:self.tableView, mask: MBActivityIndicator(), inset: UIEdgeInsetsMake(UIScreen.main.bounds.width - self.tableView.contentOffset.y > 0 ? UIScreen.main.bounds.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
         request(WeatherForm()).load(load: load)
     }
 }
