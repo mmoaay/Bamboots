@@ -10,14 +10,25 @@
 `MBNetwork` 是基于 `Alamofire` 和 `ObjectMapper` 实现，面向业务层的网络请求库。`MBNetwork` 的设计主要采用了 `POP` 的思想，将网络请求时涉及的各个环节和对象都抽象成协议。下面是目前已经包含的协议列表：
 
  - `MBRequestable`：网络请求协议。满足该协议可以进行网络请求。
- - `MBFormable`：Form表单协议。实现该协议可以将 `Object` 转换成可以供 `Alamofire` 使用请求参数。
+ - `MBFormable`：表单协议。实现该协议可以将 `Object` 转换成可以供 `Alamofire` 使用请求参数。
+   - `MBUploadFormable`：上传表单协议。
+     - `MBUploadStreamFormable`：上传流表单协议。
+     - `MBUploadDataFormable`：上传数据表单协议。
+     - `MBUploadFileFormable`：上传文件表单协议。
+     - `MBUploadMultiFormDataFormable`：上传 MultiFormData 表单协议。
+   - `MBDownloadFormable`：下载表单协议。
+     - `MBDownloadResumeFormable`：恢复下载表单协议。
+   - `MBRequestFormable`：请求表单协议。
+ - `MBSerializable`：数据解析协议。
  - `MBLoadable`： 加载协议。
    - `MBMaskable`：加载遮罩协议。
    - `MBContainable`：加载容器协议。
    - `MBLoadProgressable`：加载进度协议。
- - `MBAlertable`：告警协议。
-   - `MBErrorConfigurable`：错误配置协议。
-   - `MBErrorSerializable`：错误解析协议。
+ - `MBMessageable`：消息提示协议。
+   - `MBWarnable`：告警协议。
+   - `MBInformable`：提示协议。
+ - `MBErrorable`：错误协议。
+   - `MBServerErrorable`：服务端错误协议。
 
 ## 特点
 
@@ -38,7 +49,7 @@ class LoadableViewController: UIViewController, MBRequestable {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        request(WeatherForm(), load:MBLoadType.default(container: view))
+        request(WeatherForm())
     }
 }
 ```
@@ -51,6 +62,12 @@ class LoadableViewController: UIViewController, MBRequestable {
 extension MBFormable {
     public func headers() -> [String: String] {
         return ["accessToken":"xxx"];
+    }
+}
+
+extension MBFormable where Self : MBUploadFormable {
+    public func headers() -> [String : String] {
+        return ["accessToken":"xxx", "fileName":"xxx"];
     }
 }
 ```
@@ -70,6 +87,8 @@ struct WeatherForm: MBFormable {
 }
 ```
 
+### `MBSerializable`
+
 ### `MBLoadable`
 
 该协议的主要解决网络请求时需要遮罩的问题。
@@ -80,11 +99,15 @@ struct WeatherForm: MBFormable {
 
 #### `MBLoadProgressable`
 
-### `MBAlertable`
+### `MBMessageable`
 
-#### `MBErrorConfigurable`
+#### `MBWarnable`
 
-#### `MBErrorSerializable`
+#### `MBInformable`
+
+### `MBErrorable`
+
+#### `MBServerErrorable`
 
 ## Example
 
