@@ -63,7 +63,7 @@ public extension DataRequest {
 
 public extension DownloadRequest {
     @discardableResult
-    func progress(progress: MBLoadProgressable? = nil) -> Self {
+    func progress(progress: MBProgressable? = nil) -> Self {
         return downloadProgress(closure: { (prog: Progress) in
             progress?.progress(prog)
         })
@@ -72,7 +72,7 @@ public extension DownloadRequest {
 
 public extension UploadRequest {
     @discardableResult
-    func progress(progress: MBLoadProgressable? = nil) -> Self {
+    func progress(progress: MBProgressable? = nil) -> Self {
         return uploadProgress(closure: { (prog: Progress) in
             progress?.progress(prog)
         })

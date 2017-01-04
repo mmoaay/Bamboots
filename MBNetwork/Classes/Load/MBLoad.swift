@@ -51,11 +51,6 @@ public protocol MBLoadable {
     func end()
 }
 
-///
-public protocol MBLoadProgressable {
-    func progress(_ progress:Progress)
-}
-
 
 // MARK: - MBLoadable
 public extension MBLoadable {

@@ -23,7 +23,7 @@
  - `MBLoadable`: Protocol used for showing mask on specified container, such as add `UIActivityIndicatorView` on `UIViewcontroller`'s view when request begins, and remove it when request ends
    - `MBMaskable`: Mask protocol for `MBLoadable`, View that conforms to this protocol will be treated as mask.
    - `MBContainable`: Container protocol for `MBLoadable`, Objects conforms to this protocol can be used as container for the mask.
-   - `MBLoadProgressable`: Progress protocol for request, Objects conforms to this protocol can get the progress of the requset.
+   - `MBProgressable`: Progress protocol for request, Objects conforms to this protocol can get the progress of the requset.
  - `MBMessageable`: Message protocol.
    - `MBWarnable`: Warn protocol. Conforming to this protocol to show warning messages that occur from the request.
    - `MBInformable`: Inform protocol. Conforming to this protocol to show specified message when request done successfully
@@ -148,7 +148,7 @@ We've already have **Default** extension for this protocol.
 
 #### `MBContainable`
 
-#### `MBLoadProgressable`
+#### `MBProgressable`
 
 ### `MBMessageable`
 

@@ -1,8 +1,8 @@
 {
   "name": "MBNetwork",
   "version": "0.1.0",
-  "summary": "A short description of MBNetwork.",
-  "description": "A long description of MBNetwork.",
+  "summary": "MBNetwork - Network request can be easier",
+  "description": "MBNetwork is a network request framework based on Alamofire and ObjectMapper, aiming at making network request easier for business development",
   "homepage": "https://github.com/mmoaay/MBNetwork",
   "license": {
     "type": "MIT",

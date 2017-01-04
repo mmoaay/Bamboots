@@ -11,7 +11,7 @@ import Alamofire
 
 
 // MARK: - Making UIProgressView conforms to MBLoadProgressable
-extension UIProgressView: MBLoadProgressable {
+extension UIProgressView: MBProgressable {
     
     /// Updating progress
     ///
