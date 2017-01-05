@@ -10,7 +10,7 @@ import Foundation
 import MBNetwork
 import ObjectMapper
 
-class WeatherError: MBServiceErrorable {
+class WeatherError: MBJSONErrorable {
     var successCodes: [String] = ["200"]
     
     var code: String?
@@ -26,7 +26,7 @@ class WeatherError: MBServiceErrorable {
     }
 }
 
-class WeatherInformError: MBServiceErrorable {
+class WeatherInformError: MBJSONErrorable {
     var successCodes: [String] = ["Toronto, Canada"]
     
     var code: String?

@@ -10,7 +10,7 @@ import Foundation
 import MBNetwork
 import ObjectMapper
 
-class BaseError: MBServiceErrorable {
+class BaseError: MBJSONErrorable {
     var successCodes: [String] = ["https://httpbin.org/post"]
     
     var code: String?

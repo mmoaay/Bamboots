@@ -15,12 +15,12 @@ public extension DataRequest {
     /// Show warning message when error occurs
     ///
     /// - Parameters:
-    ///   - error: Object conforms to MBServiceErrorable protocol, used for serializing error data from service
+    ///   - error: Object conforms to MBJSONErrorable protocol, used for serializing error data from service
     ///   - warn: Object conforms to MBWarnable protocol, used for show warning message when error occurs
     ///   - completionHandler: The code to be executed once the error code exsists in error's success codes
     /// - Returns: The request.
     @discardableResult
-    func warn<T: MBServiceErrorable>(error: T, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBServiceErrorable) -> Void)? = nil) -> Self {
+    func warn<T: MBJSONErrorable>(error: T, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBJSONErrorable) -> Void)? = nil) -> Self {
 
         return response(completionHandler: { (response:DefaultDataResponse) in
             if let err = response.error {
@@ -43,11 +43,11 @@ public extension DataRequest {
     /// Show inform message when request completed successfully
     ///
     /// - Parameters:
-    ///   - error: Object conforms to MBServiceErrorable protocol, used for serializing error data from service
+    ///   - error: Object conforms to MBJSONErrorable protocol, used for serializing error data from service
     ///   - inform: Object conforms to MBInformable protocol, used for show inform message when request completed successfully
     /// - Returns: The request.
     @discardableResult
-    func inform<T: MBServiceErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self {
+    func inform<T: MBJSONErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self {
         
         return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil, completionHandler: { (response:DataResponse<T>) in
             if let err = response.result.value {
@@ -59,17 +59,9 @@ public extension DataRequest {
             }
         })
     }
-    
-    @discardableResult
-    func response<T: BaseMappable>(queue: DispatchQueue? = nil, serialize: MBSerializable, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
-        return response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize.dataNode, mapToObject: object, context: context), completionHandler: completionHandler)
-    }
-    
-    @discardableResult
-    func response<T: BaseMappable>(queue: DispatchQueue? = nil, serialize: MBSerializable, context: MapContext? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
-        return response(queue: queue, responseSerializer: DataRequest.ObjectMapperArraySerializer(serialize.dataNode, context: context), completionHandler: completionHandler)
-    }
-    
+}
+
+public extension DataRequest {
     @discardableResult
     func load(load: MBLoadable = MBLoadType.none) -> Self {
         load.begin()

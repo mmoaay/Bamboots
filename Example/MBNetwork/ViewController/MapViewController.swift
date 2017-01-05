@@ -1,5 +1,5 @@
 //
-//  SerializableViewController.swift
+//  MapViewController.swift
 //  MBNetwork
 //
 //  Created by ZhengYidong on 29/12/2016.
@@ -11,7 +11,7 @@ import MBNetwork
 import Alamofire
 import AlamofireObjectMapper
 
-extension SerializableViewController{
+extension MapViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SerializableCell", for: indexPath)
@@ -44,7 +44,7 @@ extension SerializableViewController{
     }
 }
 
-class SerializableViewController: UITableViewController, MBRequestable {
+class MapViewController: UITableViewController, MBRequestable {
     
     var weatherResponse: WeatherResponse?
 
@@ -72,14 +72,12 @@ class SerializableViewController: UITableViewController, MBRequestable {
     */
     
     private func load() {
-        request(WeatherForm()).response(serialize: BaseSerialize()) { (response: DataResponse<WeatherResponse>) in
-            self.weatherResponse = response.result.value
-            self.tableView.reloadData()
+        request(WeatherForm()).responseObject(keyPath: "data") { (response: DataResponse<WeatherResponse>) in
+            if let value = response.result.value {
+                self.weatherResponse = value
+                self.tableView.reloadData()
+            }
         }
-        
-//        request(WeatherForm()).response(serialize: BaseSerialize()) { (response: DataResponse<[Forecast]>) in
-//            
-//        }
     }
 
     @IBAction func load(_ sender: Any) {

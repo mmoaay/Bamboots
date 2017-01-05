@@ -37,7 +37,7 @@ class HomeViewController: UITableViewController, MBRequestable {
             self.performSegue(withIdentifier: "fromHomeToUpload", sender: nil)
             break
         case (0, 1):
-            self.performSegue(withIdentifier: "fromHomeToSerialize", sender: nil)
+            self.performSegue(withIdentifier: "fromHomeToMap", sender: nil)
             break
         case (2, 0):
             self.performSegue(withIdentifier: "fromHomeToLoad", sender: nil)

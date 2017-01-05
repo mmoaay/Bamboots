@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MBNetwork
 import ObjectMapper
 
 class WeatherResponse: Mappable {

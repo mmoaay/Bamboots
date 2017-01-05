@@ -14,7 +14,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		67CD272E79E27D3D18CDDC87 /* Pods_MBNetwork_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2772FB800B4815B9755B470 /* Pods_MBNetwork_Tests.framework */; };
 		85399C221E029C760076BE65 /* LoadConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85399C211E029C760076BE65 /* LoadConfig.swift */; };
-		855859EB1E15498B00EEEBAE /* SerializableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855859EA1E15498B00EEEBAE /* SerializableViewController.swift */; };
+		855859EB1E15498B00EEEBAE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855859EA1E15498B00EEEBAE /* MapViewController.swift */; };
 		855859ED1E1614C100EEEBAE /* WarnableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855859EC1E1614C100EEEBAE /* WarnableViewController.swift */; };
 		855859EF1E16221000EEEBAE /* MBEyeLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855859EE1E16221000EEEBAE /* MBEyeLoading.swift */; };
 		855859FB1E18F36300EEEBAE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855859FA1E18F36300EEEBAE /* DownloadViewController.swift */; };
@@ -32,7 +32,6 @@
 		85A886D31E1E14FE00A22476 /* InformableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A886D21E1E14FE00A22476 /* InformableViewController.swift */; };
 		85B4CBCD1E07FC3B0022DD61 /* LoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CBCC1E07FC3B0022DD61 /* LoadableViewController.swift */; };
 		85CF956C1E10C8A4009CB6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85CF956B1E10C8A4009CB6D4 /* Main.storyboard */; };
-		8ADB81C81E182247001C0D5B /* BaseSerialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB81C71E182247001C0D5B /* BaseSerialize.swift */; };
 		C211CAB31D52E55100493CEF /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C211CAB11D52E55000493CEF /* TableHeaderView.swift */; };
 		C211CAB41D52E55100493CEF /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C211CAB21D52E55000493CEF /* TableHeaderView.xib */; };
 		C2ACD7081D2FA9F600080022 /* LoadableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACD7071D2FA9F600080022 /* LoadableTableViewController.swift */; };
@@ -65,7 +64,7 @@
 		776D9779AFBC73F96B67D6F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		805EEC370D29A2AFEC5197B9 /* Pods-MBNetwork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBNetwork_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBNetwork_Example/Pods-MBNetwork_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		85399C211E029C760076BE65 /* LoadConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadConfig.swift; sourceTree = "<group>"; };
-		855859EA1E15498B00EEEBAE /* SerializableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableViewController.swift; sourceTree = "<group>"; };
+		855859EA1E15498B00EEEBAE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		855859EC1E1614C100EEEBAE /* WarnableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnableViewController.swift; sourceTree = "<group>"; };
 		855859EE1E16221000EEEBAE /* MBEyeLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBEyeLoading.swift; sourceTree = "<group>"; };
 		855859FA1E18F36300EEEBAE /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +87,6 @@
 		85ACE86D1D87ABAF00A1A2F0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MBNetwork-evoqnvktwynekgbilexlqsehfofb/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		85B4CBCC1E07FC3B0022DD61 /* LoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableViewController.swift; sourceTree = "<group>"; };
 		85CF956B1E10C8A4009CB6D4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		8ADB81C71E182247001C0D5B /* BaseSerialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSerialize.swift; sourceTree = "<group>"; };
 		A2772FB800B4815B9755B470 /* Pods_MBNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C211CAB11D52E55000493CEF /* TableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		C211CAB21D52E55000493CEF /* TableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableHeaderView.xib; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				85868CF01E1B5F680039E221 /* Error */,
-				8ADB81C61E182235001C0D5B /* Serialize */,
 				85399C201E029C650076BE65 /* Load */,
 				C211CAB01D52E52800493CEF /* View */,
 				C2ACD7061D2FA9DF00080022 /* Model */,
@@ -236,14 +233,6 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		8ADB81C61E182235001C0D5B /* Serialize */ = {
-			isa = PBXGroup;
-			children = (
-				8ADB81C71E182247001C0D5B /* BaseSerialize.swift */,
-			);
-			path = Serialize;
-			sourceTree = "<group>";
-		};
 		C211CAB01D52E52800493CEF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,7 +250,7 @@
 				856526C11E02B2C60070A562 /* HomeViewController.swift */,
 				85B4CBCC1E07FC3B0022DD61 /* LoadableViewController.swift */,
 				85833AF11E10ECB00014230B /* ProgressableViewController.swift */,
-				855859EA1E15498B00EEEBAE /* SerializableViewController.swift */,
+				855859EA1E15498B00EEEBAE /* MapViewController.swift */,
 				855859EC1E1614C100EEEBAE /* WarnableViewController.swift */,
 				855859FA1E18F36300EEEBAE /* DownloadViewController.swift */,
 				855859FE1E18F57900EEEBAE /* UploadViewController.swift */,
@@ -509,12 +498,11 @@
 				8567D96D1E14FAD8006E9213 /* WeatherResponse.swift in Sources */,
 				855859FF1E18F57900EEEBAE /* UploadViewController.swift in Sources */,
 				8584731D1DFFA85300997A66 /* BaseForm.swift in Sources */,
-				855859EB1E15498B00EEEBAE /* SerializableViewController.swift in Sources */,
+				855859EB1E15498B00EEEBAE /* MapViewController.swift in Sources */,
 				85868CF41E1B5FC10039E221 /* WeatherError.swift in Sources */,
 				8567D96F1E14FFD8006E9213 /* ProtobufModel.pb.swift in Sources */,
 				856526C21E02B2C60070A562 /* HomeViewController.swift in Sources */,
 				85399C221E029C760076BE65 /* LoadConfig.swift in Sources */,
-				8ADB81C81E182247001C0D5B /* BaseSerialize.swift in Sources */,
 				C2ACD7081D2FA9F600080022 /* LoadableTableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				85868CF21E1B5FA20039E221 /* BaseError.swift in Sources */,

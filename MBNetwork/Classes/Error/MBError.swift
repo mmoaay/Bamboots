@@ -23,7 +23,7 @@ public extension MBErrorable {
     }
 }
 
-public protocol MBServiceErrorable: MBErrorable, Mappable {
+public protocol MBJSONErrorable: MBErrorable, Mappable {
     
 }
 

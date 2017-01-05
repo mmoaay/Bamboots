@@ -19,7 +19,6 @@
    - `MBDownloadFormable`: Download Form protocol, Base protocol for download request form.
      - `MBDownloadResumeFormable`: Conforming to this protocol to create a download form that can resume a download task.
    - `MBRequestFormable`: Conforming to this protocol to create a request form.
- - `MBSerializable`: Protocol used for serializing JSON object.
  - `MBLoadable`: Protocol used for showing mask on specified container, such as add `UIActivityIndicatorView` on `UIViewcontroller`'s view when request begins, and remove it when request ends
    - `MBMaskable`: Mask protocol for `MBLoadable`, View that conforms to this protocol will be treated as mask.
    - `MBContainable`: Container protocol for `MBLoadable`, Objects conforms to this protocol can be used as container for the mask.
@@ -28,7 +27,7 @@
    - `MBWarnable`: Warn protocol. Conforming to this protocol to show warning messages that occur from the request.
    - `MBInformable`: Inform protocol. Conforming to this protocol to show specified message when request done successfully
  - `MBErrorable`: Error protocol. It defines the key things that an error should have.
-   - `MBServiceErrorable`: Error protocol for the server. Conforming to this protocol to serialize error from the server.
+   - `MBJSONErrorable`: Error protocol for the server. Conforming to this protocol to serialize error from the server.
 
 ## Features
 
@@ -94,52 +93,6 @@ struct WeatherForm: MBRequestFormable {
 }
 ```
 
-### `MBSerializable`
-
-First, we create an object and make it conforms to the protocol, where the `dataNode` property stands for the JSON path of the data node. For example, the path of the data node of the following JSON object is **data**
-
-``` JSON
-
-{
-    "data": {
-        "location": "Toronto, Canada",    
-        "three_day_forecast": [
-            { 
-                "conditions": "Partly cloudy",
-                "day" : "Monday",
-                "temperature": 20 
-            },
-            { 
-                "conditions": "Showers",
-                "day" : "Tuesday",
-                "temperature": 22 
-            },
-            { 
-                "conditions": "Sunny",
-                "day" : "Wednesday",
-                "temperature": 28 
-            }
-        ]
-    }
-}
-```
-
-``` swift
-struct BaseSerialize: MBSerializable {
-    var dataNode: String? = "data"
-}
-```
-
-Then, we pass it to the `responseObject` method of the `DataRequest` object 
-
-``` swift
-request(WeatherForm()).responseObject(serialize: BaseSerialize()) { (response:DataResponse<WeatherResponse>) in
-            // repsonse is a WeatherResponse object.
-        }
-```
-
-> Notice: `WeatherResponse` object conforms to `Mappable` protocol of [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper/), you can learn how to use it from the github page of it.
-
 ### `MBLoadable`
 
 We've already have **Default** extension for this protocol.
@@ -158,7 +111,7 @@ We've already have **Default** extension for this protocol.
 
 ### `MBErrorable`
 
-#### `MBServiceErrorable`
+#### `MBJSONErrorable`
 
 ## Bonus
 
