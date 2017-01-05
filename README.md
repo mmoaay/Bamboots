@@ -148,11 +148,15 @@ func load(load: MBLoadable = MBLoadType.none) -> Self
 
 #### Show mask on UIViewController
 
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uiviewcontroller.gif)
+
 ``` swift
 request(WeatherForm()).load(load:MBLoadType.default(container: view))
 ```
 
 #### Show mask on UINavigationController
+
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uinavigationcontroller.gif)
 
 ``` swift
 request(WeatherForm()).load(load: MBLoadType.default(container: navigationController!.view))
@@ -160,11 +164,15 @@ request(WeatherForm()).load(load: MBLoadType.default(container: navigationContro
 
 #### Show mask on UIButton
 
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_button.gif)
+
 ``` swift
 request(WeatherForm()).load(load: button)
 ```
 
 #### Show customized mask
+
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_customized.gif)
 
 Firstly, we create a `LoadConfig` class conforms to `MBLoadable` protocol.
 
@@ -214,6 +222,8 @@ This is the most powful usage of the `MBLoadable` protocol. In this way you can 
 
 #### Show mask on UITableView & UIScrollView
 
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uiscrollview.gif)
+
 ``` swift
 
 let load = LoadConfig(container:self.tableView, mask: MBActivityIndicator(), inset: UIEdgeInsetsMake(UIScreen.main.bounds.width - self.tableView.contentOffset.y > 0 ? UIScreen.main.bounds.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
@@ -222,6 +232,8 @@ request(WeatherForm()).load(load: load)
 ```
 
 #### Show mask on UITableViewCell (PS: Still in development)
+
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_cell.gif)
 
 ``` swift
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -241,6 +253,8 @@ func progress(progress: MBProgressable) -> Self
 
 And then we can use it as followed:
 
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_progressable.gif)
+
 ``` swift
 download(ImageDownloadForm()).progress(progress: progress)
 ```
@@ -254,6 +268,8 @@ func warn<T: MBJSONErrorable>(error: T, warn: MBWarnable = MBMessageType.none, c
 ```
 
 And then we can use it as followed:
+
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_warnable.gif)
 
 ``` swift
 request(WeatherForm()).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
@@ -269,6 +285,8 @@ func inform<T: MBJSONErrorable>(error: T, inform: MBInformable = MBMessageType.n
 ```
 
 And then we can use it as followed:
+
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_informable.gif)
 
 ``` swift
 request(WeatherForm()).inform(error: WeatherInformError(), inform: MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
