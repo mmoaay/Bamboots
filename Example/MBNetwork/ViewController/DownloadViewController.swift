@@ -8,34 +8,33 @@
 
 import UIKit
 import MBNetwork
-import SnapKit
 import Alamofire
 
 class DownloadViewController: UIViewController, MBRequestable {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var progress: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+
+    @IBAction func download(_ sender: Any) {
+        let load = LoadConfig(container: imageView, mask:MBEyeLoading())
         
-        self.download(ImageDownloadForm()).responseData { (response:DownloadResponse<Data>) in
+        self.download(ImageDownloadForm()).load(load:load).progress(progress: progress).responseData { (response:DownloadResponse<Data>) in
             switch response.result {
             case .success(let data):
-                let image = UIImage(data: data)
-                self.imageView.snp.updateConstraints({ (make:ConstraintMaker) in
-                    make.width.equalTo(self.imageView.snp.height).multipliedBy(image!.size.width/image!.size.height)
-                })
-                self.imageView.image = image
+                self.imageView.image = UIImage(data: data)
                 break
             case .failure:
                 break
             }
         }
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

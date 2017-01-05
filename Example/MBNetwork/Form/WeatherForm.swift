@@ -14,7 +14,7 @@ struct WeatherForm: MBRequestFormable {
     var city = "shanghai"
     
     func parameters() -> [String: Any] {
-        return ["city":city]
+        return ["city": city]
     }
 
     var url = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/2ee8f34d21e8febfdefb2b3a403f18a43818d70a/sample_keypath_json"

@@ -15,8 +15,8 @@ extension MBFormable {
     }
 }
 
-extension MBFormable where Self : MBUploadFormable {
-    public func headers() -> [String : String] {
+extension MBFormable where Self: MBUploadFormable {
+    public func headers() -> [String: String] {
         return ["accessToken":"xxx", "fileName":"xxx"];
     }
 }

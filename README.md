@@ -41,10 +41,10 @@
  - `MBMessageable`: Message protocol.
    - `MBWarnable`: Warn protocol. Conforming to this protocol to customize the way of warning messages displayed when error occured.
    - `MBInformable`: Inform protocol. Conforming to this protocol to customize the way of inform messages displayed when request done successfully
- - `MBErrorable`: Error protocol. Conforming to this protocol to customize the error config info.
-   - `MBJSONErrorable`: Error protocol for the server. Conforming to this protocol to customize the error config info from the server.
+ - `MBErrorable`: Error protocol. Conforming to this protocol to customize the error configuration.
+   - `MBJSONErrorable`: Error protocol for JSON data. Conforming to this protocol to customize the error configuration for JSON data.
 
-Mostly you don't need to care much about these protocols, because we already have many **DEFAULT** implementations for them. However if you want to customize something, you just need to conform to these protocols and do what you want. Here is some default implementations for there protcols:
+Mostly you don't need to care much about these protocols, because we already have many **DEFAULT** implementations for them. However if you want to customize something, you just need to conform to these protocols and do what you want. Here is some default implementations for these protcols:
 
 - `MBLoadType`: Enum that conforms to `MBLoadable` protocol, using `case default(container:MBContainable)` case to show `MBMaskView` on the container when requesting.
 - `MBMessageType`: Enum that conforms to `MBMessageable` protocol, using `alertController(title: String, message: String? , actions: [UIAlertAction], container: MBContainable)` case to show alertController.
@@ -56,7 +56,7 @@ Mostly you don't need to care much about these protocols, because we already hav
 - `UITableViewCell+MBContainable`: Extending UITableViewCell to conform to `MBContainable` protocol.
 - `UIViewController+MBContainable`: Extending UIViewController to conform to `MBContainable` protocol.
 - `MBActivityIndicator`: Default mask for UITableViewCell and UIButton
-- `MBMaskView`: Default mask for other.
+- `MBMaskView`: Default mask for others.
 
 ## Features
 
@@ -90,9 +90,9 @@ And you can also have extension for specified protocol
 
 ``` swift
 
-extension MBFormable where Self : MBUploadFormable {
-    public func headers() -> [String : String] {
-        return ["accessToken":"xxx", "fileName":"xxx"];
+extension MBFormable where Self: MBUploadFormable {
+    public func headers() -> [String: String] {
+        return ["accessToken":"xxx", "file":"xxx"];
     }
 }
 ```
@@ -105,7 +105,7 @@ struct WeatherForm: MBRequestFormable {
     var city = "shanghai"
     
     public func parameters() -> [String: Any] {
-        return ["city":city]
+        return ["city": city]
     }
 
     var url = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/2ee8f34d21e8febfdefb2b3a403f18a43818d70a/sample_keypath_json"
@@ -151,7 +151,7 @@ func load(load: MBLoadable = MBLoadType.none) -> Self
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uiviewcontroller.gif)
 
 ``` swift
-request(WeatherForm()).load(load:MBLoadType.default(container: view))
+request(WeatherForm()).load(load: MBLoadType.default(container: view))
 ```
 
 #### Show mask on UINavigationController
@@ -215,10 +215,10 @@ Then we can use it as followed:
 
 ``` swift
 let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
-request(WeatherForm()).load(load:load)
+request(WeatherForm()).load(load: load)
 ```
 
-This is the most powful usage of the `MBLoadable` protocol. In this way you can customized everything the `MBLoadable` protocol has.
+This is the most powerful usage of the `MBLoadable` protocol. In this way you can customized everything the `MBLoadable` protocol has.
 
 #### Show mask on UITableView & UIScrollView
 
@@ -275,6 +275,7 @@ And then we can use it as followed:
 request(WeatherForm()).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
 ```
 
+> **Notice**: We only have `warn` for JSON format response now.
 
 ### Show inform message if success
 
@@ -291,6 +292,8 @@ And then we can use it as followed:
 ``` swift
 request(WeatherForm()).inform(error: WeatherInformError(), inform: MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
 ```
+
+> **Notice**: We only have `inform ` for JSON format response now.
 
 ### JSON to Object
 
@@ -312,7 +315,9 @@ All the method mentioned above can be called in a chained manner, such as follow
 
 ```swift
 let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
-request(WeatherForm()).load(load:load).progress(progress: progress).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)).inform(error: WeatherInformError(), inform: MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+let warn = MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)
+let inform = MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)
+request(WeatherForm()).load(load:load).progress(progress: progress).warn(error: WeatherError(), warn: warn).inform(error: WeatherInformError(), inform: inform)
 ```
 
 ## Bonus
@@ -321,7 +326,9 @@ request(WeatherForm()).load(load:load).progress(progress: progress).warn(error: 
 
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/MBEyeLoading.gif)
 
-You can check the file `MBEyeloading` in example project.
+We've written this motion effect when implementing the customized loading, and it's all implementing with `CAAnimationGroup`.
+
+If interested, you can check the file `MBEyeloading` in example project.
 
 ## Example
 

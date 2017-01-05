@@ -12,6 +12,7 @@ import AlamofireObjectMapper
 import Alamofire
 
 class UploadViewController: UIViewController, MBRequestable {
+    @IBOutlet var button: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class UploadViewController: UIViewController, MBRequestable {
 
     @IBAction func uploadPressed(_ sender: Any) {
         let completion:((UploadRequest) -> Void)? = { upload in
-            upload.load(load: MBLoadType.default(container: self)).inform(error: BaseError(), inform: MBMessageType.alertController(title: "Notice", message: "Upload successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+            upload.load(load: self.button).inform(error: BaseError(), inform: MBMessageType.alertController(title: "Notice", message: "Upload successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
         }
         self.upload(UploadMultiFormDataForm(), completion: completion)
     }
