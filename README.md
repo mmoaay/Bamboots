@@ -12,6 +12,7 @@
 - [Features](#features)
 - [Requirements](#requirements)
 - [Usage](#usage)
+- [Chained calls](#chained-calls)
 - [Bonus](#bonus)
 - [Example](#example)
 - [Installation](#installation)
@@ -51,18 +52,18 @@ Mostly you don't need to care much about these protocols, because we already hav
 - `UITableViewCell+MBLoadable`: With this extension, you can pass a cell directly into the `load` method of `DataRequest`.
 - `UIRefreshControl+MBLoadable`: With this extension, you can pass a UIRefreshControl directly into the `load` method of `DataRequest`.
 - `UIProgressView+MBProgressable`: With this extension, you can pass a UIProgressView directly into the `progress` method of `DataRequest`.
-- `UIScrollView+MBContainable`: Extension UIScrollView conforms to `MBContainable` protocol.
-- `UITableViewCell+MBContainable`: Extension UITableViewCell conforms to `MBContainable` protocol.
-- `UIViewController+MBContainable`: Extension UIViewController conforms to `MBContainable` protocol.
+- `UIScrollView+MBContainable`: Extending UIScrollView to conform to `MBContainable` protocol.
+- `UITableViewCell+MBContainable`: Extending UITableViewCell to conform to `MBContainable` protocol.
+- `UIViewController+MBContainable`: Extending UIViewController to conform to `MBContainable` protocol.
 - `MBActivityIndicator`: Default mask for UITableViewCell and UIButton
 - `MBMaskView`: Default mask for other.
 
 ## Features
 
- 1. There is no need to inherit any object to get the features it has, so you can extension any features you want without changing the code of **MBNetwork** itself.
+ 1. There is no need to inherit any object to get the features it has, and you can extend any features you want without changing the code of **MBNetwork** itself.
  2. We have **Default** extension for most of the protocol, so you can easily startup.
- 3. And if you have special needs, extension or conform to it.
- 4. The API was designed with the principles of Alamofire, So you can also extension it as **MBNetwork** already have done for you.
+ 3. And if you have special needs, extend or conform to it.
+ 4. The API was designed with the principles of Alamofire, So you can also extend it as **MBNetwork** already have done for you.
  5. Mainly focus on things between business development and Alamofire, not network request itself.
 
 ## Requirements
@@ -75,7 +76,7 @@ Mostly you don't need to care much about these protocols, because we already hav
 
 ### Create a form
 
-For business development, most of the reqeusts' headers are the same, so you can extension it only for once.
+For business development, most of the reqeusts' headers are the same, so you can extend it only for once.
 
 ``` swift
 extension MBFormable {
@@ -139,19 +140,170 @@ class LoadableViewController: UIViewController, MBRequestable {
 
 ### Show mask when requesting
 
+We have extended `DataRequest` class of Alamofire and added a `load` method to it.
+
+``` swift
+func load(load: MBLoadable = MBLoadType.none) -> Self
+```
+
+#### Show mask on UIViewController
+
+``` swift
+request(WeatherForm()).load(load:MBLoadType.default(container: view))
+```
+
+#### Show mask on UINavigationController
+
+``` swift
+request(WeatherForm()).load(load: MBLoadType.default(container: navigationController!.view))
+```
+
+#### Show mask on UIButton
+
+``` swift
+request(WeatherForm()).load(load: button)
+```
+
+#### Show customized mask
+
+Firstly, we create a `LoadConfig` class conforms to `MBLoadable` protocol.
+
+``` swift
+class LoadConfig: MBLoadable {
+    init(container: MBContainable? = nil, mask: MBMaskable? = MBMaskView(), inset: UIEdgeInsets = UIEdgeInsets.zero) {
+        insetMine = inset
+        maskMine = mask
+        containerMine = container
+    }
+    
+    func mask() -> MBMaskable? {
+        return maskMine
+    }
+    
+    func inset() -> UIEdgeInsets {
+        return insetMine
+    }
+    
+    func maskContainer() -> MBContainable? {
+        return containerMine
+    }
+    
+    func begin() {
+        show()
+    }
+    
+    func end() {
+        hide()
+    }
+    
+    var insetMine: UIEdgeInsets
+    var maskMine: MBMaskable?
+    var containerMine: MBContainable?
+}
+```
+
+Then we can use it as followed:
 
 
-#### Show progress when requesting
+``` swift
+let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
+request(WeatherForm()).load(load:load)
+```
+
+This is the most powful usage of the `MBLoadable` protocol. In this way you can customized everything the `MBLoadable` protocol has.
+
+#### Show mask on UITableView & UIScrollView
+
+``` swift
+
+let load = LoadConfig(container:self.tableView, mask: MBActivityIndicator(), inset: UIEdgeInsetsMake(UIScreen.main.bounds.width - self.tableView.contentOffset.y > 0 ? UIScreen.main.bounds.width - self.tableView.contentOffset.y : 0, 0, 0, 0))
+request(WeatherForm()).load(load: load)
+        
+```
+
+#### Show mask on UITableViewCell (PS: Still in development)
+
+``` swift
+override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView .deselectRow(at: indexPath, animated: false)
+    let cell = tableView.cellForRow(at: indexPath)
+    request(WeatherForm()).load(load: cell!)
+}
+```
+
+### Show progress when requesting
+
+We have extended `DownloadRequest` and `UploadRequest` class of Alamofire and added a `progress` method to it.
+
+``` swift
+func progress(progress: MBProgressable) -> Self
+```
+
+And then we can use it as followed:
+
+``` swift
+download(ImageDownloadForm()).progress(progress: progress)
+```
 
 ### Show warning message if fail
 
-#### Show inform message if success
+We have extended `DataRequest` class of Alamofire and added a `warn` method to it.
 
-#### JSON to Object
+``` swift
+func warn<T: MBJSONErrorable>(error: T, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBJSONErrorable) -> Void)? = nil) -> Self
+```
+
+And then we can use it as followed:
+
+``` swift
+request(WeatherForm()).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+```
+
+
+### Show inform message if success
+
+We have extended `DataRequest` class of Alamofire and added a `inform` method to it.
+
+``` swift
+func inform<T: MBJSONErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self
+```
+
+And then we can use it as followed:
+
+``` swift
+request(WeatherForm()).inform(error: WeatherInformError(), inform: MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+```
+
+### JSON to Object
+
+```swift
+request(WeatherForm()).responseObject(keyPath: "data") { (response: DataResponse<WeatherResponse>) in
+    if let value = response.result.value {
+        self.weatherResponse = value
+        self.tableView.reloadData()
+    }
+}
+
+```
+
+For more information, see [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper).
+
+## Chained calls
+
+All the method mentioned above can be called in a chained manner, such as followed:
+
+```swift
+let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
+request(WeatherForm()).load(load:load).progress(progress: progress).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)).inform(error: WeatherInformError(), inform: MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+```
 
 ## Bonus
 
 ### `MBEyeloading`
+
+
+
+You can check the file `MBEyeloading` in example project.
 
 ## Example
 
