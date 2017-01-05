@@ -8,6 +8,7 @@
 
 import UIKit
 import MBNetwork
+import Alamofire
 
 class HomeViewController: UITableViewController, MBRequestable {
 
@@ -25,7 +26,9 @@ class HomeViewController: UITableViewController, MBRequestable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0), (1, 0):
-            request(WeatherForm())
+            request(WeatherForm()).responseJSON(completionHandler: { (response: DataResponse<Any>) in
+                debugPrint(response)
+            })
             break
         case (1, 1):
             self.performSegue(withIdentifier: "fromHomeToDownload", sender: nil)
@@ -47,6 +50,8 @@ class HomeViewController: UITableViewController, MBRequestable {
             break;
         case (3, 0):
             self.performSegue(withIdentifier: "fromHomeToWarn", sender: nil)
+        case (3, 1):
+            self.performSegue(withIdentifier: "fromHomeToInform", sender: nil)
         default:
             break
         }

@@ -11,8 +11,16 @@ import Alamofire
 import ObjectMapper
 
 public extension DataRequest {
+    
+    /// Show warning message when error occurs
+    ///
+    /// - Parameters:
+    ///   - error: Object conforms to MBServiceErrorable protocol, used for serializing error data from service
+    ///   - warn: Object conforms to MBWarnable protocol, used for show warning message when error occurs
+    ///   - completionHandler: The code to be executed once the error code exsists in error's success codes
+    /// - Returns: The request.
     @discardableResult
-    func warn<T: MBServerErrorable>(error: T? = nil, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBServerErrorable) -> Void)? = nil) -> Self {
+    func warn<T: MBServiceErrorable>(error: T, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBServiceErrorable) -> Void)? = nil) -> Self {
 
         return response(completionHandler: { (response:DefaultDataResponse) in
             if let err = response.error {
@@ -21,7 +29,7 @@ public extension DataRequest {
         }).responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil, completionHandler: { (response:DataResponse<T>) in
             if let err = response.result.value {
                 if let code = err.code {
-                    if true == error?.successCodes.contains(code) {
+                    if true == error.successCodes.contains(code) {
                         completionHandler?(err)
                     } else {
                         warn.show(error: err)
@@ -31,14 +39,20 @@ public extension DataRequest {
         })
     }
     
+    
+    /// Show inform message when request completed successfully
+    ///
+    /// - Parameters:
+    ///   - error: Object conforms to MBServiceErrorable protocol, used for serializing error data from service
+    ///   - inform: Object conforms to MBInformable protocol, used for show inform message when request completed successfully
+    /// - Returns: The request.
     @discardableResult
-    func inform<T: MBServerErrorable>(error: T? = nil, inform: MBInformable = MBMessageType.none) -> Self {
+    func inform<T: MBServiceErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self {
         
         return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil, completionHandler: { (response:DataResponse<T>) in
-            debugPrint(response)
             if let err = response.result.value {
                 if let code = err.code {
-                    if true == error?.successCodes.contains(code) {
+                    if true == error.successCodes.contains(code) {
                         inform.show()
                     }
                 }
@@ -47,8 +61,13 @@ public extension DataRequest {
     }
     
     @discardableResult
-    func responseObject<T: BaseMappable>(queue: DispatchQueue? = nil, serialize: MBSerializable? = nil, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
-        return response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize?.dataNode, mapToObject: object, context: context), completionHandler: completionHandler)
+    func response<T: BaseMappable>(queue: DispatchQueue? = nil, serialize: MBSerializable, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
+        return response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize.dataNode, mapToObject: object, context: context), completionHandler: completionHandler)
+    }
+    
+    @discardableResult
+    func response<T: BaseMappable>(queue: DispatchQueue? = nil, serialize: MBSerializable, context: MapContext? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
+        return response(queue: queue, responseSerializer: DataRequest.ObjectMapperArraySerializer(serialize.dataNode, context: context), completionHandler: completionHandler)
     }
     
     @discardableResult
@@ -63,18 +82,18 @@ public extension DataRequest {
 
 public extension DownloadRequest {
     @discardableResult
-    func progress(progress: MBProgressable? = nil) -> Self {
+    func progress(progress: MBProgressable) -> Self {
         return downloadProgress(closure: { (prog: Progress) in
-            progress?.progress(prog)
+            progress.progress(prog)
         })
     }
 }
 
 public extension UploadRequest {
     @discardableResult
-    func progress(progress: MBProgressable? = nil) -> Self {
+    func progress(progress: MBProgressable) -> Self {
         return uploadProgress(closure: { (prog: Progress) in
-            progress?.progress(prog)
+            progress.progress(prog)
         })
     }
 }

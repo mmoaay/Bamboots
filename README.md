@@ -28,7 +28,7 @@
    - `MBWarnable`: Warn protocol. Conforming to this protocol to show warning messages that occur from the request.
    - `MBInformable`: Inform protocol. Conforming to this protocol to show specified message when request done successfully
  - `MBErrorable`: Error protocol. It defines the key things that an error should have.
-   - `MBServerErrorable`: Error protocol for the server. Conforming to this protocol to serialize error from the server.
+   - `MBServiceErrorable`: Error protocol for the server. Conforming to this protocol to serialize error from the server.
 
 ## Features
 
@@ -158,7 +158,7 @@ We've already have **Default** extension for this protocol.
 
 ### `MBErrorable`
 
-#### `MBServerErrorable`
+#### `MBServiceErrorable`
 
 ## Bonus
 

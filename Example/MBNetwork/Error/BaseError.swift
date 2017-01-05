@@ -10,8 +10,8 @@ import Foundation
 import MBNetwork
 import ObjectMapper
 
-class BaseError: MBServerErrorable {
-    var successCodes: [String] = [""]
+class BaseError: MBServiceErrorable {
+    var successCodes: [String] = ["https://httpbin.org/post"]
     
     var code: String?
     var message: String?
@@ -21,8 +21,8 @@ class BaseError: MBServerErrorable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        code <- map["data"]
-        message <- map["url"]
+        code <- map["url"]
+        message <- map["origin"]
     }
 }
 

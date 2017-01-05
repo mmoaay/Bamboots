@@ -359,6 +359,7 @@
                         <segue destination="rY7-oj-58I" kind="show" identifier="fromHomeToWarn" id="Sjv-Ve-YQC"/>
                         <segue destination="xh5-SB-rsz" kind="show" identifier="fromHomeToDownload" id="4tR-XE-DIE"/>
                         <segue destination="L6S-ew-H11" kind="show" identifier="fromHomeToUpload" id="L80-RR-X1A"/>
+                        <segue destination="b0U-i0-yzr" kind="show" identifier="fromHomeToInform" id="Kb5-8s-eDB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-ve-LhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -615,6 +616,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9s-Ke-rU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-498" y="436"/>
+        </scene>
+        <!--Informable-->
+        <scene sceneID="e2h-dN-3Az">
+            <objects>
+                <viewController id="b0U-i0-yzr" customClass="InformableViewController" customModule="MBNetwork_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rk9-ZG-VHe"/>
+                        <viewControllerLayoutGuide type="bottom" id="eyd-e2-hTJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gyy-Z1-WNW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Informable" id="eHG-GE-OcM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ZGd-XB-6jc">
+                            <connections>
+                                <action selector="load:" destination="b0U-i0-yzr" id="gr8-DJ-fF0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cs7-No-Mb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2718" y="436"/>
         </scene>
     </scenes>
 </document>

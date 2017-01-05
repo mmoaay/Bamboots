@@ -43,17 +43,18 @@ public extension MBRequestable  {
     }
     
     @discardableResult
-    func upload<E: MBServerErrorable, T: BaseMappable>(_ form: MBUploadMultiFormDataFormable, load: MBLoadable = MBLoadType.none, progress:MBProgressable? = nil, warnError: E? = nil, warn:MBWarnable = MBMessageType.none, errorHandler: ((MBServerErrorable) -> Void)? = nil, informError: E? = nil, inform:MBInformable = MBMessageType.none, queue: DispatchQueue? = nil, serialize: MBSerializable? = nil, mapToObject object: T? = nil, context: MapContext? = nil, dataHandler: @escaping (DataResponse<T>) -> Void) {
+    func upload(_ form: MBUploadMultiFormDataFormable, completion: ((UploadRequest) -> Void)?) {
         Alamofire.upload(multipartFormData: form.multipartFormData, usingThreshold: form.encodingMemoryThreshold, to: form.url, method: form.method, headers: form.headers(), encodingCompletion: { encodingResult in
             switch encodingResult {
-            case .success(var upload, _, _):
-                upload = upload.load(load: load).progress(progress:progress).warn(error: warnError, warn: warn, completionHandler: errorHandler).inform(error: informError, inform: inform).response(queue: queue, responseSerializer: DataRequest.ObjectMapperSerializer(serialize?.dataNode, mapToObject: object, context: context), completionHandler: dataHandler)
+            case .success(let upload, _, _):
+                completion?(upload)
                 break
             case .failure(let encodingError):
-                warn.show(error: encodingError.localizedDescription)
+                print(encodingError)
                 break
             }
-        })
+        }
+)
     }
     
     @discardableResult

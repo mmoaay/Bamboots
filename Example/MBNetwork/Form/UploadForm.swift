@@ -12,8 +12,7 @@ import Alamofire
 
 struct UploadMultiFormDataForm: MBUploadMultiFormDataFormable {
     var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
-//        multipartFormData.append(, withName: "unicorn")
-//        multipartFormData.append("", withName: "rainbow")
+//        multipartFormData.append(UIImagePNGRepresentation(UIImage(named: "head_image")!)!, withName: "head_image")
     }
     
     /// request url

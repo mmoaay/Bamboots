@@ -23,13 +23,18 @@ public extension MBErrorable {
     }
 }
 
-public protocol MBServerErrorable: MBErrorable, Mappable {
+public protocol MBServiceErrorable: MBErrorable, Mappable {
     
 }
 
 public protocol MBErrorable {
+    
+    /// If the code returns from the service exsists in this set, then it means the request is completed successfully.
     var successCodes: [String] { get }
     
+    /// The code returns form the service
     var code: String? { get }
+    
+    /// Corresponding message from the service
     var message: String? { get }
 }

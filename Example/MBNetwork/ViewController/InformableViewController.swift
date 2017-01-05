@@ -1,17 +1,15 @@
 //
-//  UploadViewController.swift
+//  InformableViewController.swift
 //  MBNetwork
 //
-//  Created by ZhengYidong on 01/01/2017.
+//  Created by ZhengYidong on 05/01/2017.
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import MBNetwork
-import AlamofireObjectMapper
-import Alamofire
 
-class UploadViewController: UIViewController, MBRequestable {
+class InformableViewController: UIViewController, MBRequestable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +33,7 @@ class UploadViewController: UIViewController, MBRequestable {
     }
     */
 
-    @IBAction func uploadPressed(_ sender: Any) {
-        let completion:((UploadRequest) -> Void)? = { upload in
-            upload.load(load: MBLoadType.default(container: self)).inform(error: BaseError(), inform: MBMessageType.alertController(title: "Notice", message: "Upload successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
-        }
-        self.upload(UploadMultiFormDataForm(), completion: completion)
+    @IBAction func load(_ sender: Any) {
+        request(WeatherForm()).inform(error: WeatherInformError(), inform: MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
     }
 }
