@@ -42,11 +42,11 @@ class LoadableViewController: UIViewController, MBRequestable {
     }
     
     @IBAction func loadViewController(_ sender: AnyObject) {
-        request(WeatherForm()).load(load: MBLoadType.default(container: view))
+        request(WeatherForm()).load(load: MBLoadType.default(container: self))
     }
     
     @IBAction func loadNavigationController(_ sender: AnyObject) {
-        request(WeatherForm()).load(load: MBLoadType.default(container: navigationController!.view))
+        request(WeatherForm()).load(load: MBLoadType.default(container: self.navigationController!))
     }
     
     @IBAction func loadButton(_ sender: AnyObject) {

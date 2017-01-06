@@ -23,18 +23,21 @@ public extension MBErrorable {
     }
 }
 
+
+/// Error protocol for JSON data. Conforming to this protocol to customize the error configuration for JSON data
 public protocol MBJSONErrorable: MBErrorable, Mappable {
     
 }
 
+/// Error protocol. Conforming to this protocol to customize the error configuration.
 public protocol MBErrorable {
     
-    /// If the code returns from the service exsists in this set, then it means the request is completed successfully.
+    /// Using this set with code to distinguish successful code from error code
     var successCodes: [String] { get }
     
-    /// The code returns form the service
+    /// Using this code with successCodes set to distinguish successful code from error code
     var code: String? { get }
     
-    /// Corresponding message from the service
+    /// Corresponding message
     var message: String? { get }
 }

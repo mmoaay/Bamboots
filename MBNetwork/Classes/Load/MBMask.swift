@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Mask protocol for MBLoadable, View that conforms to this protocol will be treated as mask
 public protocol MBMaskable {
     var maskId: String { get }
 }

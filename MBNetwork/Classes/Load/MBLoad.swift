@@ -11,7 +11,6 @@ import Foundation
 
 
 // MARK: - MBLoadType
-
 extension MBLoadType: MBLoadable {
     public func maskContainer() -> MBContainable? {
         switch self {
@@ -31,17 +30,30 @@ extension MBLoadType: MBLoadable {
     }
 }
 
+/// Load type enum
+///
+/// - none: No mask will be shown on maskContainer
+/// - `default`: Show mask on container
 public enum MBLoadType {
     case none
-    case `default`(container:MBContainable)
+    case `default`(container: MBContainable)
 }
 
-// MARK: - MBLoadable
+/// Protocol used for showing mask on specified container when requesting (such as add UIActivityIndicatorView on UIViewcontroller's view when request begins, and remove it when request ends). Object conforms to this protocol can be used by load method of DataRequest
 public protocol MBLoadable {
+    /// mask
+    ///
+    /// - Returns: Object that conforms to MBMaskable protocol
     func mask() -> MBMaskable?
     
+    /// inset
+    ///
+    /// - Returns: The inset between mask and maskContainer
     func inset() -> UIEdgeInsets
     
+    /// maskContainer
+    ///
+    /// - Returns: Object that conforms to MBContainable protocol
     func maskContainer() -> MBContainable?
     
     /// request begin
@@ -74,6 +86,7 @@ public extension MBLoadable {
         hide()
     }
     
+    /// Default show method for MBLoadable, calling this method will add mask on maskContainer
     func show() {
         if let mask = self.mask() as? UIView {
             var isHidden = false
@@ -90,6 +103,7 @@ public extension MBLoadable {
         }
     }
     
+    /// Default hide method for MBLoadable, calling this method will remove mask from maskContainer
     func hide() {
         if let latestMask = self.maskContainer()?.latestMask() {
             latestMask.removeFromSuperview()

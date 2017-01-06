@@ -8,11 +8,15 @@
 
 import Foundation
 
+/// Container protocol for MBLoadable, Objects conforms to this protocol can be used as container for the mask
 public protocol MBContainable {
     func containerView() -> UIView?
 }
 
 public extension MBContainable {
+    /// get latest mask on container
+    ///
+    /// - Returns: If exists, return latest mask, otherwise return nil
     internal func latestMask() -> UIView? {
         var latestMask:UIView? = nil
         if let container = containerView() {

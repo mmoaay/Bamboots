@@ -151,15 +151,7 @@ func load(load: MBLoadable = MBLoadType.none) -> Self
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uiviewcontroller.gif)
 
 ``` swift
-request(WeatherForm()).load(load: MBLoadType.default(container: view))
-```
-
-#### Show mask on UINavigationController
-
-![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uinavigationcontroller.gif)
-
-``` swift
-request(WeatherForm()).load(load: MBLoadType.default(container: navigationController!.view))
+request(WeatherForm()).load(load: MBLoadType.default(container: self))
 ```
 
 #### Show mask on UIButton

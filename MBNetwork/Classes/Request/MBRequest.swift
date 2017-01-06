@@ -13,19 +13,25 @@ import ObjectMapper
 
 public extension MBRequestable  {
 
-    /// request
+    
+    /// Send a request
     ///
-    /// - Parameters:
-    ///   - form:
+    /// - Parameters: form: Object conforms to MBRequestFormable protocol
+    /// - Returns: The created `DataRequest`.
     @discardableResult
     func request(_ form: MBRequestFormable) -> DataRequest  {
         return Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers())
     }
     
+    /// Download a file
+    ///
+    /// - Parameter form: Object conforms to MBDownloadFormable protocol
+    /// - Returns: The created `DownloadRequest`.
     @discardableResult
     func download(_ form: MBDownloadFormable) -> DownloadRequest {
         return Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination)
     }
+    
     
     @discardableResult
     func download(_ form: MBDownloadResumeFormable) -> DownloadRequest {
@@ -63,11 +69,8 @@ public extension MBRequestable  {
     }
 }
 
-// MARK: - MBRequestable
 
-/**
- 满足 MBRequestable 协议的类型可以进行网络请求
- */
+///  Network request protocol, object conforms to this protocol can make network request
 public protocol MBRequestable: class{
     
 }

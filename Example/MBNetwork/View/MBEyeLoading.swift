@@ -76,11 +76,11 @@ class MBEyeLoading: UIView , MBMaskable{
     init() {
         super.init(frame: CGRect.zero)
         
-        self.backgroundColor = UIColor(colorLiteralRed: 73.0/255.0, green: 148.0/255.0, blue: 241.0/255.0, alpha: 1)
+        self.backgroundColor = UIColor(colorLiteralRed: 0.0/255.0, green: 138.0/255.0, blue: 241.0/255.0, alpha: 1)
         
         eyelidView.backgroundColor = UIColor.white
         
-        eyeballView.backgroundColor = UIColor(colorLiteralRed: 73.0/255.0, green: 148.0/255.0, blue: 241.0/255.0, alpha: 1)
+        eyeballView.backgroundColor = UIColor(colorLiteralRed: 0.0/255.0, green: 138.0/255.0, blue: 241.0/255.0, alpha: 1)
         
         self.addSubview(eyelidView)
         eyelidView.addSubview(whitesView)

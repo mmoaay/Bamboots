@@ -28,12 +28,10 @@ class LoadConfig: MBLoadable {
         return containerMine
     }
     
-    /// 请求开始
     func begin() {
         show()
     }
     
-    /// 请求结束
     func end() {
         hide()
     }

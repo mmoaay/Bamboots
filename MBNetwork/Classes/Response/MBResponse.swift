@@ -65,8 +65,11 @@ public extension DataRequest {
     @discardableResult
     func load(load: MBLoadable = MBLoadType.none) -> Self {
         load.begin()
-        return response { (response: DefaultDataResponse) in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.5) {
             load.end()
+        }
+        return response { (response: DefaultDataResponse) in
+//            load.end()
         }
     }
 }

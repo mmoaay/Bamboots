@@ -10,9 +10,6 @@ import Foundation
 import Alamofire
 
 public extension MBRequestFormable {
-    /// Default encoding
-    ///
-    /// - Returns: Default URLEncoding
     func encoding() -> ParameterEncoding {
         return Alamofire.URLEncoding.default
     }
@@ -27,10 +24,11 @@ public extension MBRequestFormable {
     }
 }
 
+/// Conforming to this protocol to create a request form
 public protocol MBRequestFormable: MBFormable {
-    /// encoding
+    /// encoding, you can customize the encoding method by returning an encoding object that conforms to ParameterEncoding protocol
     ///
-    /// - Returns: encoding
+    /// - Returns:  object that conforms to ParameterEncoding protocol
     func encoding() -> ParameterEncoding
     
     /// request parameters
@@ -39,10 +37,12 @@ public protocol MBRequestFormable: MBFormable {
     func parameters() -> [String: Any]
 }
 
+/// Download Form protocol, Base protocol for download request form
 public protocol MBDownloadFormable: MBRequestFormable {
     var destination: DownloadRequest.DownloadFileDestination { get }
 }
 
+/// Conforming to this protocol to create a download form that can resume a download task
 public protocol MBDownloadResumeFormable: MBDownloadFormable {
     var resumeData: Data { get }
 }
@@ -53,20 +53,25 @@ public extension MBUploadMultiFormDataFormable {
     }
 }
 
+/// Conforming to this protocol to create an upload form that contains multiformdata
 public protocol MBUploadMultiFormDataFormable: MBUploadFormable {
     var encodingMemoryThreshold: UInt64 { get }
     
     var multipartFormData: (MultipartFormData) -> Void { get }
 }
 
+/// Conforming to this protocol to create an upload form that contains a file
 public protocol MBUploadFileFormable: MBUploadFormable {
     var fileURL: URL { get }
 }
 
+/// Conforming to this protocol to create an upload form that contains a data object
 public protocol MBUploadDataFormable: MBUploadFormable {
     var data: Data { get }
 }
 
+
+/// Conforming to this protocol to create an upload form that contains a stream object
 public protocol MBUploadStreamFormable: MBUploadFormable {
     var stream: InputStream { get }
 }
@@ -77,11 +82,13 @@ public extension MBUploadFormable {
     }
 }
 
+
+/// Upload Form protocol, Base protocol for upload request form
 public protocol MBUploadFormable: MBFormable {
     
 }
 
-/// MBFormable
+/// Form protocol. Object conforms to this protocol can be used by the request, download, upload method in MBRequestable protocol
 public protocol MBFormable {
     /// request url
     var url: String { get }
