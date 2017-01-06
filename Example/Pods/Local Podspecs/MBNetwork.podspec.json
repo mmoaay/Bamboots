@@ -1,6 +1,6 @@
 {
   "name": "MBNetwork",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "summary": "MBNetwork - Network request can be easier",
   "description": "MBNetwork is a network request framework based on Alamofire and ObjectMapper, aiming at making network request easier for business development",
   "homepage": "https://github.com/mmoaay/MBNetwork",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/mmoaay/MBNetwork.git",
-    "tag": "0.1.0"
+    "tag": "0.2.0"
   },
   "platforms": {
     "ios": "8.0"
@@ -21,14 +21,11 @@
   "source_files": "MBNetwork/Classes/**/*",
   "resources": "MBNetwork/Assets/**/*",
   "dependencies": {
-    "Alamofire": [
-      "~>4"
-    ],
     "SwiftProtobuf": [
 
     ],
     "AlamofireObjectMapper": [
-
+      "~>4"
     ]
   }
 }
