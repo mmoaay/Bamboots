@@ -5,7 +5,7 @@ env:
   global:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
-    - XCODE_WORKSPACE=MBNetwork.xcworkspace
+    - XCODE_WORKSPACE=./Example/MBNetwork.xcworkspace
   matrix:
     - SCHEME="MBNetwork"
 
