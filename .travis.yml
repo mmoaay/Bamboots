@@ -1,24 +1,10 @@
 language: objective-c
-cache: cocoapods
-rvm: 2.2.2
 osx_image: xcode8
 
-env:
-  global:
-    - LANG=en_US.UTF-8
-    - LC_ALL=en_US.UTF-8
-    - XCODE_WORKSPACE=./Example/MBNetwork.xcworkspace
-  matrix:
-    - SCHEME="MBNetwork"
 
-before_install:
-  - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-  - gem install xcpretty
 
 script:
-  - set -o pipefail
-  - xcodebuild -workspace "$XCODE_WORKSPACE" -scheme "$SCHEME" -configuration Debug clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
-  - xcodebuild -workspace "$XCODE_WORKSPACE" -scheme "$SCHEME" -configuration Release clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
+  - xctool -workspace Example/MBNetwork.xcworkspace -scheme MBNetwork-Example -sdk iphonesimulator
 
 notifications:
   email: false
