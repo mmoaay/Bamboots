@@ -26,9 +26,9 @@ public extension MBRequestFormable {
 
 /// Conforming to this protocol to create a request form
 public protocol MBRequestFormable: MBFormable {
-    /// encoding, you can customize the encoding method by returning an encoding object that conforms to ParameterEncoding protocol
+    /// encoding, you can customize the encoding method by returning an encoding object that conforms to `ParameterEncoding` protocol
     ///
-    /// - Returns:  object that conforms to ParameterEncoding protocol
+    /// - Returns:  object that conforms to `ParameterEncoding` protocol
     func encoding() -> ParameterEncoding
     
     /// request parameters
@@ -88,7 +88,7 @@ public protocol MBUploadFormable: MBFormable {
     
 }
 
-/// Form protocol. Object conforms to this protocol can be used by the request, download, upload method in MBRequestable protocol
+/// Form protocol. Object conforms to this protocol can be used by the request, download, upload method in `MBRequestable` protocol
 public protocol MBFormable {
     /// request url
     var url: String { get }

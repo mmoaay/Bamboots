@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Making UIRefreshControl conforms to MBLoadable
+// MARK: - Making `UIRefreshControl` conforms to `MBLoadable`
 extension UIRefreshControl: MBLoadable {
     
     /// Begin refreshing when network request begins

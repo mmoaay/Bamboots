@@ -1,5 +1,18 @@
 language: objective-c
-osx_image: xcode8.1
-xcode_workspace: ./Example/MBNetwork.xcworkspace
-xcode_scheme: MBNetwork
-xcode_sdk: iphonesimulator9.3
+osx_image: xcode8
+
+env:
+  global:
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    - XCODE_WORKSPACE=MBNetwork.xcworkspace
+  matrix:
+    - SCHEME="MBNetwork"
+
+script:
+  - set -o pipefail
+  - xcodebuild -workspace "$XCODE_WORKSPACE" -scheme "$SCHEME" -configuration Debug clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -workspace "$XCODE_WORKSPACE" -scheme "$SCHEME" -configuration Release clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
+notifications:
+  email: false

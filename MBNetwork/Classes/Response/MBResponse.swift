@@ -15,9 +15,9 @@ public extension DataRequest {
     /// Show warning message when error occurs
     ///
     /// - Parameters:
-    ///   - error: Object conforms to MBJSONErrorable protocol, used for serializing error data from service
-    ///   - warn: Object conforms to MBWarnable protocol, used for show warning message when error occurs
-    ///   - completionHandler: The code to be executed once the error code exsists in error's success codes
+    ///   - error: Object conforms to `MBJSONErrorable` protocol, used for serializing JSON error data from service.
+    ///   - warn: Object conforms to `MBWarnable` protocol, used for showing warning message when error occurs.
+    ///   - completionHandler: The closure called once the error code exsists in error's `successCodes` set.
     /// - Returns: The request.
     @discardableResult
     func warn<T: MBJSONErrorable>(error: T, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBJSONErrorable) -> Void)? = nil) -> Self {
@@ -43,8 +43,8 @@ public extension DataRequest {
     /// Show inform message when request completed successfully
     ///
     /// - Parameters:
-    ///   - error: Object conforms to MBJSONErrorable protocol, used for serializing error data from service
-    ///   - inform: Object conforms to MBInformable protocol, used for show inform message when request completed successfully
+    ///   - error: Object conforms to `MBJSONErrorable` protocol, used for serializing JSON error data from service.
+    ///   - inform: Object conforms to 1MBInformable1 protocol, used for showing inform message when request completed successfully.
     /// - Returns: The request.
     @discardableResult
     func inform<T: MBJSONErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self {
@@ -62,20 +62,25 @@ public extension DataRequest {
 }
 
 public extension DataRequest {
+    /// Show mask when request begins and hide mask when request ends
+    ///
+    /// - Parameter load: Object conforms to `MBLoadable` protocol
+    /// - Returns: The request.
     @discardableResult
     func load(load: MBLoadable = MBLoadType.none) -> Self {
         load.begin()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.5) {
-            load.end()
-        }
         return response { (response: DefaultDataResponse) in
-//            load.end()
+            load.end()
         }
     }
 }
 
 
 public extension DownloadRequest {
+    /// Show progress of the request
+    ///
+    /// - Parameter progress: Object conforms to `MBProgressable` protocol
+    /// - Returns: The request.
     @discardableResult
     func progress(progress: MBProgressable) -> Self {
         return downloadProgress(closure: { (prog: Progress) in
@@ -83,6 +88,10 @@ public extension DownloadRequest {
         })
     }
     
+    /// Show mask when request begins and hide mask when request ends
+    ///
+    /// - Parameter load: Object conforms to `MBLoadable` protocol
+    /// - Returns: The request.
     @discardableResult
     func load(load: MBLoadable = MBLoadType.none) -> Self {
         load.begin()
@@ -93,6 +102,11 @@ public extension DownloadRequest {
 }
 
 public extension UploadRequest {
+    /// Show progress of the request
+    ///
+    /// - Parameter progress: Object conforms to `MBProgressable` protocol
+    /// - Returns: The request.
+    /// - Returns: The request.
     @discardableResult
     func progress(progress: MBProgressable) -> Self {
         return uploadProgress { (prog: Progress) in

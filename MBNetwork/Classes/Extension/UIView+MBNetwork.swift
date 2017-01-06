@@ -45,7 +45,7 @@ internal extension UIView {
 }
 
 
-// MARK: - Making UIView conforms to MBContainable
+// MARK: - Making `UIView` conforms to `MBContainable`
 extension UIView: MBContainable {
     
     /// Return self as container for view

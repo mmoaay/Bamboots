@@ -402,7 +402,7 @@
                                     <constraint firstAttribute="height" constant="44" id="jv3-Ea-mOI"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Show Loading on UIViewController">
+                                <state key="normal" title="Show mask on UIViewController">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -421,7 +421,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="h7I-35-7IT"/>
                                     <constraint firstAttribute="height" constant="44" id="x6D-x5-q0n"/>
                                 </constraints>
-                                <state key="normal" title="Show Loading on UINavigationController">
+                                <state key="normal" title="Show mask on UINavigationController">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -441,7 +441,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="CF0-8T-QTs"/>
                                     <constraint firstAttribute="height" constant="44" id="GoN-8e-2bJ"/>
                                 </constraints>
-                                <state key="normal" title="Show Customized Loading">
+                                <state key="normal" title="Show Customized mask">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -462,7 +462,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="h0v-MM-ZdM"/>
                                     <constraint firstAttribute="height" constant="44" id="kue-qd-Qqg"/>
                                 </constraints>
-                                <state key="normal" title="Show Loading on UIButton">
+                                <state key="normal" title="Show mask on UIButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

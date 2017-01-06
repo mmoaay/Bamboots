@@ -8,12 +8,12 @@
 
 import Foundation
 
-// MARK: - Making UITableViewCell conforms to MBContainable
+// MARK: - Making `UITableViewCell` conforms to `MBContainable`
 extension UITableViewCell {
     
-    /// Return contentView as container for UITableViewCell
+    /// Return contentView as container for `UITableViewCell`
     ///
-    /// - Returns: ContentView of UITableViewCell
+    /// - Returns: `contentView` of `UITableViewCell`
     public override func containerView() -> UIView? {
         return self.contentView
     }

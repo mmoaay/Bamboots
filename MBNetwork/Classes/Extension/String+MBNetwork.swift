@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Making String conforms to MBErrorable
+// MARK: - Making `String` conforms to `MBErrorable`
 extension String: MBErrorable {
     public var message: String? {
         return self

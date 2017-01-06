@@ -9,7 +9,7 @@
 import Foundation
 
 
-// MARK: - Making UIButton conforms to MBLoadable
+// MARK: - Making `UIButton` conforms to `MBLoadable`
 extension UIButton: MBLoadable {
     
     public func maskContainer() -> MBContainable? {

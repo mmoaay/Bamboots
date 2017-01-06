@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Container protocol for MBLoadable, Objects conforms to this protocol can be used as container for the mask
+/// Container protocol for `MBLoadable`, Objects conforms to this protocol can be used as container for the mask
 public protocol MBContainable {
     func containerView() -> UIView?
 }
