@@ -22,7 +22,7 @@ class ProgressableViewController: UIViewController, MBRequestable {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func load(_ sender: Any) {
         self.download(ImageDownloadForm()).progress(progress: progress)
     }

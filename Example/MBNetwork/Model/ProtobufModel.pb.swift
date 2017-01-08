@@ -9,143 +9,184 @@
 import Foundation
 import SwiftProtobuf
 
-
 public struct SearchRequest: ProtobufGeneratedMessage {
-  public var swiftClassName: String {return "SearchRequest"}
-  public var protoMessageName: String {return "SearchRequest"}
-  public var protoPackageName: String {return ""}
-  public var jsonFieldNames: [String: Int] {return [
-    "id": 1,
-    "title": 2,
-    "author": 3,
-  ]}
-  public var protoFieldNames: [String: Int] {return [
-    "id": 1,
-    "title": 2,
-    "author": 3,
-  ]}
+    public var swiftClassName: String {return "SearchRequest"}
+    public var protoMessageName: String {return "SearchRequest"}
+    public var protoPackageName: String {return ""}
+    public var jsonFieldNames: [String: Int] {return [
+        "id": 1,
+        "title": 2,
+        "author": 3
+        ]}
+    public var protoFieldNames: [String: Int] {return [
+        "id": 1,
+        "title": 2,
+        "author": 3
+        ]}
 
-  public var id: Int64 = 0
+    public var id: Int64 = 0
 
-  public var title: String = ""
+    public var title: String = ""
 
-  public var author: String = ""
+    public var author: String = ""
 
-  public init() {}
+    public init() {}
 
-  public init(id: Int64? = nil,
-    title: String? = nil,
-    author: String? = nil)
-  {
-    if let v = id {
-      self.id = v
+    public init(id: Int64? = nil, title: String? = nil, author: String? = nil) {
+        if let v = id {
+            self.id = v
+        }
+        if let v = title {
+            self.title = v
+        }
+        if let v = author {
+            self.author = v
+        }
     }
-    if let v = title {
-      self.title = v
-    }
-    if let v = author {
-      self.author = v
-    }
-  }
 
-  public mutating func _protoc_generated_decodeField(setter: inout ProtobufFieldDecoder, protoFieldNumber: Int) throws -> Bool {
-    let handled: Bool
-    switch protoFieldNumber {
-    case 1: handled = try setter.decodeSingularField(fieldType: ProtobufInt64.self, value: &id)
-    case 2: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &title)
-    case 3: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &author)
-    default:
-      handled = false
+    public mutating func _protoc_generated_decodeField(
+        setter: inout ProtobufFieldDecoder, protoFieldNumber: Int
+        ) throws -> Bool {
+        let handled: Bool
+        switch protoFieldNumber {
+        case 1: handled = try setter.decodeSingularField(fieldType: ProtobufInt64.self, value: &id)
+        case 2: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &title)
+        case 3: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &author)
+        default:
+            handled = false
+        }
+        return handled
     }
-    return handled
-  }
 
-  public func _protoc_generated_traverse(visitor: inout ProtobufVisitor) throws {
-    if id != 0 {
-      try visitor.visitSingularField(fieldType: ProtobufInt64.self, value: id, protoFieldNumber: 1, protoFieldName: "id", jsonFieldName: "id", swiftFieldName: "id")
+    public func _protoc_generated_traverse(visitor: inout ProtobufVisitor) throws {
+        if id != 0 {
+            try visitor.visitSingularField(
+                fieldType: ProtobufInt64.self,
+                value: id,
+                protoFieldNumber: 1,
+                protoFieldName: "id",
+                jsonFieldName: "id",
+                swiftFieldName: "id"
+            )
+        }
+        if title != "" {
+            try visitor.visitSingularField(
+                fieldType: ProtobufString.self,
+                value: title,
+                protoFieldNumber: 2,
+                protoFieldName: "title",
+                jsonFieldName: "title",
+                swiftFieldName: "title"
+            )
+        }
+        if author != "" {
+            try visitor.visitSingularField(
+                fieldType: ProtobufString.self,
+                value: author,
+                protoFieldNumber: 3,
+                protoFieldName: "author",
+                jsonFieldName: "author",
+                swiftFieldName: "author"
+            )
+        }
     }
-    if title != "" {
-      try visitor.visitSingularField(fieldType: ProtobufString.self, value: title, protoFieldNumber: 2, protoFieldName: "title", jsonFieldName: "title", swiftFieldName: "title")
-    }
-    if author != "" {
-      try visitor.visitSingularField(fieldType: ProtobufString.self, value: author, protoFieldNumber: 3, protoFieldName: "author", jsonFieldName: "author", swiftFieldName: "author")
-    }
-  }
 
-  public func _protoc_generated_isEqualTo(other: SearchRequest) -> Bool {
-    if id != other.id {return false}
-    if title != other.title {return false}
-    if author != other.author {return false}
-    return true
-  }
+    public func _protoc_generated_isEqualTo(other: SearchRequest) -> Bool {
+        if id != other.id {return false}
+        if title != other.title {return false}
+        if author != other.author {return false}
+        return true
+    }
 }
 
 public struct SearchResponse: ProtobufGeneratedMessage {
-  public var swiftClassName: String {return "SearchResponse"}
-  public var protoMessageName: String {return "SearchResponse"}
-  public var protoPackageName: String {return ""}
-  public var jsonFieldNames: [String: Int] {return [
-    "id": 1,
-    "name": 2,
-    "keys": 4,
-  ]}
-  public var protoFieldNames: [String: Int] {return [
-    "id": 1,
-    "name": 2,
-    "keys": 4,
-  ]}
+    public var swiftClassName: String {return "SearchResponse"}
+    public var protoMessageName: String {return "SearchResponse"}
+    public var protoPackageName: String {return ""}
+    public var jsonFieldNames: [String: Int] {return [
+        "id": 1,
+        "name": 2,
+        "keys": 4
+        ]}
+    public var protoFieldNames: [String: Int] {return [
+        "id": 1,
+        "name": 2,
+        "keys": 4
+        ]}
 
-  public var id: Int64 = 0
+    public var id: Int64 = 0
 
-  public var name: String = ""
+    public var name: String = ""
 
-  public var keys: Dictionary<String,String> = [:]
+    public var keys: Dictionary<String, String> = [:]
 
-  public init() {}
+    public init() {}
 
-  public init(id: Int64? = nil,
-    name: String? = nil,
-    keys: Dictionary<String,String> = [:])
-  {
-    if let v = id {
-      self.id = v
+    public init(id: Int64? = nil, name: String? = nil, keys: Dictionary<String, String> = [:]) {
+        if let v = id {
+            self.id = v
+        }
+        if let v = name {
+            self.name = v
+        }
+        if !keys.isEmpty {
+            self.keys = keys
+        }
     }
-    if let v = name {
-      self.name = v
-    }
-    if !keys.isEmpty {
-      self.keys = keys
-    }
-  }
 
-  public mutating func _protoc_generated_decodeField(setter: inout ProtobufFieldDecoder, protoFieldNumber: Int) throws -> Bool {
-    let handled: Bool
-    switch protoFieldNumber {
-    case 1: handled = try setter.decodeSingularField(fieldType: ProtobufInt64.self, value: &id)
-    case 2: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &name)
-    case 4: handled = try setter.decodeMapField(fieldType: ProtobufMap<ProtobufString,ProtobufString>.self, value: &keys)
-    default:
-      handled = false
+    public mutating func _protoc_generated_decodeField(
+        setter: inout ProtobufFieldDecoder, protoFieldNumber: Int
+        ) throws -> Bool {
+        let handled: Bool
+        switch protoFieldNumber {
+        case 1: handled = try setter.decodeSingularField(fieldType: ProtobufInt64.self, value: &id)
+        case 2: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &name)
+        case 4: handled = try setter.decodeMapField(
+            fieldType: ProtobufMap<ProtobufString, ProtobufString>.self, value: &keys
+            )
+        default:
+            handled = false
+        }
+        return handled
     }
-    return handled
-  }
 
-  public func _protoc_generated_traverse(visitor: inout ProtobufVisitor) throws {
-    if id != 0 {
-      try visitor.visitSingularField(fieldType: ProtobufInt64.self, value: id, protoFieldNumber: 1, protoFieldName: "id", jsonFieldName: "id", swiftFieldName: "id")
+    public func _protoc_generated_traverse(visitor: inout ProtobufVisitor) throws {
+        if id != 0 {
+            try visitor.visitSingularField(
+                fieldType: ProtobufInt64.self,
+                value: id,
+                protoFieldNumber: 1,
+                protoFieldName: "id",
+                jsonFieldName: "id",
+                swiftFieldName: "id"
+            )
+        }
+        if name != "" {
+            try visitor.visitSingularField(
+                fieldType: ProtobufString.self,
+                value: name,
+                protoFieldNumber: 2,
+                protoFieldName: "name",
+                jsonFieldName: "name",
+                swiftFieldName: "name"
+            )
+        }
+        if !keys.isEmpty {
+            try visitor.visitMapField(
+                fieldType: ProtobufMap<ProtobufString, ProtobufString>.self,
+                value: keys,
+                protoFieldNumber: 4,
+                protoFieldName: "keys",
+                jsonFieldName: "keys",
+                swiftFieldName: "keys"
+            )
+        }
     }
-    if name != "" {
-      try visitor.visitSingularField(fieldType: ProtobufString.self, value: name, protoFieldNumber: 2, protoFieldName: "name", jsonFieldName: "name", swiftFieldName: "name")
-    }
-    if !keys.isEmpty {
-      try visitor.visitMapField(fieldType: ProtobufMap<ProtobufString,ProtobufString>.self, value: keys, protoFieldNumber: 4, protoFieldName: "keys", jsonFieldName: "keys", swiftFieldName: "keys")
-    }
-  }
 
-  public func _protoc_generated_isEqualTo(other: SearchResponse) -> Bool {
-    if id != other.id {return false}
-    if name != other.name {return false}
-    if keys != other.keys {return false}
-    return true
-  }
+    public func _protoc_generated_isEqualTo(other: SearchResponse) -> Bool {
+        if id != other.id {return false}
+        if name != other.name {return false}
+        if keys != other.keys {return false}
+        return true
+    }
 }

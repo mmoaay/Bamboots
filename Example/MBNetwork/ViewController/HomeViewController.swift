@@ -22,7 +22,7 @@ class HomeViewController: UITableViewController, MBRequestable {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0), (1, 0):
@@ -47,7 +47,7 @@ class HomeViewController: UITableViewController, MBRequestable {
             break
         case (0, 2):
             self.performSegue(withIdentifier: "fromHomeToProgress", sender: nil)
-            break;
+            break
         case (3, 0):
             self.performSegue(withIdentifier: "fromHomeToWarn", sender: nil)
         case (3, 1):
@@ -58,13 +58,12 @@ class HomeViewController: UITableViewController, MBRequestable {
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }

@@ -12,7 +12,7 @@ import Alamofire
 
 extension MBMessageType: MBWarnable, MBInformable {
     public func show() {
-       show(error: nil)
+        show(error: nil)
     }
 
     public func show(error: MBErrorable?) {
@@ -22,18 +22,18 @@ extension MBMessageType: MBWarnable, MBInformable {
         case .alertController(let title, var message, let actions, let container):
             if let err = error {
                 message = err.message
-                
+
                 if "" == err.message {
                     return
                 }
             }
-            
+
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            
+
             for action in actions {
                 alertController.addAction(action)
             }
-            
+
             if let container = container.containerView() {
                 container.viewController()?.present(alertController, animated: true, completion: nil)
             }
@@ -42,14 +42,13 @@ extension MBMessageType: MBWarnable, MBInformable {
     }
 }
 
-
 /// Message type enum
 ///
 /// - none: No message will be shown
 /// - alertController: Show alertController with tile, message and actions on container
 public enum MBMessageType {
     case none
-    case alertController(title: String, message: String? , actions: [UIAlertAction], container: MBContainable)
+    case alertController(title: String, message: String?, actions: [UIAlertAction], container: MBContainable)
 }
 
 public extension MBInformable {
