@@ -76,7 +76,7 @@ Mostly you don't need to care much about these protocols, because we already hav
 
 ### Create a form
 
-For business development, most of the reqeusts' headers are the same, so you can extend it only for once.
+For business development, most of the requests' headers are the same, so you can extend it only for once.
 
 ``` swift
 extension MBFormable {
@@ -251,6 +251,8 @@ override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: Inde
 }
 ```
 
+We can also support other refresh control such as `MJRefresh`.
+
 ### Show progress when requesting
 
 We have extended `DownloadRequest` and `UploadRequest` class of Alamofire and added a `progress` method to it.
@@ -323,8 +325,11 @@ All the method mentioned above can be called in a chained manner, such as follow
 
 ```swift
 let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
+
 let warn = MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)
+
 let inform = MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)
+
 request(WeatherForm()).load(load:load).progress(progress: progress).warn(error: WeatherError(), warn: warn).inform(error: WeatherInformError(), inform: inform)
 ```
 
@@ -334,7 +339,7 @@ request(WeatherForm()).load(load:load).progress(progress: progress).warn(error: 
 
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/MBEyeLoading.gif)
 
-We've written this motion effect when implementing the customized loading, and it's all implementing with `CAAnimationGroup`.
+We've written this motion effect when implementing the customized loading, and it's all implemented with `CAAnimationGroup`.
 
 If interested, you can check the file `MBEyeloading` in example project.
 
