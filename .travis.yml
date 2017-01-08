@@ -1,13 +1,11 @@
 language: objective-c
-cache: cocoapods
-rvm: 2.2.2
 osx_image: xcode8
 
 env:
   global:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
-    - XCODE_WORKSPACE=./Example/MBNetwork.xcworkspace
+    - XCODE_WORKSPACE=./Example/MBNetwork-Example.xcworkspace
   matrix:
     - SCHEME="MBNetwork"
 
