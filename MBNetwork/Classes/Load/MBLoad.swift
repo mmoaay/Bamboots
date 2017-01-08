@@ -41,25 +41,25 @@ public enum MBLoadType {
 
 /// Protocol used for showing mask on specified container when requesting (such as add `UIActivityIndicatorView` on `UIViewcontroller`'s view when request begins, and remove it when request ends). Object conforms to this protocol can be used by load method of DataRequest
 public protocol MBLoadable {
-    /// mask
+    /// Mask
     ///
     /// - Returns: Object that conforms to `MBMaskable` protocol
     func mask() -> MBMaskable?
     
-    /// inset
+    /// Inset
     ///
     /// - Returns: The inset between mask and maskContainer
     func inset() -> UIEdgeInsets
     
-    /// maskContainer
+    /// Mask Container
     ///
     /// - Returns: Object that conforms to `MBContainable` protocol
     func maskContainer() -> MBContainable?
     
-    /// request begin
+    /// Request begin
     func begin()
     
-    /// request end
+    /// Request end
     func end()
 }
 

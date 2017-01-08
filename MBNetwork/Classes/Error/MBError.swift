@@ -9,6 +9,7 @@
 import Foundation
 import ObjectMapper
 
+// MARK: - Default extension for `MBErrorable`
 public extension MBErrorable {
     var successCodes: [String] {
         return []

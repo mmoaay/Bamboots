@@ -1,32 +1,34 @@
 //
-//  UIButton+MBNetwork.swift
+//  UIControl+MBLoadable.swift
 //  Pods
 //
-//  Created by ZhengYidong on 15/12/2016.
+//  Created by ZhengYidong on 08/01/2017.
 //
 //
 
 import Foundation
 
-
-// MARK: - Making `UIButton` conforms to `MBLoadable`
-extension UIButton: MBLoadable {
+// MARK: - Making `UIControl` conforms to `MBLoadable`
+extension UIControl: MBLoadable {
     
     public func maskContainer() -> MBContainable? {
         return self
     }
     
     public func mask() -> MBMaskable? {
-        return MBActivityIndicator()
+        let mask = MBActivityIndicator()
+        mask.backgroundColor = backgroundColor
+        mask.color = tintColor
+        return mask
     }
     
-    /// Making disabled when network request begins
+    /// Making it disabled when network request begins
     public func begin() {
         isEnabled = false
         show()
     }
     
-    /// Making enabled when the last network request ends
+    /// Making it enabled when the last network request ends
     public func end() {
         if let latestMask = self.maskContainer()?.latestMask() {
             if false == latestMask.isHidden {

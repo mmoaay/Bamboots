@@ -15,7 +15,7 @@ extension LoadableTableViewController{
         tableHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
         tableView.tableHeaderView = tableHeaderView
         
-        refresh.attributedTitle = NSAttributedString(string: "Loadable refresh control")
+        refresh.attributedTitle = NSAttributedString(string: "Loadable UIRefreshControl")
         refresh.addTarget(self, action: #selector(LoadableTableViewController.refresh(refresh:)), for: .valueChanged)
         tableView.addSubview(refresh)
     }
@@ -26,7 +26,7 @@ extension LoadableTableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoadableCell", for: indexPath)
-        cell.textLabel?.text = String(format: "Show loading on cell", indexPath.row)
+        cell.textLabel?.text = String(format: "Show mask on UITableViewCell", indexPath.row)
         return cell
     }
     

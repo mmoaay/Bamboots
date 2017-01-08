@@ -11,9 +11,9 @@ import Foundation
 // MARK: - Making `UIViewController` conforms to `MBContainable`
 extension UIViewController: MBContainable {
     
-    /// Return view as container for UIViewController
+    /// Return `view` as container for `UIViewController`
     ///
-    /// - Returns: View of UIViewController
+    /// - Returns: `view` of `UIViewController`
     public func containerView() -> UIView? {
         return self.view
     }

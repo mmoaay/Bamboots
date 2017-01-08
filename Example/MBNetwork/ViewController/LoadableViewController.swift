@@ -10,14 +10,11 @@ import UIKit
 import MBNetwork
 
 class LoadableViewController: UIViewController, MBRequestable {
-    
-    @IBOutlet weak var button: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        loadCustom(NSObject())
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +34,7 @@ class LoadableViewController: UIViewController, MBRequestable {
     */
 
     @IBAction func loadCustom(_ sender: AnyObject) {
-        let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
+        let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(15+64, 15, UIScreen.main.bounds.height-64-(44*5+15+15*4), 15))
         request(WeatherForm()).load(load: load)
     }
     
@@ -50,6 +47,12 @@ class LoadableViewController: UIViewController, MBRequestable {
     }
     
     @IBAction func loadButton(_ sender: AnyObject) {
-        request(WeatherForm()).load(load: button)
+        request(WeatherForm()).load(load: sender as! MBLoadable)
+    }
+    @IBAction func loadRoundButton(_ sender: Any) {
+        request(WeatherForm()).load(load: sender as! MBLoadable)
+    }
+    @IBAction func loadCircleButton(_ sender: Any) {
+        request(WeatherForm()).load(load: sender as! MBLoadable)
     }
 }

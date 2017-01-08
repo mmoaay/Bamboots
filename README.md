@@ -228,6 +228,20 @@ request(WeatherForm()).load(load: load)
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_cell.gif)
 
 ``` swift
+refresh.attributedTitle = NSAttributedString(string: "Loadable UIRefreshControl")
+refresh.addTarget(self, action: #selector(LoadableTableViewController.refresh(refresh:)), for: .valueChanged)
+tableView.addSubview(refresh)
+     
+func refresh(refresh: UIRefreshControl) {
+    request(WeatherForm()).load(load: refresh)
+}
+```
+
+### Loadable `UIRefreshControl`
+
+![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_refresh.gif)
+
+``` swift
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView .deselectRow(at: indexPath, animated: false)
     let cell = tableView.cellForRow(at: indexPath)

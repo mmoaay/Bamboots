@@ -396,15 +396,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAG-n3-5EF">
-                                <rect key="frame" x="15" y="94" width="345" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.54117647059999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="15" y="79" width="345" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jv3-Ea-mOI"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Show mask on UIViewController">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Show mask on UIViewController"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="4"/>
@@ -415,15 +413,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wN-MP-2hq">
-                                <rect key="frame" x="15" y="153" width="345" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.54117647059999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="15" y="138" width="345" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="h7I-35-7IT"/>
                                     <constraint firstAttribute="height" constant="44" id="x6D-x5-q0n"/>
                                 </constraints>
-                                <state key="normal" title="Show mask on UINavigationController">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Show mask on UINavigationController"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="4"/>
@@ -434,16 +430,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRC-Vh-YyH">
-                                <rect key="frame" x="15" y="212" width="345" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.54117647059999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="15" y="197" width="345" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="5Mr-qX-wgX"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="CF0-8T-QTs"/>
                                     <constraint firstAttribute="height" constant="44" id="GoN-8e-2bJ"/>
                                 </constraints>
-                                <state key="normal" title="Show Customized mask">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Show Customized mask"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="4"/>
@@ -454,8 +448,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGn-pW-LeB">
-                                <rect key="frame" x="15" y="271" width="345" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.54117647059999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="15" y="256" width="345" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="6OV-DF-Q1g"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="YvR-7Q-0Me"/>
@@ -463,7 +457,7 @@
                                     <constraint firstAttribute="height" constant="44" id="kue-qd-Qqg"/>
                                 </constraints>
                                 <state key="normal" title="Show mask on UIButton">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -474,6 +468,40 @@
                                     <action selector="loadButton:" destination="ZOK-qs-d8c" eventType="touchUpInside" id="PDd-3R-jvI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSr-Lh-N6w">
+                                <rect key="frame" x="15" y="315" width="286" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cst-Mg-U1r"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Show mask on UIButton"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loadRoundButton:" destination="ZOK-qs-d8c" eventType="touchUpInside" id="1YU-aA-diS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLV-58-z18">
+                                <rect key="frame" x="316" y="315" width="44" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1DK-ub-nAA"/>
+                                    <constraint firstAttribute="width" constant="44" id="BXG-Yn-MFq"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loadCircleButton:" destination="ZOK-qs-d8c" eventType="touchUpInside" id="DrQ-dB-R9y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -482,18 +510,20 @@
                             <constraint firstAttribute="trailing" secondItem="PGn-pW-LeB" secondAttribute="trailing" constant="15" id="7zw-za-gbb"/>
                             <constraint firstAttribute="trailing" secondItem="lAG-n3-5EF" secondAttribute="trailing" constant="15" id="8WX-qT-Deb"/>
                             <constraint firstItem="PGn-pW-LeB" firstAttribute="leading" secondItem="u3m-sY-oqh" secondAttribute="leading" constant="15" id="DyK-y9-HLi"/>
-                            <constraint firstItem="lAG-n3-5EF" firstAttribute="top" secondItem="oT8-Zz-zvs" secondAttribute="bottom" constant="30" id="a6a-TM-ydh"/>
+                            <constraint firstAttribute="trailing" secondItem="XLV-58-z18" secondAttribute="trailing" constant="15" id="Nox-IT-er3"/>
+                            <constraint firstItem="lSr-Lh-N6w" firstAttribute="top" secondItem="PGn-pW-LeB" secondAttribute="bottom" constant="15" id="ONO-Wh-icS"/>
+                            <constraint firstItem="lAG-n3-5EF" firstAttribute="top" secondItem="oT8-Zz-zvs" secondAttribute="bottom" constant="15" id="a6a-TM-ydh"/>
                             <constraint firstItem="JRC-Vh-YyH" firstAttribute="top" secondItem="0wN-MP-2hq" secondAttribute="bottom" constant="15" id="dy8-Hp-rZf"/>
                             <constraint firstItem="PGn-pW-LeB" firstAttribute="top" secondItem="JRC-Vh-YyH" secondAttribute="bottom" constant="15" id="eEU-1z-dmb"/>
+                            <constraint firstItem="XLV-58-z18" firstAttribute="leading" secondItem="lSr-Lh-N6w" secondAttribute="trailing" constant="15" id="hVE-NK-Gej"/>
                             <constraint firstItem="JRC-Vh-YyH" firstAttribute="leading" secondItem="u3m-sY-oqh" secondAttribute="leading" constant="15" id="m1R-jh-Qeg"/>
                             <constraint firstAttribute="trailing" secondItem="0wN-MP-2hq" secondAttribute="trailing" constant="15" id="qVE-5I-rZ9"/>
                             <constraint firstAttribute="trailing" secondItem="JRC-Vh-YyH" secondAttribute="trailing" constant="15" id="rqp-5h-WLV"/>
+                            <constraint firstItem="XLV-58-z18" firstAttribute="top" secondItem="PGn-pW-LeB" secondAttribute="bottom" constant="15" id="uNc-oi-ZLF"/>
+                            <constraint firstItem="lSr-Lh-N6w" firstAttribute="leading" secondItem="u3m-sY-oqh" secondAttribute="leading" constant="15" id="xd4-3r-8PC"/>
                             <constraint firstItem="0wN-MP-2hq" firstAttribute="leading" secondItem="u3m-sY-oqh" secondAttribute="leading" constant="15" id="zeG-kc-Arw"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="button" destination="PGn-pW-LeB" id="3H0-Wn-vFk"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngt-om-SgN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,14 +567,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD2-Qc-bsK">
-                                <rect key="frame" x="15" y="94" width="345" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.54117647059999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="15" y="79" width="345" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CIy-gt-WAS"/>
                                 </constraints>
-                                <state key="normal" title="Upload">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Upload"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="4"/>
@@ -558,7 +586,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tD2-Qc-bsK" firstAttribute="leading" secondItem="aBt-GB-rog" secondAttribute="leading" constant="15" id="MaM-RW-9ox"/>
-                            <constraint firstItem="tD2-Qc-bsK" firstAttribute="top" secondItem="xxs-Ud-vzW" secondAttribute="bottom" constant="30" id="RQi-lp-4qk"/>
+                            <constraint firstItem="tD2-Qc-bsK" firstAttribute="top" secondItem="xxs-Ud-vzW" secondAttribute="bottom" constant="15" id="RQi-lp-4qk"/>
                             <constraint firstAttribute="trailing" secondItem="tD2-Qc-bsK" secondAttribute="trailing" constant="15" id="aHa-tg-LQl"/>
                         </constraints>
                     </view>

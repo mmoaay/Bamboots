@@ -14,7 +14,7 @@ public protocol MBContainable {
 }
 
 public extension MBContainable {
-    /// get latest mask on container
+    /// Get latest mask on container
     ///
     /// - Returns: If exists, return latest mask, otherwise return nil
     internal func latestMask() -> UIView? {

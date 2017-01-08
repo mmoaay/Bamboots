@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Making `UITableViewCell` conforms to `MBContainable`
 extension UITableViewCell {
     
-    /// Return contentView as container for `UITableViewCell`
+    /// Return `contentView` as container for `UITableViewCell`
     ///
     /// - Returns: `contentView` of `UITableViewCell`
     public override func containerView() -> UIView? {
@@ -19,12 +19,16 @@ extension UITableViewCell {
     }
 }
 
+// MARK: - Making `UITableViewCell` conforms to `MBLoadable`
 extension UITableViewCell: MBLoadable {
     public func maskContainer() -> MBContainable? {
         return self
     }
     
     public func mask() -> MBMaskable? {
-        return MBActivityIndicator()
+        let mask = MBActivityIndicator()
+        mask.backgroundColor = backgroundColor
+        mask.color = tintColor
+        return mask
     }
 }

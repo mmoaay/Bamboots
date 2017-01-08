@@ -9,17 +9,17 @@
 import Foundation
 
 // MARK: - Making `UIRefreshControl` conforms to `MBLoadable`
-extension UIRefreshControl: MBLoadable {
+extension UIRefreshControl {
     
     /// Begin refreshing when network request begins
-    public func begin() {
+    public override func begin() {
         if false == self.isRefreshing {
             self.beginRefreshing()
         }
     }
     
     /// End refreshing when network request ends
-    public func end() {
+    public override func end() {
         self.endRefreshing()
     }
 }

@@ -39,7 +39,6 @@ public extension DataRequest {
         }
     }
     
-    
     /// Show inform message when request completed successfully
     ///
     /// - Parameters:
@@ -75,7 +74,6 @@ public extension DataRequest {
     }
 }
 
-
 public extension DownloadRequest {
     /// Show progress of the request
     ///
@@ -105,7 +103,6 @@ public extension UploadRequest {
     /// Show progress of the request
     ///
     /// - Parameter progress: Object conforms to `MBProgressable` protocol
-    /// - Returns: The request.
     /// - Returns: The request.
     @discardableResult
     func progress(progress: MBProgressable) -> Self {

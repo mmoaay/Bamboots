@@ -6,7 +6,6 @@
 //
 //
 
-
 public class MBMaskView: UIView, MBMaskable {
     public var maskId:String = "MBMaskView"
     
