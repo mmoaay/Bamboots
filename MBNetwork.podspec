@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MBNetwork'
-  s.version          = '0.3.0'
+  s.version          = '0.4.0'
   s.summary          = 'MBNetwork - Network request can be easier'
 
 # This description is used to generate tags and improve search results.
