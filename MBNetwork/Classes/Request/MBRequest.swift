@@ -14,16 +14,16 @@ import ObjectMapper
 public extension MBRequestable  {
 
     
-    /// Creates an `DataRequest` from the specified `form`
+    /// Creates a `DataRequest` from the specified `form`
     ///
-    /// - Parameters: form: Object conforms to `MBRequestFormable` protocol.
+    /// - Parameter form: Object conforms to `MBRequestFormable` protocol.
     /// - Returns: The created `DataRequest`.
     @discardableResult
     func request(_ form: MBRequestFormable) -> DataRequest  {
         return Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers())
     }
     
-    /// Creates an `DownloadRequest` from the specified `form`
+    /// Creates a `DownloadRequest` from the specified `form`
     ///
     /// - Parameter form: Object conforms to `MBDownloadFormable` protocol.
     /// - Returns: The created `DownloadRequest`.
@@ -32,7 +32,7 @@ public extension MBRequestable  {
         return Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination)
     }
     
-    /// Creates an `DownloadRequest` from the specified `form`
+    /// Creates a `DownloadRequest` from the specified `form`
     ///
     /// - Parameter form: Object conforms to `MBDownloadResumeFormable` protocol.
     /// - Returns: The created `DownloadRequest`.
