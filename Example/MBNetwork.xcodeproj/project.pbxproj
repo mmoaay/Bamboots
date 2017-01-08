@@ -293,6 +293,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				797066D22943BC7457DF4C12 /* [CP] Embed Pods Frameworks */,
 				2C2409CBAF740B3D1654B799 /* [CP] Copy Pods Resources */,
+				125E0D341E22664A00179154 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -389,6 +390,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		125E0D341E22664A00179154 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\necho \"SwiftLint Script is working.\"\nfi";
+		};
 		27E3A985BD16060844A1D9AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

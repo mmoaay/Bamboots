@@ -10,6 +10,6 @@ import Foundation
 
 public protocol MBReloadable {
     var container: MBContainable? { get }
-    
+
     func reload(error: MBErrorable)
 }

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Making `UIScrollView` conforms to `MBContainable`
 extension UIScrollView {
-    
+
     /// Return latest superview that is not `UIScrollView` as container for `UIScrollView`, because add mask to `UIScrollView`(PS: Including its subclass such as `UITableView` and `UICollectionView`) will cause something abnormal
     ///
     /// - Returns: Latest `superview` that is not `UIScrollView`

@@ -11,27 +11,39 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
-public extension MBRequestable  {
+public extension MBRequestable {
 
-    
     /// Creates an `DataRequest` from the specified `form`
     ///
     /// - Parameters: form: Object conforms to `MBRequestFormable` protocol.
     /// - Returns: The created `DataRequest`.
     @discardableResult
-    func request(_ form: MBRequestFormable) -> DataRequest  {
-        return Alamofire.request(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers())
+    func request(_ form: MBRequestFormable) -> DataRequest {
+        return Alamofire.request(
+            form.url,
+            method: form.method,
+            parameters: form.parameters(),
+            encoding: form.encoding(),
+            headers: form.headers()
+        )
     }
-    
+
     /// Creates an `DownloadRequest` from the specified `form`
     ///
     /// - Parameter form: Object conforms to `MBDownloadFormable` protocol.
     /// - Returns: The created `DownloadRequest`.
     @discardableResult
     func download(_ form: MBDownloadFormable) -> DownloadRequest {
-        return Alamofire.download(form.url, method: form.method, parameters: form.parameters(), encoding: form.encoding(), headers: form.headers(), to: form.destination)
+        return Alamofire.download(
+            form.url,
+            method: form.method,
+            parameters: form.parameters(),
+            encoding: form.encoding(),
+            headers: form.headers(),
+            to: form.destination
+        )
     }
-    
+
     /// Creates an `DownloadRequest` from the specified `form`
     ///
     /// - Parameter form: Object conforms to `MBDownloadResumeFormable` protocol.
@@ -40,7 +52,7 @@ public extension MBRequestable  {
     func download(_ form: MBDownloadResumeFormable) -> DownloadRequest {
         return Alamofire.download(resumingWith: form.resumeData, to: form.destination)
     }
-    
+
     /// Creates an `UploadRequest` from the specified `form`
     ///
     /// - Parameter form: Object conforms to `MBUploadDataFormable` protocol.
@@ -49,7 +61,7 @@ public extension MBRequestable  {
     func upload(_ form: MBUploadDataFormable) -> UploadRequest {
         return Alamofire.upload(form.data, to: form.url, method: form.method, headers: form.headers())
     }
-    
+
     /// Creates an `UploadRequest` from the specified `form`
     ///
     /// - Parameter form: Object conforms to `MBUploadFileFormable` protocol.
@@ -58,8 +70,7 @@ public extension MBRequestable  {
     func upload(_ form: MBUploadFileFormable) -> UploadRequest {
         return Alamofire.upload(form.fileURL, to: form.url, method: form.method, headers: form.headers())
     }
-    
-    
+
     /// Encodes `form` and calls `completion` with new `UploadRequest` using the `form`
     ///
     /// - Parameters:
@@ -67,19 +78,25 @@ public extension MBRequestable  {
     ///   - completion: The closure called when the upload is complete
     @discardableResult
     func upload(_ form: MBUploadMultiFormDataFormable, completion: ((UploadRequest) -> Void)?) {
-        Alamofire.upload(multipartFormData: form.multipartFormData, usingThreshold: form.encodingMemoryThreshold, to: form.url, method: form.method, headers: form.headers(), encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                completion?(upload)
-                break
-            case .failure(let encodingError):
-                print(encodingError)
-                break
-            }
+        Alamofire.upload(
+            multipartFormData: form.multipartFormData,
+            usingThreshold: form.encodingMemoryThreshold,
+            to: form.url,
+            method: form.method,
+            headers: form.headers(),
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    completion?(upload)
+                    break
+                case .failure(let encodingError):
+                    print(encodingError)
+                    break
+                }
         }
-)
+        )
     }
-    
+
     /// Creates an `UploadRequest` from the specified `form`
     ///
     /// - Parameter form: Object conforms to `MBUploadStreamFormable` protocol.
@@ -90,12 +107,7 @@ public extension MBRequestable  {
     }
 }
 
-
 ///  Network request protocol, object conforms to this protocol can make network request
-public protocol MBRequestable: class{
-    
+public protocol MBRequestable: class {
+
 }
-
-
-
-

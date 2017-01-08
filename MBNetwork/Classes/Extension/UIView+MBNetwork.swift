@@ -9,34 +9,40 @@
 import Foundation
 
 internal extension UIView {
-    
+
     /// Inner addSubView for MBNetwork, making autolayout when addSubView
     ///
     /// - Parameters:
     ///   - subview: view to be added
     ///   - insets: insets between subview and view itself
     internal func addMBSubView(_ subview: UIView, insets: UIEdgeInsets = UIEdgeInsets.zero) {
-        
+
         self.addSubview(subview)
-        
+
         subview.translatesAutoresizingMaskIntoConstraints = false
-        
-        let views:[String:UIView] = ["subview":subview]
-        let layoutStringH:String = "H:|-" + String(describing: insets.left) + "-[subview]-" + String(describing: insets.right) + "-|"
-        let layoutStringV:String = "V:|-" + String(describing: insets.top) + "-[subview]-" + String(describing: insets.bottom) + "-|"
-        let contraintsH:[NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: layoutStringH, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views)
-        let contraintsV:[NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: layoutStringV, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views)
-        
+
+        let views: [String : UIView] = ["subview": subview]
+        let layoutStringH: String = "H:|-" + String(describing: insets.left) + "-[subview]-"
+            + String(describing: insets.right) + "-|"
+        let layoutStringV: String = "V:|-" + String(describing: insets.top) + "-[subview]-"
+            + String(describing: insets.bottom) + "-|"
+        let contraintsH: [NSLayoutConstraint] = NSLayoutConstraint.constraints(
+            withVisualFormat: layoutStringH, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views
+        )
+        let contraintsV: [NSLayoutConstraint] = NSLayoutConstraint.constraints(
+            withVisualFormat: layoutStringV, options:NSLayoutFormatOptions(rawValue: 0), metrics:nil, views: views
+        )
+
         self.addConstraints(contraintsH)
         self.addConstraints(contraintsV)
     }
-    
+
     /// Get `UIViewController` of `UIView`
     ///
     /// - Returns: `UIViewController` of `UIView`
     internal func viewController() -> UIViewController? {
-        var next:UIView? = self.superview
-        while next != nil{
+        var next: UIView? = self.superview
+        while next != nil {
             let nextResponder = next!.next
             if nextResponder?.isKind(of: UIViewController.classForCoder()) == true {
                 return nextResponder as? UIViewController
@@ -53,6 +59,6 @@ extension UIView: MBContainable {
     ///
     /// - Returns: `UIView` itself
     public func containerView() -> UIView? {
-        return self;
+        return self
     }
 }
