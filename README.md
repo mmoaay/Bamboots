@@ -146,7 +146,7 @@ We have extended `DataRequest` class of Alamofire and added a `load` method to i
 func load(load: MBLoadable = MBLoadType.none) -> Self
 ```
 
-#### Show mask on UIViewController
+#### Show mask on `UIViewController`
 
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uiviewcontroller.gif)
 
@@ -154,13 +154,15 @@ func load(load: MBLoadable = MBLoadType.none) -> Self
 request(WeatherForm()).load(load: MBLoadType.default(container: self))
 ```
 
-#### Show mask on UIButton
+#### Show mask on `UIButton`
 
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_button.gif)
 
 ``` swift
 request(WeatherForm()).load(load: button)
 ```
+
+> **Notice**: The color of `UIActivityIndicatorView` is the `tintColor` of `UIButton `
 
 #### Show customized mask
 
@@ -212,7 +214,7 @@ request(WeatherForm()).load(load: load)
 
 This is the most powerful usage of the `MBLoadable` protocol. In this way you can customized everything the `MBLoadable` protocol has.
 
-#### Show mask on UITableView & UIScrollView
+#### Show mask on `UITableView` & `UIScrollView`
 
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_uiscrollview.gif)
 
@@ -223,7 +225,7 @@ request(WeatherForm()).load(load: load)
         
 ```
 
-#### Show mask on UITableViewCell (PS: Still in development)
+#### Show mask on `UITableViewCell` (PS: Still in development)
 
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_loadable_cell.gif)
 
