@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 // MARK: - MBLoadType
 extension MBLoadType: MBLoadable {
     public func maskContainer() -> MBContainable? {
@@ -20,11 +18,11 @@ extension MBLoadType: MBLoadable {
             return nil
         }
     }
-    
+
     public func begin() {
         show()
     }
-    
+
     public func end() {
         hide()
     }
@@ -45,39 +43,38 @@ public protocol MBLoadable {
     ///
     /// - Returns: Object that conforms to `MBMaskable` protocol
     func mask() -> MBMaskable?
-    
+
     /// Inset
     ///
     /// - Returns: The inset between mask and maskContainer
     func inset() -> UIEdgeInsets
-    
+
     /// Mask Container
     ///
     /// - Returns: Object that conforms to `MBContainable` protocol
     func maskContainer() -> MBContainable?
-    
+
     /// Request begin
     func begin()
-    
+
     /// Request end
     func end()
 }
-
 
 // MARK: - MBLoadable
 public extension MBLoadable {
     func mask() -> MBMaskable? {
         return MBMaskView()
     }
-    
+
     func inset() -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
-    
+
     func maskContainer() -> MBContainable? {
         return nil
     }
-    
+
     func begin() {
         show()
     }
@@ -85,29 +82,29 @@ public extension MBLoadable {
     func end() {
         hide()
     }
-    
+
     /// Default show method for `MBLoadable`, calling this method will add mask on maskContainer
     func show() {
         if let mask = self.mask() as? UIView {
             var isHidden = false
-            if let latestMask = self.maskContainer()?.latestMask() {
+            if let _ = self.maskContainer()?.latestMask() {
                 isHidden = true
             }
             self.maskContainer()?.containerView()?.addMBSubView(mask, insets: self.inset())
             mask.isHidden = isHidden
-            
+
             if let container = self.maskContainer(), let scrollView = container as? UIScrollView {
                 scrollView.setContentOffset(scrollView.contentOffset, animated: false)
                 scrollView.isScrollEnabled = false
             }
         }
     }
-    
+
     /// Default hide method for `MBLoadable`, calling this method will remove mask from maskContainer
     func hide() {
         if let latestMask = self.maskContainer()?.latestMask() {
             latestMask.removeFromSuperview()
-            
+
             if let container = self.maskContainer(), let scrollView = container as? UIScrollView {
                 if false == latestMask.isHidden {
                     scrollView.isScrollEnabled = true
@@ -116,5 +113,3 @@ public extension MBLoadable {
         }
     }
 }
-
-

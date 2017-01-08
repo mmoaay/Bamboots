@@ -1,0 +1,28 @@
+bled_rules:
+  - type_name
+  - variable_name
+  - type_body_length
+  - function_body_length
+  - file_length
+excluded:
+  - Alamofire
+  - AlamofireObjectMapper
+  - ObjectMapper
+  - SnapKit
+  - SwiftProtobuf
+  - Target_Support_Files
+included:
+  - ../../MBNetwork
+type_body_length:
+  - 5000 # warning
+  - 10000 # error
+function_body_length:
+  - 5000 # warning
+  - 10000 # error
+file_length:
+  - 5000 # warning
+  - 10000 # error
+line_length:
+  - 120 # warning
+  - 360 # error
+  

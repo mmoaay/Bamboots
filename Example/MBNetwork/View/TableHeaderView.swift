@@ -10,9 +10,9 @@ import UIKit
 
 class TableHeaderView: NSObject {
     @IBOutlet var contentView: UIView!
-    
+
     static let shared = TableHeaderView()
-    
+
     func getView() -> UIView! {
         Bundle.main.loadNibNamed("TableHeaderView", owner: self, options: nil)
         return self.contentView

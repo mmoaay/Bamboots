@@ -12,17 +12,16 @@ import ObjectMapper
 
 class BaseError: MBJSONErrorable {
     var successCodes: [String] = ["https://httpbin.org/post"]
-    
+
     var code: String?
     var message: String?
-    
+
     init() { }
-    
+
     required init?(map: Map) { }
-    
+
     func mapping(map: Map) {
         code <- map["url"]
         message <- map["origin"]
     }
 }
-

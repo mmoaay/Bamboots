@@ -13,11 +13,11 @@ public extension MBRequestFormable {
     func encoding() -> ParameterEncoding {
         return Alamofire.URLEncoding.default
     }
-    
+
     func parameters() -> [String: Any] {
         return [ : ]
     }
-    
+
     var method: Alamofire.HTTPMethod {
         return .get
     }
@@ -29,7 +29,7 @@ public protocol MBRequestFormable: MBFormable {
     ///
     /// - Returns:  object that conforms to `ParameterEncoding` protocol
     func encoding() -> ParameterEncoding
-    
+
     /// Request parameters
     ///
     /// - Returns: parameters
@@ -55,7 +55,7 @@ public extension MBUploadMultiFormDataFormable {
 /// Conforming to this protocol to create an upload form that contains multiformdata
 public protocol MBUploadMultiFormDataFormable: MBUploadFormable {
     var encodingMemoryThreshold: UInt64 { get }
-    
+
     var multipartFormData: (MultipartFormData) -> Void { get }
 }
 
@@ -69,7 +69,6 @@ public protocol MBUploadDataFormable: MBUploadFormable {
     var data: Data { get }
 }
 
-
 /// Conforming to this protocol to create an upload form that contains a stream object
 public protocol MBUploadStreamFormable: MBUploadFormable {
     var stream: InputStream { get }
@@ -81,20 +80,19 @@ public extension MBUploadFormable {
     }
 }
 
-
 /// Upload Form protocol, Base protocol for upload request form
 public protocol MBUploadFormable: MBFormable {
-    
+
 }
 
 /// Form protocol. Object conforms to this protocol can be used by the `request`, `download`, `upload` method in `MBRequestable` protocol
 public protocol MBFormable {
     /// Request url
     var url: String { get }
-    
+
     /// Request method
     var method: Alamofire.HTTPMethod { get }
-    
+
     /// Request headers
     ///
     /// - Returns: headers

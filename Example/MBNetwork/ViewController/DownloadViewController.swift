@@ -14,7 +14,7 @@ class DownloadViewController: UIViewController, MBRequestable {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var progress: UIProgressView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,8 +23,9 @@ class DownloadViewController: UIViewController, MBRequestable {
 
     @IBAction func download(_ sender: Any) {
         let load = LoadConfig(container: imageView, mask:MBEyeLoading())
-        
-        self.download(ImageDownloadForm()).load(load:load).progress(progress: progress).responseData { (response:DownloadResponse<Data>) in
+
+        self.download(ImageDownloadForm()).load(load: load).progress(progress: progress)
+            .responseData { (response: DownloadResponse<Data>) in
             switch response.result {
             case .success(let data):
                 self.imageView.image = UIImage(data: data)
@@ -34,21 +35,19 @@ class DownloadViewController: UIViewController, MBRequestable {
             }
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }

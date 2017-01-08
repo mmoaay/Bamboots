@@ -18,7 +18,7 @@ public extension MBContainable {
     ///
     /// - Returns: If exists, return latest mask, otherwise return nil
     internal func latestMask() -> UIView? {
-        var latestMask:UIView? = nil
+        var latestMask: UIView? = nil
         if let container = containerView() {
             for subview in container.subviews {
                 if let _ = subview as? MBMaskable {

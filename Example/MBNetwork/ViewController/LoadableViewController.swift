@@ -21,38 +21,53 @@ class LoadableViewController: UIViewController, MBRequestable {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
     @IBAction func loadCustom(_ sender: AnyObject) {
-        let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(15+64, 15, UIScreen.main.bounds.height-64-(44*5+15+15*4), 15))
+        let load = LoadConfig(
+            container: view, mask:MBEyeLoading(),
+            inset: UIEdgeInsets(
+                top: 15 + 64,
+                left: 15,
+                bottom: UIScreen.main.bounds.height - 64 - (44 * 5 + 15 + 15 * 4),
+                right: 15
+            )
+        )
         request(WeatherForm()).load(load: load)
     }
-    
+
     @IBAction func loadViewController(_ sender: AnyObject) {
         request(WeatherForm()).load(load: MBLoadType.default(container: self))
     }
-    
+
     @IBAction func loadNavigationController(_ sender: AnyObject) {
         request(WeatherForm()).load(load: MBLoadType.default(container: self.navigationController!))
     }
-    
+
     @IBAction func loadButton(_ sender: AnyObject) {
-        request(WeatherForm()).load(load: sender as! MBLoadable)
+        if let trySender = sender as? MBLoadable {
+            request(WeatherForm()).load(load: trySender)
+        }
     }
+
     @IBAction func loadRoundButton(_ sender: Any) {
-        request(WeatherForm()).load(load: sender as! MBLoadable)
+        if let trySender = sender as? MBLoadable {
+            request(WeatherForm()).load(load: trySender)
+        }
     }
+
     @IBAction func loadCircleButton(_ sender: Any) {
-        request(WeatherForm()).load(load: sender as! MBLoadable)
+        if let trySender = sender as? MBLoadable {
+            request(WeatherForm()).load(load: trySender)
+        }
     }
 }

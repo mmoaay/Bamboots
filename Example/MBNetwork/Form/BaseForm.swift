@@ -11,12 +11,12 @@ import MBNetwork
 
 extension MBFormable {
     public func headers() -> [String: String] {
-        return ["accessToken":"xxx"];
+        return ["accessToken": "xxx"]
     }
 }
 
 extension MBFormable where Self: MBUploadFormable {
     public func headers() -> [String: String] {
-        return ["accessToken":"xxx", "fileName":"xxx"];
+        return ["accessToken": "xxx", "fileName": "xxx"]
     }
 }

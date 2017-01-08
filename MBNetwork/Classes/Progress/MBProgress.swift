@@ -10,5 +10,5 @@ import Foundation
 
 /// Progress protocol for request, object conforms to this protocol can be used by `progress` method of `DataRequest` and `DownloadRequest`
 public protocol MBProgressable {
-    func progress(_ progress:Progress)
+    func progress(_ progress: Progress)
 }

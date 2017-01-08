@@ -14,7 +14,7 @@ struct UploadMultiFormDataForm: MBUploadMultiFormDataFormable {
     var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
 //        multipartFormData.append(UIImagePNGRepresentation(UIImage(named: "head_image")!)!, withName: "head_image")
     }
-    
+
     var url: String  = "https://httpbin.org/post"
 }
 

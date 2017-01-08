@@ -11,7 +11,7 @@ import Alamofire
 import ObjectMapper
 
 public extension DataRequest {
-    
+
     /// Show warning message when error occurs
     ///
     /// - Parameters:
@@ -20,13 +20,17 @@ public extension DataRequest {
     ///   - completionHandler: The closure called once the error code exsists in error's `successCodes` set.
     /// - Returns: The request.
     @discardableResult
-    func warn<T: MBJSONErrorable>(error: T, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBJSONErrorable) -> Void)? = nil) -> Self {
+    func warn<T: MBJSONErrorable>(
+        error: T,
+        warn: MBWarnable = MBMessageType.none,
+        completionHandler: ((MBJSONErrorable) -> Void)? = nil
+        ) -> Self {
 
-        return response(completionHandler: { (response:DefaultDataResponse) in
+        return response(completionHandler: { (response: DefaultDataResponse) in
             if let err = response.error {
                 warn.show(error: err.localizedDescription)
             }
-        }).responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil) { (response:DataResponse<T>) in
+        }).responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil) { (response: DataResponse<T>) in
             if let err = response.result.value {
                 if let code = err.code {
                     if true == error.successCodes.contains(code) {
@@ -38,7 +42,7 @@ public extension DataRequest {
             }
         }
     }
-    
+
     /// Show inform message when request completed successfully
     ///
     /// - Parameters:
@@ -47,8 +51,8 @@ public extension DataRequest {
     /// - Returns: The request.
     @discardableResult
     func inform<T: MBJSONErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self {
-        
-        return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil) { (response:DataResponse<T>) in
+
+        return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil) { (response: DataResponse<T>) in
             if let err = response.result.value {
                 if let code = err.code {
                     if true == error.successCodes.contains(code) {
@@ -85,7 +89,7 @@ public extension DownloadRequest {
             progress.progress(prog)
         })
     }
-    
+
     /// Show mask when request begins and hide mask when request ends
     ///
     /// - Parameter load: Object conforms to `MBLoadable` protocol

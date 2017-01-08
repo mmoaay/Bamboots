@@ -12,14 +12,14 @@ import ObjectMapper
 
 class WeatherError: MBJSONErrorable {
     var successCodes: [String] = ["200"]
-    
+
     var code: String?
     var message: String?
-    
+
     init() { }
-    
+
     required init?(map: Map) { }
-    
+
     func mapping(map: Map) {
         code <- map["data.location"]
         message <- map["data.location"]
@@ -28,14 +28,14 @@ class WeatherError: MBJSONErrorable {
 
 class WeatherInformError: MBJSONErrorable {
     var successCodes: [String] = ["Toronto, Canada"]
-    
+
     var code: String?
     var message: String?
-    
+
     init() { }
-    
+
     required init?(map: Map) { }
-    
+
     func mapping(map: Map) {
         code <- map["data.location"]
         message <- map["data.location"]
