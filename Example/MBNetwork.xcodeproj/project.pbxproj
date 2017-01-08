@@ -392,7 +392,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		125E0D341E22664A00179154 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -402,7 +402,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\necho \"SwiftLint Script is working.\"\nfi";
+			shellScript = "#if which swiftlint >/dev/null; then\n#swiftlint\n#echo \"SwiftLint Script is working.\"\n#fi";
 		};
 		27E3A985BD16060844A1D9AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

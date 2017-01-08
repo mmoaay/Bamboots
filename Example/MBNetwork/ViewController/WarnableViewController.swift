@@ -21,7 +21,6 @@ class WarnableViewController: UIViewController, MBRequestable {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -33,7 +32,16 @@ class WarnableViewController: UIViewController, MBRequestable {
     }
     */
     @IBAction func load(_ sender: Any) {
-        request(WeatherForm()).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+        request(WeatherForm()).warn(
+            error: WeatherError(),
+            warn: MBMessageType.alertController(
+                title: "Warning",
+                message: "Network unavailable",
+                actions: [
+                    UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
+                ],
+                container: self
+            )
+        )
     }
-
 }
