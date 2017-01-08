@@ -9,3 +9,7 @@ target 'MBNetwork_Example' do
       
   end
 end
+
+post_install do |installer|
+    installer.pods_project.build_configurations.build_settings['SWIFT_VERSION'] = '3.0'
+end
