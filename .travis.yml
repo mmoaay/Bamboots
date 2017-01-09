@@ -6,7 +6,7 @@ env:
     - LC_ALL=en_US.UTF-8
     - XCODE_WORKSPACE=./Example/MBNetwork.xcworkspace
   matrix:
-    - SCHEME="MBNetwork-Example"
+    - SCHEME="MBNetwork"
 
 before_install:
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
