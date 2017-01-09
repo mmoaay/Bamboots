@@ -3,8 +3,10 @@ PODS:
   - AlamofireObjectMapper (4.0.1):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
-  - MBNetwork (0.3.0):
+  - MBNetwork (0.4.0):
+    - Alamofire (~> 4.1)
     - AlamofireObjectMapper (~> 4)
+    - ObjectMapper (~> 2.0)
     - SwiftProtobuf
   - ObjectMapper (2.2.2)
   - SnapKit (3.1.2)
@@ -21,11 +23,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   AlamofireObjectMapper: 842d2eed43a4d0593ff0110d54ac86a170c4519c
-  MBNetwork: def540339f4db61db3ffd1ee3d155f056e782999
+  MBNetwork: a43a57592abcddaf085a78da15d9e3f09cc6b44c
   ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SwiftProtobuf: e8815a37ecfb2a9d87c8aa2e0c248b0de072afc3
 
-PODFILE CHECKSUM: 28d0da2a1d92f2769ac2994e7b5809a9bd041454
+PODFILE CHECKSUM: c13245fa2f1db0bfcf54eedd0bf936b1efc84710
 
 COCOAPODS: 1.2.0.beta.1
