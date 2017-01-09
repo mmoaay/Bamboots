@@ -1,6 +1,6 @@
 language: objective-c
 osx_image: xcode8
-podfile: .Example/Podfile
+podfile: ./Example/Podfile
 env:
   global:
     - LANG=en_US.UTF-8
