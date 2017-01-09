@@ -26,6 +26,12 @@
     ],
     "AlamofireObjectMapper": [
       "~>4"
+    ],
+    "Alamofire": [
+      "~> 4.1"
+    ],
+    "ObjectMapper": [
+      "~> 2.0"
     ]
   }
 }
