@@ -22,7 +22,7 @@ public extension DataRequest {
     @discardableResult
     func warn<T: MBJSONErrorable>(
         error: T,
-        warn: MBWarnable = MBMessageType.none,
+        warn: MBWarnable,
         completionHandler: ((MBJSONErrorable) -> Void)? = nil
         ) -> Self {
 
@@ -50,7 +50,7 @@ public extension DataRequest {
     ///   - inform: Object conforms to 1MBInformable1 protocol, used for showing inform message when request completed successfully.
     /// - Returns: The request.
     @discardableResult
-    func inform<T: MBJSONErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self {
+    func inform<T: MBJSONErrorable>(error: T, inform: MBInformable) -> Self {
 
         return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil) { (response: DataResponse<T>) in
             if let err = response.result.value {

@@ -47,7 +47,7 @@
 Mostly you don't need to care much about these protocols, because we already have many **DEFAULT** implementations for them. However if you want to customize something, you just need to conform to these protocols and do what you want. Here is some default implementations for these protcols:
 
 - `MBLoadType`: Enum that conforms to `MBLoadable` protocol, using `case default(container:MBContainable)` case to show `MBMaskView` on the container when requesting.
-- `MBMessageType`: Enum that conforms to `MBMessageable` protocol, using `alertController(title: String, message: String? , actions: [UIAlertAction], container: MBContainable)` case to show alertController.
+- `UIAlertController+MBMessageable`: With this extension, you can pass a UIAlertController directly into the `warn` and `inform` method of `DataRequest`. 
 - `UIButton+MBLoadable`: With this extension, you can pass a button directly into the `load` method of `DataRequest`. 
 - `UITableViewCell+MBLoadable`: With this extension, you can pass a cell directly into the `load` method of `DataRequest`.
 - `UIRefreshControl+MBLoadable`: With this extension, you can pass a UIRefreshControl directly into the `load` method of `DataRequest`.
@@ -274,7 +274,7 @@ download(ImageDownloadForm()).progress(progress: progress)
 We have extended `DataRequest` class of Alamofire and added a `warn` method to it.
 
 ``` swift
-func warn<T: MBJSONErrorable>(error: T, warn: MBWarnable = MBMessageType.none, completionHandler: ((MBJSONErrorable) -> Void)? = nil) -> Self
+func warn<T: MBJSONErrorable>(error: T, warn: MBWarnable, completionHandler: ((MBJSONErrorable) -> Void)? = nil) -> Self
 ```
 
 And then we can use it as followed:
@@ -282,7 +282,13 @@ And then we can use it as followed:
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_warnable.gif)
 
 ``` swift
-request(WeatherForm()).warn(error: WeatherError(), warn: MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+let alert = UIAlertController(title: "Warning", message: "Network unavailable", preferredStyle: .alert)
+alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+        
+request(WeatherForm()).warn(
+    error: WeatherError(),
+    warn: alert
+)
 ```
 
 > **Notice**: We only have `warn` for JSON format response now.
@@ -292,7 +298,7 @@ request(WeatherForm()).warn(error: WeatherError(), warn: MBMessageType.alertCont
 We have extended `DataRequest` class of Alamofire and added a `inform` method to it.
 
 ``` swift
-func inform<T: MBJSONErrorable>(error: T, inform: MBInformable = MBMessageType.none) -> Self
+func inform<T: MBJSONErrorable>(error: T, inform: MBInformable) -> Self
 ```
 
 And then we can use it as followed:
@@ -300,7 +306,12 @@ And then we can use it as followed:
 ![](https://github.com/mmoaay/MBNetwork/blob/master/Demo/mbnetwork_informable.gif)
 
 ``` swift
-request(WeatherForm()).inform(error: WeatherInformError(), inform: MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self))
+let alert = UIAlertController(title: "Notice", message: "Load successfully", preferredStyle: .alert)
+alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+request(WeatherForm()).inform(
+    error: WeatherInformError(),
+    inform: alert
+)
 ```
 
 > **Notice**: We only have `inform ` for JSON format response now.
@@ -326,9 +337,11 @@ All the method mentioned above can be called in a chained manner, such as follow
 ```swift
 let load = LoadConfig(container: view, mask:MBEyeLoading(), inset: UIEdgeInsetsMake(30+64, 15, UIScreen.main.bounds.height-64-(44*4+30+15*3), 15))
 
-let warn = MBMessageType.alertController(title: "Warning", message: "Network unavailable", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)
+let warn = UIAlertController(title: "Warning", message: "Network unavailable", preferredStyle: .alert)
+warn.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
 
-let inform = MBMessageType.alertController(title: "Notice", message: "Load successfully", actions: [UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)], container: self)
+let inform = UIAlertController(title: "Notice", message: "Load successfully", preferredStyle: .alert)
+inform.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
 
 request(WeatherForm()).load(load:load).progress(progress: progress).warn(error: WeatherError(), warn: warn).inform(error: WeatherInformError(), inform: inform)
 ```

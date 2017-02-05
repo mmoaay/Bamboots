@@ -33,16 +33,11 @@ class InformableViewController: UIViewController, MBRequestable {
      */
 
     @IBAction func load(_ sender: Any) {
+        let alert = UIAlertController(title: "Notice", message: "Load successfully", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
         request(WeatherForm()).inform(
             error: WeatherInformError(),
-            inform: MBMessageType.alertController(
-                title: "Notice",
-                message: "Load successfully",
-                actions: [
-                    UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
-                ],
-                container: self
-            )
+            inform: alert
         )
     }
 }

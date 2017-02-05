@@ -36,21 +36,6 @@ internal extension UIView {
         self.addConstraints(contraintsH)
         self.addConstraints(contraintsV)
     }
-
-    /// Get `UIViewController` of `UIView`
-    ///
-    /// - Returns: `UIViewController` of `UIView`
-    internal func viewController() -> UIViewController? {
-        var next: UIView? = self.superview
-        while next != nil {
-            let nextResponder = next!.next
-            if nextResponder?.isKind(of: UIViewController.classForCoder()) == true {
-                return nextResponder as? UIViewController
-            }
-            next = next!.superview
-        }
-        return nil
-    }
 }
 
 // MARK: - Making `UIView` conforms to `MBContainable`

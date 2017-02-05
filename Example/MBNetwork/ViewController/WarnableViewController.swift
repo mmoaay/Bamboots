@@ -32,16 +32,12 @@ class WarnableViewController: UIViewController, MBRequestable {
     }
     */
     @IBAction func load(_ sender: Any) {
+        let alert = UIAlertController(title: "Warning", message: "Network unavailable", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+        
         request(WeatherForm()).warn(
             error: WeatherError(),
-            warn: MBMessageType.alertController(
-                title: "Warning",
-                message: "Network unavailable",
-                actions: [
-                    UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
-                ],
-                container: self
-            )
+            warn: alert
         )
     }
 }
