@@ -8,8 +8,14 @@
 
 import Foundation
 
-public protocol MBReloadable {
-    var container: MBContainable? { get }
+public protocol MBReloadOperatable {
+    func reloadMask() -> MBMaskable?
+    
+    var reload: () -> Void { get }
+}
 
-    func reload(error: MBErrorable)
+public protocol MBReloadable {
+    func reloadContainer() -> MBContainable?
+    
+    func reloadOperator() -> MBReloadOperatable?
 }
