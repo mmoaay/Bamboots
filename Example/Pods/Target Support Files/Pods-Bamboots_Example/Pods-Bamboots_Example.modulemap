@@ -1,0 +1,6 @@
+framework module Pods_Bamboots_Example {
+  umbrella header "Pods-Bamboots_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

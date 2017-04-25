@@ -1,9 +1,9 @@
 use_frameworks!
 
-target 'MBNetwork_Example' do
-  pod 'MBNetwork', :path => '../'
+target 'Bamboots_Example' do
+  pod 'Bamboots', :path => '../'
   pod 'SnapKit'
-  target 'MBNetwork_Tests' do
+  target 'Bamboots_Tests' do
       inherit! :search_paths
       
       

@@ -1,0 +1,6 @@
+framework module Bamboots {
+  umbrella header "Bamboots-umbrella.h"
+
+  export *
+  module * { export * }
+}

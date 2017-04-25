@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-//import MBNetwork
+//import Bamboots
 
 class Tests: XCTestCase {
     

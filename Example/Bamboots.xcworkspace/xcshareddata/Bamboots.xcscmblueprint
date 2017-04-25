@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C889F72AB6C481CD894E14DB0AB0CF74C55924FD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CC45E49DFFD449C2BFCED419224369D484E18CB9" : 9223372036854775807,
+    "C889F72AB6C481CD894E14DB0AB0CF74C55924FD" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "735D2CD7-0C7D-4DF9-9DBD-CAFF918AEADE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CC45E49DFFD449C2BFCED419224369D484E18CB9" : "",
+    "C889F72AB6C481CD894E14DB0AB0CF74C55924FD" : "Bamboots\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Bamboots",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/Bamboots.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mmoaay\/Bamboots.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C889F72AB6C481CD894E14DB0AB0CF74C55924FD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mmoaay\/MBTestSpecs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CC45E49DFFD449C2BFCED419224369D484E18CB9"
+    }
+  ]
+}
