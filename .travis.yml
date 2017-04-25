@@ -4,9 +4,9 @@ env:
   global:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
-    - XCODE_WORKSPACE=./Example/MBNetwork.xcworkspace
+    - XCODE_WORKSPACE=./Example/Bamboots.xcworkspace
   matrix:
-    - SCHEME="MBNetwork"
+    - SCHEME="Bamboots-Example"
 
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
