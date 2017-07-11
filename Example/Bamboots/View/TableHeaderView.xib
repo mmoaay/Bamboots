@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="473" height="287"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_image" translatesAutoresizingMaskIntoConstraints="NO" id="wSg-nC-1f9">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bamboo" translatesAutoresizingMaskIntoConstraints="NO" id="wSg-nC-1f9">
                     <rect key="frame" x="0.0" y="0.0" width="473" height="287"/>
                 </imageView>
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epB-6c-qVD">
@@ -70,6 +70,6 @@
         </view>
     </objects>
     <resources>
-        <image name="head_image" width="480" height="480"/>
+        <image name="bamboo" width="500" height="500"/>
     </resources>
 </document>

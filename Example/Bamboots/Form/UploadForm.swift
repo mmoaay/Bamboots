@@ -21,5 +21,5 @@ struct UploadMultiFormDataForm: UploadMultiFormDataFormable {
 struct UploadImageForm: UploadDataFormable {
     public var url: String = "https://httpbin.org/post"
 
-    var data: Data  = UIImagePNGRepresentation(UIImage(named: "head_image")!)!
+    var data: Data  = UIImagePNGRepresentation(UIImage(named: "bamboo")!)!
 }

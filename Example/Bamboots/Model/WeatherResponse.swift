@@ -10,7 +10,11 @@ import Foundation
 import Bamboots
 import ObjectMapper
 
-class WeatherResponse: Mappable {
+import RealmSwift
+
+class WeatherResponse: Mappable, CacheMappable {
+    typealias ObjectType = WeatherCache
+    
     var location: String?
     var threeDayForecast: [Forecast]?
 
@@ -21,6 +25,13 @@ class WeatherResponse: Mappable {
     func mapping(map: Map) {
         location <- map["location"]
         threeDayForecast <- map["three_day_forecast"]
+    }
+    
+    func encode() -> WeatherCache {
+    }
+    
+    func decode(object:WeatherCache) {
+        
     }
 }
 
@@ -38,4 +49,15 @@ class Forecast: Mappable {
         temperature <- map["temperature"]
         conditions <- map["conditions"]
     }
+}
+
+class WeatherCache: Object {
+    dynamic var location: String?
+    let threeDayForecast = List<ForecastCache>()
+}
+
+class ForecastCache: Object {
+    dynamic var day: String?
+    dynamic var temperature: String?
+    dynamic var conditions: String?
 }
