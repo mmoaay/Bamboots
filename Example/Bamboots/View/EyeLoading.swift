@@ -221,7 +221,7 @@ class EyeLoading: UIView, Maskable {
         animation.fillMode = kCAFillModeForwards
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         animation.isRemovedOnCompletion = false
-        animation.toValue = M_PI * 2
+        animation.toValue = Double.pi * 2
 
         return animation
     }
