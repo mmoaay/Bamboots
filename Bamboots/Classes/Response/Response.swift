@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 import ObjectMapper
-import RealmSwift
 
 public extension DataRequest {
 
@@ -105,12 +104,12 @@ public extension DownloadRequest {
 }
 
 public extension DataRequest {
-  func cache(object:Object) -> Self {
-    let realm = try! Realm()
-    let objects = realm.objects(Object.self)
-    
-    return self
-  }
+//  func cache(object:Object) -> Self {
+//    let realm = try! Realm()
+//    let objects = realm.objects(Object.self)
+//    
+//    return self
+//  }
 }
 
 public extension UploadRequest {

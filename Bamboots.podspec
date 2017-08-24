@@ -40,5 +40,5 @@ Pod::Spec.new do |s|
   s.dependency 'AlamofireObjectMapper', '~>4'
   s.dependency 'Alamofire', '~> 4.1'
   s.dependency 'ObjectMapper', '~> 2.0'
-  s.dependency 'RealmSwift'
+  # s.dependency 'RealmSwift'
 end
