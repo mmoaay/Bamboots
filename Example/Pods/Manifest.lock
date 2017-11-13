@@ -1,20 +1,14 @@
 PODS:
-  - Alamofire (4.4.0)
-  - AlamofireObjectMapper (4.1.0):
+  - Alamofire (4.5.1)
+  - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
-    - ObjectMapper (~> 2.0)
-  - Bamboots (0.4.0):
-    - Alamofire (~> 4.1)
-    - AlamofireObjectMapper (~> 4)
-    - ObjectMapper (~> 2.0)
-    - RealmSwift
-  - ObjectMapper (2.2.5)
-  - Realm (2.6.1):
-    - Realm/Headers (= 2.6.1)
-  - Realm/Headers (2.6.1)
-  - RealmSwift (2.6.1):
-    - Realm (= 2.6.1)
-  - SnapKit (3.2.0)
+    - ObjectMapper (~> 3.0)
+  - Bamboots (0.5.0):
+    - Alamofire
+    - AlamofireObjectMapper
+    - ObjectMapper
+  - ObjectMapper (3.1.0)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - Bamboots (from `../`)
@@ -22,17 +16,15 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Bamboots:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
-  Bamboots: ad6165c311385f2659d6e1c76c7c2f8a4af62fbd
-  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
-  Realm: 9abfd4f87519376daa5ae3a4603155de408bf8b3
-  RealmSwift: a54d3e8931cf7d3afa5a1fac9c8f88109d7f02b3
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  Bamboots: a902eba3852c0c4a0e1520a20577d10c7f3d687c
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 886d9de2d72f25d1ba790a53e553dafeef487af2
+PODFILE CHECKSUM: 2d0add0fdae4c2467485f475899cc4f0861ced4b
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.3.1
