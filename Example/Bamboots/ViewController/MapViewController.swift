@@ -9,7 +9,7 @@
 import UIKit
 import Bamboots
 import Alamofire
-import AlamofireObjectMapper
+import AlamofireCodable
 
 extension MapViewController {
 
@@ -71,7 +71,8 @@ class MapViewController: UITableViewController, Requestable {
      */
 
     private func load() {
-        request(WeatherForm()).responseObject(keyPath: "data") { (response: DataResponse<WeatherResponse>) in
+        request(WeatherForm())
+            .responseObject(keyPath: "data") { (response: DataResponse<WeatherResponse>) in
             if let value = response.result.value {
                 self.weatherResponse = value
                 self.tableView.reloadData()

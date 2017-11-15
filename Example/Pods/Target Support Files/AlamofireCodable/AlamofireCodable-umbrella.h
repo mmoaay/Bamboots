@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double AlamofireObjectMapperVersionNumber;
-FOUNDATION_EXPORT const unsigned char AlamofireObjectMapperVersionString[];
+FOUNDATION_EXPORT double AlamofireCodableVersionNumber;
+FOUNDATION_EXPORT const unsigned char AlamofireCodableVersionString[];
 

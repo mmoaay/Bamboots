@@ -1,13 +1,10 @@
 PODS:
   - Alamofire (4.5.1)
-  - AlamofireObjectMapper (5.0.0):
-    - Alamofire (~> 4.1)
-    - ObjectMapper (~> 3.0)
+  - AlamofireCodable (0.1.1):
+    - Alamofire
   - Bamboots (0.5.0):
     - Alamofire
-    - AlamofireObjectMapper
-    - ObjectMapper
-  - ObjectMapper (3.1.0)
+    - AlamofireCodable
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
@@ -20,9 +17,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
-  Bamboots: a902eba3852c0c4a0e1520a20577d10c7f3d687c
-  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  AlamofireCodable: 55cd99b65e96dc0ef690aa3933cf65189095b4e8
+  Bamboots: 0cc3109ed2415aab93c41443cfa89edd8b114927
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
 PODFILE CHECKSUM: 2d0add0fdae4c2467485f475899cc4f0861ced4b

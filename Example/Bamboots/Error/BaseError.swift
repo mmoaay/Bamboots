@@ -8,20 +8,15 @@
 
 import Foundation
 import Bamboots
-import ObjectMapper
 
 class BaseError: JSONErrorable {
     var successCodes: [String] = ["https://httpbin.org/post"]
 
     var code: String?
     var message: String?
-
-    init() { }
-
-    required init?(map: Map) { }
-
-    func mapping(map: Map) {
-        code <- map["url"]
-        message <- map["origin"]
+    
+    enum CodingKeys : String, CodingKey {
+        case code = "url"
+        case message = "origin"
     }
 }
