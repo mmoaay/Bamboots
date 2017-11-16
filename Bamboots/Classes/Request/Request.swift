@@ -8,8 +8,7 @@
 
 import UIKit
 import Alamofire
-import AlamofireObjectMapper
-import ObjectMapper
+import AlamofireCodable
 
 public extension Requestable {
 

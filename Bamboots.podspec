@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Bamboots'
-  s.version          = '0.4.0'
+  s.version          = '0.5.0'
   s.summary          = 'Bamboots - Extension 4 Alamofire'
 
 # This description is used to generate tags and improve search results.
@@ -37,8 +37,8 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'AlamofireObjectMapper', '~>4'
-  s.dependency 'Alamofire', '~> 4.1'
-  s.dependency 'ObjectMapper', '~> 2.0'
-  s.dependency 'RealmSwift'
+  s.dependency 'AlamofireCodable'
+  s.dependency 'Alamofire'
+  #s.dependency 'ObjectMapper'
+  # s.dependency 'RealmSwift'
 end

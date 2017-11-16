@@ -10,7 +10,12 @@ import Foundation
 
 extension UIAlertController: Informable {
     public func show() {
-        UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?
+            .rootViewController?.present(
+                self,
+                animated: true,
+                completion: nil
+        )
     }
 }
 
@@ -19,8 +24,12 @@ extension UIAlertController: Warnable{
         if let err = error {
             if "" != err.message {
                 message = err.message
-                
-                UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: nil)
+                UIApplication.shared.keyWindow?
+                    .rootViewController?.present(
+                        self,
+                        animated: true,
+                        completion: nil
+                )
             }
         }
     }

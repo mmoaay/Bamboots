@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 protocol Cacheable {
   associatedtype cacheType

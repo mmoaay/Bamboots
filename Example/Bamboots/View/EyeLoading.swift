@@ -76,12 +76,12 @@ class EyeLoading: UIView, Maskable {
     init() {
         super.init(frame: CGRect.zero)
 
-        self.backgroundColor = UIColor(colorLiteralRed: 0.0/255.0, green: 138.0/255.0, blue: 241.0/255.0, alpha: 1)
+        self.backgroundColor = UIColor(red: 0.0/255.0, green: 138.0/255.0, blue: 241.0/255.0, alpha: 1)
 
         eyelidView.backgroundColor = UIColor.white
 
         eyeballView.backgroundColor = UIColor(
-            colorLiteralRed: 0.0 / 255.0, green: 138.0 / 255.0, blue: 241.0 / 255.0, alpha: 1
+            red: 0.0 / 255.0, green: 138.0 / 255.0, blue: 241.0 / 255.0, alpha: 1
         )
 
         self.addSubview(eyelidView)
@@ -221,7 +221,7 @@ class EyeLoading: UIView, Maskable {
         animation.fillMode = kCAFillModeForwards
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         animation.isRemovedOnCompletion = false
-        animation.toValue = M_PI * 2
+        animation.toValue = Double.pi * 2
 
         return animation
     }

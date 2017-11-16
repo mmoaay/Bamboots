@@ -8,34 +8,22 @@
 
 import Foundation
 import Bamboots
-import ObjectMapper
 
-class WeatherResponse: Mappable {
+class WeatherResponse: Codable {
+    
     var location: String?
     var threeDayForecast: [Forecast]?
-
-    required init?(map: Map) {
-
-    }
-
-    func mapping(map: Map) {
-        location <- map["location"]
-        threeDayForecast <- map["three_day_forecast"]
+    
+    enum CodingKeys : String, CodingKey {
+        case location
+        case threeDayForecast = "three_day_forecast"
     }
 }
 
-class Forecast: Mappable {
+class Forecast: Codable {
+    
     var day: String?
     var temperature: Int?
     var conditions: String?
-
-    required init?(map: Map) {
-
-    }
-
-    func mapping(map: Map) {
-        day <- map["day"]
-        temperature <- map["temperature"]
-        conditions <- map["conditions"]
-    }
+    
 }

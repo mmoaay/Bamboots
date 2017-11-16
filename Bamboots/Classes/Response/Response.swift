@@ -8,8 +8,6 @@
 
 import Foundation
 import Alamofire
-import ObjectMapper
-import RealmSwift
 
 public extension DataRequest {
 
@@ -31,17 +29,17 @@ public extension DataRequest {
             if let err = response.error {
                 warn.show(error: err.localizedDescription)
             }
-        }).responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil) { (response: DataResponse<T>) in
-            if let err = response.result.value {
-                if let code = err.code {
-                    if true == error.successCodes.contains(code) {
-                        completionHandler?(err)
-                    } else {
-                        warn.show(error: err)
+        }).responseObject(completionHandler: { (response: DataResponse<T>) in
+                if let err = response.result.value {
+                    if let code = err.code {
+                        if true == error.successCodes.contains(code) {
+                            completionHandler?(err)
+                        } else {
+                            warn.show(error: err)
+                        }
                     }
                 }
-            }
-        }
+            })
     }
 
     /// Show inform message when request completed successfully
@@ -53,7 +51,7 @@ public extension DataRequest {
     @discardableResult
     func inform<T: JSONErrorable>(error: T, inform: Informable) -> Self {
 
-        return responseObject(queue: nil, keyPath: nil, mapToObject: nil, context: nil) { (response: DataResponse<T>) in
+        return responseObject(queue: nil, keyPath: nil) { (response: DataResponse<T>) in
             if let err = response.result.value {
                 if let code = err.code {
                     if true == error.successCodes.contains(code) {
@@ -105,12 +103,12 @@ public extension DownloadRequest {
 }
 
 public extension DataRequest {
-  func cache(object:Object) -> Self {
-    let realm = try! Realm()
-    let objects = realm.objects(Object.self)
-    
-    return self
-  }
+//  func cache(object:Object) -> Self {
+//    let realm = try! Realm()
+//    let objects = realm.objects(Object.self)
+//    
+//    return self
+//  }
 }
 
 public extension UploadRequest {

@@ -8,21 +8,16 @@
 
 import Foundation
 import Bamboots
-import ObjectMapper
 
 class WeatherError: JSONErrorable {
     var successCodes: [String] = ["200"]
 
     var code: String?
     var message: String?
-
-    init() { }
-
-    required init?(map: Map) { }
-
-    func mapping(map: Map) {
-        code <- map["data.location"]
-        message <- map["data.location"]
+    
+    enum CodingKeys : String, CodingKey {
+        case code = "data.loacation"
+        case message = "data.location"
     }
 }
 
@@ -32,12 +27,12 @@ class WeatherInformError: JSONErrorable {
     var code: String?
     var message: String?
 
-    init() { }
-
-    required init?(map: Map) { }
-
-    func mapping(map: Map) {
-        code <- map["data.location"]
-        message <- map["data.location"]
-    }
+//    init() { }
+//
+//    required init?(map: Map) { }
+//
+//    func mapping(map: Map) {
+//        code <- map["data.location"]
+//        message <- map["data.location"]
+//    }
 }
