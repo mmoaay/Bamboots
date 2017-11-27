@@ -8,7 +8,7 @@
 
 import UIKit
 import Bamboots
-import AlamofireObjectMapper
+import AlamofireCodable
 import Alamofire
 
 class UploadViewController: UIViewController, Requestable {

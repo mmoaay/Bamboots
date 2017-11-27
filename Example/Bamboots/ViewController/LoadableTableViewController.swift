@@ -22,7 +22,7 @@ extension LoadableTableViewController {
         tableView.addSubview(refresh)
     }
 
-    func refresh(refresh: UIRefreshControl) {
+    @objc func refresh(refresh: UIRefreshControl) {
         request(WeatherForm()).load(load: refresh)
     }
 

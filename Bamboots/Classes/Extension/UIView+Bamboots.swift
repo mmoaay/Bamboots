@@ -43,7 +43,7 @@ extension UIView: Containable {
     /// Return self as container for `UIView`
     ///
     /// - Returns: `UIView` itself
-    public func containerView() -> UIView? {
+    @objc public func containerView() -> UIView? {
         return self
     }
 }

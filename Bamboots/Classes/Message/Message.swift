@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectMapper
 import Alamofire
 
 public extension Informable {

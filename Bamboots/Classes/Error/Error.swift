@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectMapper
 
 // MARK: - Default extension for `Errorable`
 public extension Errorable {
@@ -25,7 +24,7 @@ public extension Errorable {
 }
 
 /// Error protocol for JSON data. Conforming to this protocol to customize the error configuration for JSON data
-public protocol JSONErrorable: Errorable, Mappable {
+public protocol JSONErrorable: Errorable, Codable {
 
 }
 
