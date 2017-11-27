@@ -23,13 +23,13 @@ extension UIControl: Loadable {
     }
 
     /// Making it disabled when network request begins
-    public func begin() {
+    @objc public func begin() {
         isEnabled = false
         show()
     }
 
     /// Making it enabled when the last network request ends
-    public func end() {
+    @objc public func end() {
         if let latestMask = self.maskContainer()?.latestMask() {
             if false == latestMask.isHidden {
                 isEnabled = true

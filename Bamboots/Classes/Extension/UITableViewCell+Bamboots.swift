@@ -14,9 +14,9 @@ extension UITableViewCell {
     /// Return `contentView` as container for `UITableViewCell`
     ///
     /// - Returns: `contentView` of `UITableViewCell`
-// TODO: build    public override func containerView() -> UIView? {
-//        return self.contentView
-//    }
+    public override func containerView() -> UIView? {
+        return self.contentView
+    }
 }
 
 // MARK: - Making `UITableViewCell` conforms to `Loadable`
