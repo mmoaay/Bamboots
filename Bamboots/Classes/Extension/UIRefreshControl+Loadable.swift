@@ -12,14 +12,14 @@ import Foundation
 extension UIRefreshControl {
 
     /// Begin refreshing when network request begins
-// TODO: build    public override func begin() {
-//        if false == self.isRefreshing {
-//            self.beginRefreshing()
-//        }
-//    }
+    public override func begin() {
+        if false == self.isRefreshing {
+            self.beginRefreshing()
+        }
+    }
 
     /// End refreshing when network request ends
-// TODO: build    public override func end() {
-//        self.endRefreshing()
-//    }
+    public override func end() {
+        self.endRefreshing()
+    }
 }
