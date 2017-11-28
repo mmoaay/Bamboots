@@ -13,6 +13,10 @@ public extension Errorable {
     var successCodes: [String] {
         return []
     }
+    
+    var rootPath: String? {
+        return nil
+    }
 
     var code: String? {
         return nil
@@ -30,6 +34,7 @@ public protocol JSONErrorable: Errorable, Codable {
 
 /// Error protocol. Conforming to this protocol to customize the error configuration.
 public protocol Errorable {
+    var rootPath: String? { get }
 
     /// Using this set with code to distinguish successful code from error code
     var successCodes: [String] { get }

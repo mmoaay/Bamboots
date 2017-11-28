@@ -18,5 +18,5 @@ struct ImageDownloadForm: DownloadFormable {
         return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
     }
 
-    var url = "http://img.tuku.com/upload/attach/2013/07/98031-9wo1TE2.jpg"
+    var url = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
 }

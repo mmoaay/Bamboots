@@ -9,7 +9,7 @@
 import Foundation
 import Bamboots
 
-class WeatherResponse: Codable {
+struct WeatherResponse: Codable {
     
     var location: String?
     var threeDayForecast: [Forecast]?
@@ -20,7 +20,7 @@ class WeatherResponse: Codable {
     }
 }
 
-class Forecast: Codable {
+struct Forecast: Codable {
     
     var day: String?
     var temperature: Int?
