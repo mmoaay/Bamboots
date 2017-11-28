@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
 
 
-**Bamboots** is a network request framework based on [Alamofire](https://github.com/Alamofire/Alamofire) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper/), aiming at making network request easier for business development. 
+**Bamboots** is a network request framework based on [Alamofire](https://github.com/Alamofire/Alamofire) , aiming at making network request easier for business development.
 
 - [Protocols](#protocols)
 - [Features](#features)
@@ -69,8 +69,7 @@ Mostly you don't need to care much about these protocols, because we already hav
 ## Requirements
 
  - [Alamofire](https://github.com/Alamofire/Alamofire): Elegant HTTP Networking in Swift
- - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper/): Simple JSON Object mapping written in Swift
- - [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper): An Alamofire extension which converts JSON response data into swift objects using ObjectMapper
+ - [AlamofireCodable](https://github.com/CNKCQ/AlamofireCodable): An Alamofire extension which converts JSON response data into swift objects using Codable
 
 ## Usage
 
@@ -328,7 +327,7 @@ request(WeatherForm()).responseObject(keyPath: "data") { (response: DataResponse
 
 ```
 
-For more information, see [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper).
+For more information, see [AlamofireCodable](https://github.com/CNKCQ/AlamofireCodable).
 
 ## Chained calls
 
