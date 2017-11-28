@@ -1,5 +1,5 @@
-language: objective-c
-osx_image: xcode8
+language: swift
+osx_image: xcode9
 env:
   global:
     - LANG=en_US.UTF-8
