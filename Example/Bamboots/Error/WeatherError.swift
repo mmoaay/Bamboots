@@ -9,30 +9,29 @@
 import Foundation
 import Bamboots
 
-class WeatherError: JSONErrorable {
+struct WeatherError: JSONErrorable {
+    var rootPath: String? = "data"
     var successCodes: [String] = ["200"]
 
     var code: String?
     var message: String?
     
     enum CodingKeys : String, CodingKey {
-        case code = "data.loacation"
-        case message = "data.location"
+        case code = "location"
+        case message = "lacation"
     }
 }
 
-class WeatherInformError: JSONErrorable {
+struct WeatherInformError: JSONErrorable {
+    var rootPath: String? = "data"
+    
     var successCodes: [String] = ["Toronto, Canada"]
 
     var code: String?
     var message: String?
-
-//    init() { }
-//
-//    required init?(map: Map) { }
-//
-//    func mapping(map: Map) {
-//        code <- map["data.location"]
-//        message <- map["data.location"]
-//    }
+    
+    enum CodingKeys : String, CodingKey {
+        case code = "location"
+        case message = "lacation"
+    }
 }

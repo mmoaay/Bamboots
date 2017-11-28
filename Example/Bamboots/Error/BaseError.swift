@@ -9,7 +9,7 @@
 import Foundation
 import Bamboots
 
-class BaseError: JSONErrorable {
+struct BaseError: JSONErrorable {
     var successCodes: [String] = ["https://httpbin.org/post"]
 
     var code: String?
