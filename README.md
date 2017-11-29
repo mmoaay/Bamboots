@@ -2,9 +2,12 @@
 
 [![CI Status](http://img.shields.io/travis/mmoaay/Bamboots.svg?style=flat)](https://travis-ci.org/mmoaay/Bamboots)
 [![Version](https://img.shields.io/cocoapods/v/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
-[![License](https://img.shields.io/cocoapods/l/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
 [![Platform](https://img.shields.io/cocoapods/p/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
-
+[![Language](https://img.shields.io/badge/language-swift-orange.svg)](https://github.com/apple/swift)
+[![License](https://img.shields.io/cocoapods/l/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
+[![Gitter](https://img.shields.io/gitter/room/Bamboots/Bamboots.svg)](https://gitter.im/Bamboots-Gitter/Lobby)
+[![Weibo](https://img.shields.io/badge/weibo-@mmoaay-red.svg?style=flat)](https://weibo.com/smmoaay)
+![\<3](https://img.shields.io/badge/made%20with-%3C3-orange.svg)
 
 **Bamboots** is a network request framework based on [Alamofire](https://github.com/Alamofire/Alamofire) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper/), aiming at making network request easier for business development. 
 
@@ -374,5 +377,7 @@ pod "Bamboots"
 mmoaay, mmoaay@sina.com
 
 ## License
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
 
 Bamboots is available under the MIT license. See the LICENSE file for more info.
