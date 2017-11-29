@@ -25,17 +25,22 @@ public extension DataRequest {
         completionHandler: ((JSONErrorable) -> Void)? = nil
         ) -> Self {
         return response(completionHandler: { (response: DefaultDataResponse) in
-            if let err = response.error {
+            if let err = response.error { // Network error
                 warn.show(error: err.localizedDescription)
             }
         }).responseObject(keyPath:error.rootPath, completionHandler: { (response: DataResponse<T>) in
-            if let err = response.result.value {
-                print(err)
-                if let code = err.code {
-                    if true == error.successCodes.contains(code) {
-                        completionHandler?(err)
+            if let err = response.error { // Serialize error
+                warn.show(error: err.localizedDescription)
+            } else {
+                if let err = response.result.value {
+                    if let code = err.code {
+                        if true == error.successCodes.contains(code) { // User handled error code
+                            completionHandler?(err)
+                        } else {
+                            warn.show(error: err)
+                        }
                     } else {
-                        warn.show(error: err)
+                        print("Parse error code failed")
                     }
                 }
             }
@@ -50,7 +55,6 @@ public extension DataRequest {
     /// - Returns: The request.
     @discardableResult
     func inform<T: JSONErrorable>(error: T, inform: Informable) -> Self {
-
         return responseObject(keyPath: error.rootPath) { (response: DataResponse<T>) in
             if let err = response.result.value {
                 if let code = err.code {
