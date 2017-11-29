@@ -598,7 +598,7 @@
             </objects>
             <point key="canvasLocation" x="1222" y="1164"/>
         </scene>
-        <!--Mappable(ObjectMapper)-->
+        <!--Codable-->
         <scene sceneID="mme-LV-9pE">
             <objects>
                 <tableViewController id="UCb-zt-FPE" customClass="MapViewController" customModule="Bamboots_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -637,7 +637,7 @@
                             <outlet property="delegate" destination="UCb-zt-FPE" id="QMS-VX-6hQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Mappable(ObjectMapper)" id="hAB-PX-QIe">
+                    <navigationItem key="navigationItem" title="Codable" id="hAB-PX-QIe">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="3IX-Xn-9h9">
                             <connections>
                                 <action selector="load:" destination="UCb-zt-FPE" id="Z8s-8C-gxw"/>
@@ -656,6 +656,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kur-9d-iVG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="6Uz-cg-ml2" kind="relationship" relationship="rootViewController" id="bPb-uJ-GA3"/>

@@ -31,18 +31,16 @@ public extension DataRequest {
         }).responseObject(keyPath:error.rootPath, completionHandler: { (response: DataResponse<T>) in
             if let err = response.error { // Serialize error
                 warn.show(error: err.localizedDescription)
-            } else {
-                if let err = response.result.value {
-                    if let code = err.code {
-                        if true == error.successCodes.contains(code) { // User handled error code
-                            completionHandler?(err)
-                        } else {
-                            warn.show(error: err)
-                        }
-                    } else {
-                        print("Parse error code failed")
-                    }
+                return
+            }
+            if let err = response.result.value, let code = err.code {
+                if true == error.successCodes.contains(code) { // User handled error code
+                    completionHandler?(err)
+                } else {
+                    warn.show(error: err)
                 }
+            } else {
+                print("Parse error code failed")
             }
         })
     }
@@ -56,11 +54,9 @@ public extension DataRequest {
     @discardableResult
     func inform<T: JSONErrorable>(error: T, inform: Informable) -> Self {
         return responseObject(keyPath: error.rootPath) { (response: DataResponse<T>) in
-            if let err = response.result.value {
-                if let code = err.code {
-                    if true == error.successCodes.contains(code) {
-                        inform.show()
-                    }
+            if let err = response.result.value, let code = err.code {
+                if true == error.successCodes.contains(code) {
+                    inform.show()
                 }
             }
         }
@@ -82,17 +78,6 @@ public extension DataRequest {
 }
 
 public extension DownloadRequest {
-    /// Show progress of the request
-    ///
-    /// - Parameter progress: Object conforms to `Progressable` protocol
-    /// - Returns: The request.
-    @discardableResult
-    func progress(progress: Progressable) -> Self {
-        return downloadProgress(closure: { (prog: Progress) in
-            progress.progress(prog)
-        })
-    }
-
     /// Show mask when request begins and hide mask when request ends
     ///
     /// - Parameter load: Object conforms to `Loadable` protocol
@@ -107,12 +92,38 @@ public extension DownloadRequest {
 }
 
 public extension DataRequest {
-//  func cache(object:Object) -> Self {
-//    let realm = try! Realm()
-//    let objects = realm.objects(Object.self)
-//    
-//    return self
-//  }
+    @discardableResult
+    func reload(reload:Reloadable = ReloadType.none) -> Self {
+        return response { (response: DefaultDataResponse) in
+            if let _ = response.error { // Network error
+                reload.display()
+            }
+        }
+    }
+}
+
+public extension DownloadRequest {
+    @discardableResult
+    func reload(reload:Reloadable = ReloadType.none) -> Self {
+        return response { (response: DefaultDownloadResponse) in
+            if let _ = response.error { // Network error
+                reload.display()
+            }
+        }
+    }
+}
+
+public extension DownloadRequest {
+    /// Show progress of the request
+    ///
+    /// - Parameter progress: Object conforms to `Progressable` protocol
+    /// - Returns: The request.
+    @discardableResult
+    func progress(progress: Progressable) -> Self {
+        return downloadProgress(closure: { (prog: Progress) in
+            progress.progress(prog)
+        })
+    }
 }
 
 public extension UploadRequest {
