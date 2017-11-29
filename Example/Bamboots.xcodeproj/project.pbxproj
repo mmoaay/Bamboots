@@ -334,7 +334,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 8682P4GC47;
+						DevelopmentTeam = 5AQZQKK3GK;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -672,7 +672,7 @@
 			baseConfigurationReference = 837C732B84DC9242063FF9D5 /* Pods-Bamboots_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8682P4GC47;
+				DEVELOPMENT_TEAM = 5AQZQKK3GK;
 				INFOPLIST_FILE = Bamboots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -689,7 +689,7 @@
 			baseConfigurationReference = 3563A1CF53A46C0766B4B720 /* Pods-Bamboots_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8682P4GC47;
+				DEVELOPMENT_TEAM = 5AQZQKK3GK;
 				INFOPLIST_FILE = Bamboots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
