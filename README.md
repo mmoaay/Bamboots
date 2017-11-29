@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
 [![Platform](https://img.shields.io/cocoapods/p/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
 [![Language](https://img.shields.io/badge/language-swift-orange.svg)](https://github.com/apple/swift)
+[![Codebeat](https://codebeat.co/badges/571ff02f-8f09-4960-b0e4-d4c6210251cf)](https://codebeat.co/projects/github-com-mmoaay-bamboots-master)
 [![License](https://img.shields.io/cocoapods/l/Bamboots.svg?style=flat)](http://cocoapods.org/pods/Bamboots)
 [![Gitter](https://img.shields.io/gitter/room/Bamboots/Bamboots.svg)](https://gitter.im/Bamboots-Gitter/Lobby)
 [![Weibo](https://img.shields.io/badge/weibo-@mmoaay-red.svg?style=flat)](https://weibo.com/smmoaay)
