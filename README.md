@@ -374,7 +374,7 @@ pod "Bamboots"
 
 ## Author
 
-mmoaay, mmoaay@sina.com
+mmoaay, mm@swift.gg
 
 ## License
 
