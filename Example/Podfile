@@ -2,11 +2,10 @@ use_frameworks!
 
 target 'Bamboots_Example' do
   pod 'Bamboots', :path => '../'
+  pod 'Bamboots/BambootsProtobuf', :path => '../'
   pod 'SnapKit'
-  target 'Bamboots_Tests' do
+  target 'Bamboots_ExampleTests' do
       inherit! :search_paths
-      
-      
   end
 end
 

@@ -12,20 +12,38 @@
     "mmoaay": "mmoaay@sina.com"
   },
   "source": {
-    "git": "https://github.com/mmoaay/Bamboots.git",
+    "git": "https://github.com/king129/Bamboots.git",
     "tag": "0.5.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "Bamboots/Classes/**/*",
-  "resources": "Bamboots/Assets/**/*",
-  "dependencies": {
-    "AlamofireCodable": [
+  "default_subspecs": "Core",
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "Bamboots/Classes/Core/**/*.swift",
+      "resources": "Bamboots/Assets/**/*",
+      "dependencies": {
+        "AlamofireCodable": [
 
-    ],
-    "Alamofire": [
+        ],
+        "Alamofire": [
 
-    ]
-  }
+        ]
+      }
+    },
+    {
+      "name": "BambootsProtobuf",
+      "source_files": "Bamboots/Classes/Protobuf/**/*.swift",
+      "dependencies": {
+        "Bamboots/Core": [
+          "0.5.0"
+        ],
+        "SwiftProtobuf": [
+          "1.0.2"
+        ]
+      }
+    }
+  ]
 }

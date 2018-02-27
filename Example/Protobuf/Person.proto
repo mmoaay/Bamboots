@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+message Person {
+  string name = 1;
+  int32 uid = 2;
+  string email = 3;
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+
+  message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phone = 4;
+
+  map<string, PhoneNumber> projects = 5;
+  map<string, string> info = 6;
+
+}
+
+message Result {
+    int32 state = 1;
+    map<string, Person> projects = 2;
+}
