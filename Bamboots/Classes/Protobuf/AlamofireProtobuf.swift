@@ -35,13 +35,13 @@ extension DataRequest {
         return nil
     }
 
-    public static func ObjectSerializerPB<T: SwiftProtobuf.Message>() -> DataResponseSerializer<T> {
+    public static func ObjectSerializerPB<T: SwiftProtobuf.Message>(extensions: ExtensionMap?, partial: Bool, options: BinaryDecodingOptions) -> DataResponseSerializer<T> {
         return DataResponseSerializer { request, response, data, error in
             if let error = checkResponseForError(request: request, response: response, data: data, error: error) {
                 return .failure(error)
             }
             do {
-                let object = try T(serializedData: data!)
+                let object = try T(serializedData: data!, extensions: extensions, partial: partial, options: options)
                 return .success(object)
             } catch let error {
                 return .failure(error)
@@ -50,7 +50,7 @@ extension DataRequest {
     }
 
     @discardableResult
-    public func responsePBObject<T: SwiftProtobuf.Message>(queue: DispatchQueue? = nil, keyPath: String? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
-        return response(queue: queue, responseSerializer: DataRequest.ObjectSerializerPB(), completionHandler: completionHandler)
+    public func responsePBObject<T: SwiftProtobuf.Message>(queue: DispatchQueue? = nil, keyPath: String? = nil, extensions: ExtensionMap? = nil, partial: Bool = false, options: BinaryDecodingOptions = BinaryDecodingOptions(), completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
+        return response(queue: queue, responseSerializer: DataRequest.ObjectSerializerPB(extensions: extensions, partial: partial, options: options), completionHandler: completionHandler)
     }
 }
