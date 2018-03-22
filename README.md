@@ -369,8 +369,18 @@ Bamboots is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "Bamboots"
+pod 'Bamboots'
 ```
+
+## Protobuf Support
+```ruby
+pod 'Bamboots/BambootsProtobuf'
+```
+* Use [apple/swift-protobuf](https://github.com/apple/swift-protobuf) as protobuf data deserialization
+* run protobuf test
+    * fist run `Example/Protobuf/pbdemo`
+    * open `Example/Bamboots.xcworkspace`
+    * run `command + u`
 
 ## Author
 
@@ -381,3 +391,5 @@ mmoaay, mm@swift.gg
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
 
 Bamboots is available under the MIT license. See the LICENSE file for more info.
+
+

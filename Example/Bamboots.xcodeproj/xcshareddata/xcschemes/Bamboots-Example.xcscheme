@@ -53,6 +53,16 @@
                ReferencedContainer = "container:MBNetwork.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A4AF31DD2045045B009BCAF6"
+               BuildableName = "Bamboots_ExampleTests.xctest"
+               BlueprintName = "Bamboots_ExampleTests"
+               ReferencedContainer = "container:Bamboots.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

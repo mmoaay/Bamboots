@@ -1,14 +1,21 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
   - AlamofireCodable (0.1.1):
     - Alamofire
   - Bamboots (0.5.0):
+    - Bamboots/Core (= 0.5.0)
+  - Bamboots/BambootsProtobuf (0.5.0):
+    - Bamboots/Core (= 0.5.0)
+    - SwiftProtobuf (= 1.0.2)
+  - Bamboots/Core (0.5.0):
     - Alamofire
     - AlamofireCodable
   - SnapKit (4.0.0)
+  - SwiftProtobuf (1.0.2)
 
 DEPENDENCIES:
   - Bamboots (from `../`)
+  - Bamboots/BambootsProtobuf (from `../`)
   - SnapKit
 
 EXTERNAL SOURCES:
@@ -16,11 +23,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireCodable: 55cd99b65e96dc0ef690aa3933cf65189095b4e8
-  Bamboots: 0cc3109ed2415aab93c41443cfa89edd8b114927
+  Bamboots: 74efa8605ce0ba1e352703e8ad0720b81392f817
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftProtobuf: e41d205c91eac0fb46823f2561712407fefdaf4e
 
-PODFILE CHECKSUM: 2d0add0fdae4c2467485f475899cc4f0861ced4b
+PODFILE CHECKSUM: cc0beb97d059592e7098a53fc70ffab10bf3f03e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0
